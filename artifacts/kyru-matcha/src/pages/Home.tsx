@@ -1,5 +1,5 @@
-import React, { useRef, useState } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { useState } from "react";
+
 
 function SignupForm({ dark = false }: { dark?: boolean }) {
   const [done, setDone] = useState(false);
@@ -60,201 +60,33 @@ const Images = {
   gallery8: "/images/731111343_17895541896483743_3598329880635149232_n_1784859145526.jpg",
 };
 
-// ── poster motifs ────────────────────────────────────────────────
-function Asterisk({ color, size, className }: { color: string; size: number; className?: string }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 100 100" className={className} aria-hidden="true">
-      <g fill={color}>
-        <rect x="42" y="2" width="16" height="96" rx="8" />
-        <rect x="42" y="2" width="16" height="96" rx="8" transform="rotate(60 50 50)" />
-        <rect x="42" y="2" width="16" height="96" rx="8" transform="rotate(120 50 50)" />
-      </g>
-    </svg>
-  );
-}
-
-function Flower({ petal, center, size, className }: { petal: string; center: string; size: number; className?: string }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 100 100" className={className} aria-hidden="true">
-      {[0, 60, 120, 180, 240, 300].map((a) => (
-        <circle key={a} cx={50 + 28 * Math.cos((a * Math.PI) / 180)} cy={50 + 28 * Math.sin((a * Math.PI) / 180)} r="20" fill={petal} />
-      ))}
-      <circle cx="50" cy="50" r="11" fill={center} />
-    </svg>
-  );
-}
-
-function ScribbleFlower({ color, size, className }: { color: string; size: number; className?: string }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 100 100" className={className} aria-hidden="true" fill="none">
-      <path
-        d="M50 52 C 30 20, 62 12, 54 40 C 78 18, 92 44, 60 48 C 92 56, 78 80, 56 58 C 64 88, 34 86, 46 58 C 20 80, 8 54, 42 50 C 12 42, 26 18, 48 42"
-        stroke={color}
-        strokeWidth="3.5"
-        strokeLinecap="round"
-      />
-      <path d="M50 58 C 48 74, 46 84, 44 96" stroke={color} strokeWidth="3.5" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function Stool({ color, size, className }: { color: string; size: number; className?: string }) {
-  return (
-    <svg width={size} height={size * 1.05} viewBox="0 0 100 105" className={className} aria-hidden="true" fill="none" stroke={color} strokeWidth="3.5" strokeLinejoin="round" strokeLinecap="round">
-      {/* seat */}
-      <ellipse cx="50" cy="18" rx="30" ry="10" />
-      <ellipse cx="50" cy="16" rx="7" ry="2.6" />
-      {/* skirt */}
-      <path d="M20 18 L23 34 L77 34 L80 18" />
-      {/* legs */}
-      <path d="M23 34 L12 96 L22 96 L31 38" />
-      <path d="M77 34 L88 96 L78 96 L69 38" />
-      <path d="M40 36 L36 70" />
-      <path d="M60 36 L64 70" />
-      {/* rails */}
-      <path d="M20 62 Q50 70 80 62" />
-      <path d="M25 44 Q50 50 75 44" />
-    </svg>
-  );
-}
-
-// poster color frames — sudden swaps, like flipping through flyers
-// each frame gets a real photo texture behind a color tint
-const heroFrames = [
-  { bg: "#76805B", fg: "#EFE87B", motif: "scribble", motifColor: "#C97B4A", tex: "/images/tex-matcha.png", tint: 0.5 }, // matcha swirl / butter yellow
-  { bg: "#8FA6B8", fg: "#1E3A5C", motif: "asterisk", motifColor: "#1E3A5C", tex: "/images/tex-chambray.png", tint: 0.2 }, // light chambray / navy, like the cowboy flyer
-  { bg: "#F1EFE8", fg: "#181916", motif: "star", motifColor: "#181916", tex: "/images/tex-stone.png", tint: 0.25 }, // bone stone / ink
-  { bg: "#181916", fg: "#F1EFE8", motif: "flower", motifColor: "#E4E2D5", tex: "/images/tex-matcha.png", tint: 0.88 }, // ink-washed swirl / bone
-  { bg: "#D8D2C4", fg: "#A32A1B", motif: "stool", motifColor: "#A32A1B", tex: "/images/tex-kraft.png", tint: 0.3 }, // kraft paper / brick red
-];
-
-// scattered motif positions per frame (like the flyer margins)
-function HeroMotifs({ frame }: { frame: (typeof heroFrames)[number] }) {
-  const c = frame.motifColor;
-  return (
-    <div className="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
-      {frame.motif === "scribble" && (
-        <>
-          {/* huge mascot wash bleeding off the left, like the march calendar poster */}
-          <img
-            src="/images/mascot_no_bg.png"
-            alt=""
-            className="absolute top-[6%] -left-[10%] w-[58vw] max-w-none opacity-90 -rotate-6"
-            style={{ filter: "brightness(0) invert(1)" }}
-          />
-          <ScribbleFlower color={c} size={170} className="absolute top-[30%] right-[6%] rotate-12 opacity-80" />
-          <ScribbleFlower color={c} size={110} className="absolute bottom-[26%] left-[30%] -rotate-6 opacity-60" />
-        </>
-      )}
-      {frame.motif === "asterisk" && (
-        <>
-          <Asterisk color={c} size={90} className="absolute top-[24%] left-[3%] -rotate-12" />
-          <Asterisk color={c} size={60} className="absolute top-[14%] right-[10%] rotate-12" />
-          <Asterisk color={c} size={120} className="absolute bottom-[20%] right-[4%] rotate-6 opacity-90" />
-          <Asterisk color={c} size={48} className="absolute bottom-[32%] left-[38%] rotate-45 opacity-80" />
-        </>
-      )}
-      {frame.motif === "star" && (
-        <>
-          <Asterisk color={c} size={70} className="absolute top-[20%] left-[4%] rotate-12 opacity-90" />
-          <Asterisk color={c} size={44} className="absolute top-[38%] right-[14%] -rotate-12 opacity-80" />
-          <Asterisk color={c} size={95} className="absolute bottom-[24%] right-[3%] -rotate-6" />
-          <img src={Images.logo} alt="" className="absolute bottom-[30%] left-[8%] w-20 opacity-70 grayscale mix-blend-multiply -rotate-6" />
-        </>
-      )}
-      {frame.motif === "stool" && (
-        <>
-          {/* stacked viet plastic stools, clustered right like the night-market flyer */}
-          <Stool color={c} size={210} className="absolute top-[18%] right-[4%] rotate-3" />
-          <Stool color={c} size={160} className="absolute top-[38%] right-[16%] -rotate-6" />
-          <Stool color={c} size={110} className="absolute bottom-[26%] right-[7%] rotate-12 opacity-80" />
-        </>
-      )}
-      {frame.motif === "flower" && (
-        <>
-          <Flower petal={c} center="#8FA6C4" size={130} className="absolute top-[16%] right-[7%] opacity-90" />
-          <Flower petal={c} center="#8FA6C4" size={80} className="absolute top-[42%] left-[5%] opacity-70" />
-          <Flower petal="#EFE87B" center="#C97B4A" size={100} className="absolute bottom-[22%] right-[30%] opacity-80" />
-        </>
-      )}
-    </div>
-  );
-}
-
 function Hero() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [frame, setFrame] = useState(0);
-  React.useEffect(() => {
-    const id = setInterval(() => setFrame((f) => (f + 1) % heroFrames.length), 5000);
-    return () => clearInterval(id);
-  }, []);
-  const current = heroFrames[frame];
-  const { bg, fg } = current;
-  const noteColor = bg === "#F1EFE8" ? "#3049C9" : fg;
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end end"],
-  });
-  const progress = useSpring(scrollYProgress, {
-    stiffness: 90,
-    damping: 24,
-    mass: 0.4,
-  });
-
-  // giant words slide apart as you scroll
-  const kyruX = useTransform(progress, [0, 1], ["0vw", "-14vw"]);
-  const matchaX = useTransform(progress, [0, 1], ["0vw", "14vw"]);
-  const wordsOpacity = useTransform(progress, [0, 0.85, 1], [1, 1, 0.9]);
-
-  // metadata drifts in opposite directions
-  const leftY = useTransform(progress, [0, 1], ["0%", "-30%"]);
-  const rightY = useTransform(progress, [0, 1], ["0%", "30%"]);
-  const noteRotate = useTransform(progress, [0, 1], [6, -4]);
-
   return (
-    <section id="our-thing" ref={ref} className="relative h-[120vh]">
-      <div
-        style={{ backgroundColor: bg, color: fg }}
-        className="sticky top-0 h-[calc(100dvh-64px)] flex flex-col justify-between bottom-line overflow-hidden"
-      >
-        {/* photo texture background + color tint to keep type legible */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-cover bg-center pointer-events-none"
-          style={{ backgroundImage: `url(${current.tex})` }}
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
-          style={{ backgroundColor: bg, opacity: current.tint }}
-        />
+    <section id="our-thing" className="relative">
+      <div className="relative h-[calc(100dvh-64px)] flex flex-col justify-between bottom-line overflow-hidden bg-white text-[#181916]">
         <h1 className="sr-only">kyru matcha — not a brand, just us talking.</h1>
 
-        {/* per-frame scattered motifs */}
-        <HeroMotifs frame={current} />
-
-        {/* giant KYRU bleeding off the top-left, slides left on scroll */}
-        <motion.div
+        {/* giant KYRU bleeding off the top-left */}
+        <div
           aria-hidden="true"
-          style={{ x: kyruX, opacity: wordsOpacity }}
-          className="select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.03em] leading-[0.72] text-[42vw] md:text-[37vw] -mt-[10vw] -ml-[2.5vw] will-change-transform"
+          className="select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.03em] leading-[0.72] text-[42vw] md:text-[37vw] -mt-[10vw] -ml-[2.5vw]"
         >
           kyru
-        </motion.div>
+        </div>
 
         {/* middle band — scattered flyer metadata */}
         <div className="relative flex-1 px-6 md:px-12 lg:px-16 py-6">
           {/* hosted by — upper left */}
-          <motion.div style={{ y: leftY }} className="absolute top-[8%] left-[4%] md:left-[6%] will-change-transform">
+          <div className="absolute top-[8%] left-[4%] md:left-[6%]">
             <p className="font-mono text-xs md:text-sm uppercase tracking-widest leading-loose">
               hosted&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by:
               <br />
               nobody.&nbsp;&nbsp;it's just us.
             </p>
-          </motion.div>
+          </div>
 
           {/* intro copy — mid left, indented like the flyers */}
-          <motion.div style={{ y: leftY }} className="absolute top-[44%] left-[8%] md:left-[12%] max-w-[16rem] md:max-w-xs will-change-transform">
+          <div className="absolute top-[44%] left-[8%] md:left-[12%] max-w-[16rem] md:max-w-xs">
             <p className="font-sans text-sm md:text-base opacity-80 leading-relaxed lowercase">
               we're kyru. viet-owned, matcha-obsessed, and slightly too online.
               serious matcha, unserious people.
@@ -265,10 +97,10 @@ function Hero() {
             >
               explore catalogue <span className="text-lg leading-none font-sans">→</span>
             </a>
-          </motion.div>
+          </div>
 
           {/* vendor-list style block — upper right */}
-          <motion.div style={{ y: rightY }} className="absolute top-[4%] right-[6%] md:right-[14%] text-left will-change-transform">
+          <div className="absolute top-[4%] right-[6%] md:right-[14%] text-left">
             <p className="font-mono text-xs md:text-sm uppercase tracking-widest leading-loose">
               matcha,&nbsp;&nbsp;&nbsp;&nbsp;drinks,
               <br />
@@ -276,10 +108,10 @@ function Hero() {
               <br />
               &amp;&nbsp;&nbsp;more
             </p>
-          </motion.div>
+          </div>
 
           {/* next pop-up — lower right, stepped like the flyers */}
-          <motion.div style={{ y: rightY }} className="absolute bottom-[6%] right-[4%] md:right-[8%] text-left will-change-transform">
+          <div className="absolute bottom-[6%] right-[4%] md:right-[8%] text-left">
             <p className="font-mono text-xs md:text-sm uppercase tracking-widest leading-loose">
               next&nbsp;pop-up
               <br />
@@ -287,33 +119,21 @@ function Hero() {
               <br />
               &nbsp;&nbsp;&nbsp;&nbsp;11am–5pm&nbsp;(or&nbsp;sold&nbsp;out)
             </p>
-          </motion.div>
+          </div>
 
           {/* handwritten note — tucked lower-center-left, tilted */}
-          <motion.div
-            style={{ rotate: noteRotate, color: noteColor }}
-            className="hidden md:block absolute bottom-[14%] left-[38%] font-serif italic text-2xl lg:text-3xl whitespace-nowrap pointer-events-none will-change-transform"
-          >
+          <div className="hidden md:block absolute bottom-[14%] left-[38%] font-serif italic text-2xl lg:text-3xl whitespace-nowrap pointer-events-none rotate-[-4deg]">
             thanks for being here ♡
-          </motion.div>
+          </div>
         </div>
 
-        {/* giant MATCHA bleeding off the bottom-right, slides right on scroll */}
-        <motion.div
+        {/* giant MATCHA bleeding off the bottom-right */}
+        <div
           aria-hidden="true"
-          style={{ x: matchaX, opacity: wordsOpacity }}
-          className="select-none pointer-events-none font-sans font-medium lowercase tracking-tight leading-[0.78] text-[28vw] md:text-[23vw] -mb-[3vw] text-right -mr-[1.5vw] will-change-transform"
+          className="select-none pointer-events-none font-sans font-medium lowercase tracking-tight leading-[0.78] text-[28vw] md:text-[23vw] -mb-[3vw] text-right -mr-[1.5vw]"
         >
           matcha
-        </motion.div>
-
-        {/* scroll cue */}
-        <motion.div
-          style={{ opacity: useTransform(progress, [0, 0.2], [1, 0]) }}
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 font-mono text-[10px] uppercase tracking-widest opacity-50 pointer-events-none"
-        >
-          scroll ↓
-        </motion.div>
+        </div>
       </div>
     </section>
   );
