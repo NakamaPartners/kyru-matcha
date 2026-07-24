@@ -116,51 +116,39 @@ function PhotoWall() {
   );
 }
 
-/* ─── Drink catalogue (screenshot layout) ──────────────────── */
+/* ─── Drink catalogue ───────────────────────────────────────── */
 function Catalogue() {
   const drinks = [
-    { img: P.d1, name: "white rabbit matcha",  note: "on the pop-up menu" },
-    { img: P.d2, name: "white rabbit hojicha", note: "on the pop-up menu" },
-    { img: P.d3, name: "the make up",          note: "on the pop-up menu" },
+    { img: P.d1, name: "white rabbit matcha",  sub: "ceremonial grade · oat milk · pandan" },
+    { img: P.d2, name: "white rabbit hojicha", sub: "roasted hojicha · oat milk · cinnamon" },
+    { img: P.d3, name: "the make up",          sub: "rotating · ask us at the pop-up" },
   ];
 
   return (
-    <section id="catalogue" className="border-t border-black/[0.07] flex flex-col md:flex-row">
+    <section id="catalogue" className="border-t border-black/[0.07]">
 
-      {/* Left sidebar */}
-      <div className="md:w-[22%] p-6 md:p-8 flex flex-col justify-between border-b md:border-b-0 md:border-r border-black/[0.07] bg-[#F9F8F5]">
-        <div>
-          <h2 className="font-mono text-[10px] uppercase tracking-widest mb-4 opacity-50">what we're making</h2>
-          <p className="text-sm leading-relaxed lowercase opacity-60">
-            our offerings are small, seasonal, and constantly rotating based on what we find interesting.
-          </p>
-        </div>
-        <div className="hidden md:block mt-8">
-          <img src={P.sidebar} alt="" className="w-full aspect-square object-cover grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-700" />
-        </div>
+      {/* Section header */}
+      <div className="px-8 md:px-16 py-12 flex items-end justify-between">
+        <h2 className="font-sans text-5xl md:text-7xl font-medium lowercase tracking-[-0.04em] leading-[0.85]">on rotation</h2>
+        <p className="font-mono text-[10px] uppercase tracking-widest opacity-25 hidden md:block">small · seasonal · always changing</p>
       </div>
 
-      {/* 3 drink columns */}
-      <div className="flex-1 flex flex-col sm:flex-row">
-        {drinks.map((d, i) => (
-          <div key={i} className="flex-1 flex flex-col border-b sm:border-b-0 sm:border-r border-black/[0.07] last:border-0 p-6">
-            <div className="aspect-[4/5] mb-5 overflow-hidden bg-[#F1EFE8]">
-              <img src={d.img} alt={d.name} className="w-full h-full object-cover" />
-            </div>
-            <div className="mt-auto">
-              <div className="flex justify-between items-baseline mb-1">
-                <h3 className="text-base font-medium lowercase leading-snug">{d.name}</h3>
-                <span className="font-mono text-[9px] uppercase tracking-widest opacity-50 ml-2 flex-shrink-0">available</span>
-              </div>
-              <p className="font-mono text-[9px] uppercase tracking-widest opacity-35 mb-5">{d.note}</p>
-              <a href="/events"
-                className="block text-center w-full py-3 border border-black/20 font-mono text-[10px] uppercase tracking-widest hover:bg-[#181916] hover:text-white hover:border-[#181916] transition-colors">
-                find a pop-up →
-              </a>
-            </div>
+      {/* Full-width alternating rows */}
+      {drinks.map((d, i) => (
+        <div key={i} className="border-t border-black/[0.07] grid grid-cols-1 md:grid-cols-2">
+
+          {/* Photo — large, dominant */}
+          <div className={`aspect-[3/4] md:aspect-auto md:min-h-[520px] overflow-hidden bg-[#F1EFE8] ${i % 2 === 1 ? 'md:order-2' : ''}`}>
+            <img src={d.img} alt={d.name} className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700" />
           </div>
-        ))}
-      </div>
+
+          {/* Text — minimal, centered */}
+          <div className={`flex flex-col justify-center px-10 md:px-16 py-14 ${i % 2 === 1 ? 'md:order-1' : ''}`}>
+            <h3 className="font-sans text-4xl md:text-5xl font-medium lowercase tracking-[-0.03em] leading-[0.9] mb-5">{d.name}</h3>
+            <p className="font-mono text-[10px] uppercase tracking-widest opacity-35 leading-loose">{d.sub}</p>
+          </div>
+        </div>
+      ))}
     </section>
   );
 }
