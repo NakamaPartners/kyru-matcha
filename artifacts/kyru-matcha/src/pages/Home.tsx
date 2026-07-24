@@ -77,7 +77,7 @@ function Hero() {
         {/* middle band — scattered flyer metadata */}
         <div className="relative flex-1 px-6 md:px-12 lg:px-16 py-6">
           {/* hosted by — upper left */}
-          <div className="absolute top-[8%] left-[4%] md:left-[6%]">
+          <div className="absolute top-[8%] left-[4%] md:left-[6%] text-[#264866]">
             <p className="font-mono text-xs md:text-sm uppercase tracking-widest leading-loose">
               hosted&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by:
               <br />
@@ -87,7 +87,7 @@ function Hero() {
 
           {/* intro copy — mid left, indented like the flyers */}
           <div className="absolute top-[44%] left-[8%] md:left-[12%] max-w-[16rem] md:max-w-xs">
-            <p className="font-sans text-sm md:text-base opacity-80 leading-relaxed lowercase">
+            <p className="font-sans text-sm md:text-base text-[#796957] leading-relaxed lowercase">
               we're kyru. viet-owned, matcha-obsessed, and slightly too online.
               serious matcha, unserious people.
             </p>
@@ -100,7 +100,7 @@ function Hero() {
           </div>
 
           {/* vendor-list style block — upper right */}
-          <div className="absolute top-[4%] right-[6%] md:right-[14%] text-left">
+          <div className="absolute top-[4%] right-[6%] md:right-[14%] text-left text-[#76805B]">
             <p className="font-mono text-xs md:text-sm uppercase tracking-widest leading-loose">
               matcha,&nbsp;&nbsp;&nbsp;&nbsp;drinks,
               <br />
@@ -111,7 +111,7 @@ function Hero() {
           </div>
 
           {/* next pop-up — lower right, stepped like the flyers */}
-          <div className="absolute bottom-[6%] right-[4%] md:right-[8%] text-left">
+          <div className="absolute bottom-[6%] right-[4%] md:right-[8%] text-left text-[#A32A1B]">
             <p className="font-mono text-xs md:text-sm uppercase tracking-widest leading-loose">
               next&nbsp;pop-up
               <br />
@@ -122,7 +122,7 @@ function Hero() {
           </div>
 
           {/* handwritten note — tucked lower-center-left, tilted */}
-          <div className="hidden md:block absolute bottom-[14%] left-[38%] font-serif italic text-2xl lg:text-3xl whitespace-nowrap pointer-events-none rotate-[-4deg]">
+          <div className="hidden md:block absolute bottom-[14%] left-[38%] font-serif italic text-2xl lg:text-3xl whitespace-nowrap pointer-events-none rotate-[-4deg] text-[#3049C9]">
             thanks for being here ♡
           </div>
         </div>
@@ -130,7 +130,7 @@ function Hero() {
         {/* giant MATCHA bleeding off the bottom-right */}
         <div
           aria-hidden="true"
-          className="select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.03em] leading-[0.72] text-[42vw] md:text-[37vw] -mb-[13vw] text-right -mr-[3vw] whitespace-nowrap"
+          className="select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.03em] leading-[0.72] text-[42vw] md:text-[37vw] -mb-[16.5vw] text-right -mr-[3vw] whitespace-nowrap"
         >
           matcha
         </div>
