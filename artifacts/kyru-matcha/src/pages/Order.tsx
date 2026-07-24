@@ -3,29 +3,49 @@ export default function Order() {
     <main className="bg-white text-[#181916] pt-[72px] min-h-screen">
 
       {/* ── Hero header ─────────────────────────────────────────── */}
-      <div className="border-b border-black/[0.07] relative overflow-hidden px-8 md:px-16 pt-16 pb-0">
-        {/* Ghost "kai" watermark — bottom-right, behind everything */}
-        <div
-          aria-hidden="true"
-          className="absolute -bottom-[0.1em] -right-[0.05em] font-sans font-medium lowercase tracking-[-0.05em] leading-none select-none pointer-events-none text-[#181916]/[0.045]"
-          style={{ fontSize: 'clamp(140px, 22vw, 320px)' }}
-        >
-          kai
+      <div className="border-b border-black/[0.07] grid grid-cols-1 md:grid-cols-2">
+
+        {/* Left — headline, ghost kai sits directly behind it */}
+        <div className="relative px-8 md:px-16 pt-16 pb-0 overflow-hidden md:border-r border-black/[0.07]">
+          {/* Ghost "kai" — anchored top-left, scales with column, lives behind headline */}
+          <div
+            aria-hidden="true"
+            className="absolute top-[3.5rem] -left-[0.04em] font-sans font-medium lowercase tracking-[-0.05em] leading-none select-none pointer-events-none text-[#181916]/[0.05]"
+            style={{ fontSize: 'clamp(96px, 13vw, 200px)' }}
+          >
+            kai
+          </div>
+
+          <div className="relative pb-10">
+            <p className="font-mono text-[10px] uppercase tracking-widest opacity-35 mb-4">ceremonial grade · single origin</p>
+            <h1 className="font-sans text-6xl md:text-7xl font-medium lowercase tracking-[-0.05em] leading-[0.85]">
+              order<br />matcha
+            </h1>
+          </div>
+
+          {/* Pull quote */}
+          <div className="relative border-t border-black/[0.07] py-8">
+            <p className="font-serif italic text-xl md:text-2xl text-[#181916]/55 max-w-sm leading-snug">
+              "the matcha that got us into all this."
+            </p>
+          </div>
         </div>
 
-        <div className="relative pb-10">
-          <p className="font-mono text-[10px] uppercase tracking-widest opacity-35 mb-4">ceremonial grade · single origin</p>
-          <h1 className="font-sans text-6xl md:text-8xl font-medium lowercase tracking-[-0.05em] leading-[0.85]">
-            order<br />matcha
-          </h1>
+        {/* Right — KAI tin as a contained product shot */}
+        <div className="hidden md:flex items-center justify-center p-10 lg:p-16 bg-white">
+          <div className="w-full max-w-[320px]">
+            <img
+              src="/images/kai-tin.jpg"
+              alt="KAI ceremonial matcha — Okumidori"
+              className="w-full h-auto rounded-[2px]"
+              style={{ aspectRatio: '4/5', objectFit: 'cover' }}
+            />
+            <p className="font-mono text-[9px] uppercase tracking-widest opacity-25 mt-4 text-center">
+              kai · okumidori · ceremonial uji matcha
+            </p>
+          </div>
         </div>
 
-        {/* Pull quote */}
-        <div className="relative border-t border-black/[0.07] py-8">
-          <p className="font-serif italic text-2xl md:text-3xl text-[#181916]/60 max-w-xl leading-snug">
-            "the matcha that got us into all this."
-          </p>
-        </div>
       </div>
 
       {/* ── Two-col body ────────────────────────────────────────── */}
