@@ -83,11 +83,14 @@ function Intro() {
     <section className="border-b border-black/[0.07]">
 
       {/* Top text strip */}
-      <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] border-b border-black/[0.07] px-8 md:px-16 py-12 gap-8 items-end">
-        <h2 className="font-sans text-4xl md:text-5xl lg:text-[3.5vw] font-medium lowercase tracking-[-0.04em] leading-[0.9]">
+      <div className="border-b border-black/[0.07] px-6 md:px-12 pt-12 pb-10">
+        <h2
+          className="font-sans font-medium lowercase tracking-[-0.05em] leading-[0.82] select-none"
+          style={{ fontSize: 'clamp(52px, 8.2vw, 140px)' }}
+        >
           specialty matcha.<br />made to order.<br />pop-up only.
         </h2>
-        <p className="font-serif italic text-lg md:text-xl text-[#181916]/45 leading-relaxed max-w-sm md:ml-auto">
+        <p className="font-serif italic text-lg md:text-xl text-[#181916]/40 leading-relaxed max-w-lg mt-8">
           "we show up, we set up, we pour — and when it's gone, it's gone."
         </p>
       </div>
