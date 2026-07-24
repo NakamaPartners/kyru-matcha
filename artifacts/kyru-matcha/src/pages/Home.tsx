@@ -184,7 +184,7 @@ function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const [frame, setFrame] = useState(0);
   React.useEffect(() => {
-    const id = setInterval(() => setFrame((f) => (f + 1) % heroFrames.length), 500);
+    const id = setInterval(() => setFrame((f) => (f + 1) % heroFrames.length), 5000);
     return () => clearInterval(id);
   }, []);
   const current = heroFrames[frame];
