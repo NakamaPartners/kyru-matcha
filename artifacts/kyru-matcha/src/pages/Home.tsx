@@ -69,7 +69,7 @@ function Hero() {
         {/* giant KYRU bleeding off the top-left */}
         <div
           aria-hidden="true"
-          className="select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.03em] leading-[0.72] text-[42vw] md:text-[37vw] -mt-[10vw] -ml-[2.5vw]"
+          className="select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.04em] leading-[0.72] text-[30vw] -mt-[8vw] -ml-[1.5vw]"
         >
           kyru
         </div>
@@ -130,7 +130,7 @@ function Hero() {
         {/* giant MATCHA bleeding off the bottom-right */}
         <div
           aria-hidden="true"
-          className="select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.04em] leading-[0.85] text-[26vw] text-right whitespace-nowrap"
+          className="select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.04em] leading-[0.85] text-[30vw] text-right whitespace-nowrap"
         >
           matcha
         </div>
@@ -414,11 +414,13 @@ export default function Home() {
       <style dangerouslySetInnerHTML={{
         __html: `
         @keyframes ticker {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          0% { transform: translate3d(0, 0, 0); }
+          100% { transform: translate3d(-50%, 0, 0); }
         }
         .animate-ticker {
           animation: ticker 20s linear infinite;
+          will-change: transform;
+          backface-visibility: hidden;
         }
         .hide-scrollbar::-webkit-scrollbar {
           display: none;
