@@ -26,20 +26,29 @@ export default function Events() {
   return (
     <main className="bg-white text-[#181916] pt-[72px]">
 
-      {/* Full-bleed hero — the only photo, make it the main thing */}
-      <div className="w-full overflow-hidden" style={{ height: '88vh', minHeight: 520 }}>
-        <img
-          src="/images/events-hero.png"
-          alt="kyru matcha pop-up"
-          className="w-full h-full object-cover object-center"
-        />
+      {/* ── Dual-video hero ────────────────────────────────── */}
+      <div className="grid grid-cols-2 border-b border-black/[0.07]" style={{ height: '92vh', minHeight: 520 }}>
+        {(['event-v1.mp4', 'event-v2.mp4'] as const).map((file, i) => (
+          <div key={i} className={`relative overflow-hidden ${i === 0 ? 'border-r border-black/[0.07]' : ''}`}>
+            <video
+              src={`/images/${file}`}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </div>
+        ))}
       </div>
 
-      {/* Event list — clean, minimal, directly below */}
-      <div className="border-t border-black/[0.07]">
+      {/* ── Event list ─────────────────────────────────────── */}
+      <div className="border-b border-black/[0.07]">
         {events.map((e, i) => (
-          <div key={i} className="border-b border-black/[0.07] px-8 md:px-16 py-10 flex flex-col md:flex-row md:items-center gap-3 md:gap-0">
-
+          <div
+            key={i}
+            className="border-b border-black/[0.07] px-8 md:px-16 py-10 flex flex-col md:flex-row md:items-center gap-3 md:gap-0"
+          >
             {/* Date block */}
             <div className="md:w-32 flex-shrink-0">
               <p className="font-mono text-xs uppercase tracking-widest opacity-40">{e.day} · {e.year}</p>
@@ -49,7 +58,9 @@ export default function Events() {
             {/* City + venue */}
             <div className="flex-1 md:pl-8">
               <h2 className="font-sans text-3xl md:text-4xl font-medium lowercase tracking-[-0.02em]">{e.city}</h2>
-              <p className="font-mono text-[10px] uppercase tracking-widest opacity-35 mt-1">{e.venue} {e.time !== 'TBA' ? `· ${e.time}` : ''}</p>
+              <p className="font-mono text-[10px] uppercase tracking-widest opacity-35 mt-1">
+                {e.venue}{e.time !== 'TBA' ? ` · ${e.time}` : ''}
+              </p>
             </div>
 
             {/* Status pill */}
@@ -64,12 +75,16 @@ export default function Events() {
         ))}
       </div>
 
-      {/* Follow note */}
+      {/* ── Follow note ────────────────────────────────────── */}
       <div className="px-8 md:px-16 py-12">
         <p className="font-mono text-[10px] uppercase tracking-widest opacity-25">
           more dates dropping —{' '}
-          <a href="https://www.instagram.com/kyrumatcha/" target="_blank" rel="noreferrer"
-            className="underline underline-offset-4 hover:opacity-60 transition-opacity">
+          <a
+            href="https://www.instagram.com/kyrumatcha/"
+            target="_blank"
+            rel="noreferrer"
+            className="underline underline-offset-4 hover:opacity-60 transition-opacity"
+          >
             @kyrumatcha
           </a>
         </p>
