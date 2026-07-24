@@ -39,7 +39,7 @@ export default function Booking() {
             <img
               src="/images/booking-hero.jpg"
               alt="kyru matcha cups at a pop-up"
-              className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: '50% 30%' }}
+              className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: '50% 80%' }}
             />
             {/* thin left-edge fade into white */}
             <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent pointer-events-none" />
