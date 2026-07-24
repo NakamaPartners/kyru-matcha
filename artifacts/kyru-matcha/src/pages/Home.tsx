@@ -18,27 +18,6 @@ const Images = {
 };
 
 /* ─── Nav ─────────────────────────────────────────────────── */
-function Nav() {
-  return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-5 bg-white border-b border-black/8">
-      <a href="#hero" className="font-mono text-[11px] uppercase tracking-[0.14em] opacity-50 hover:opacity-90 transition-opacity">
-        kyru matcha
-      </a>
-      <nav style={{ display: "flex", gap: "2.5rem" }}>
-        {[
-          { label: "menu",    href: "#menu" },
-          { label: "events",  href: "#events" },
-          { label: "links",   href: "#links" },
-        ].map(({ label, href }) => (
-          <a key={href} href={href} className="font-mono text-[11px] uppercase tracking-[0.14em] opacity-35 hover:opacity-80 transition-opacity">
-            {label}
-          </a>
-        ))}
-      </nav>
-    </header>
-  );
-}
-
 /* ─── Hero ────────────────────────────────────────────────── */
 function Hero() {
   return (
@@ -140,74 +119,6 @@ function PhotoWall() {
 }
 
 /* ─── Menu ─────────────────────────────────────────────────── */
-function MenuSection() {
-  const drinks = [
-    { name: "white rabbit matcha",  tag: "signature", note: "ceremonial-grade · oat milk · white rabbit syrup",   img: Images.g1 },
-    { name: "white rabbit hojicha", tag: "signature", note: "roasted hojicha · oat milk · white rabbit syrup",     img: Images.g2 },
-    { name: "the make up",          tag: "seasonal",  note: "changes each pop-up — ask us when you get there",     img: Images.g3 },
-  ];
-
-  return (
-    <section id="menu" className="border-t border-black/8">
-      <div className="px-8 md:px-16 py-14 flex items-end justify-between">
-        <h2 className="font-sans text-5xl md:text-7xl font-medium lowercase tracking-[-0.04em] leading-[0.85]">menu</h2>
-        <p className="font-mono text-[10px] uppercase tracking-widest opacity-30 hidden md:block">pop-up menu · 2026</p>
-      </div>
-
-      {drinks.map((d, i) => (
-        <div key={i} className="grid grid-cols-1 md:grid-cols-2 border-t border-black/8">
-          <div className={`aspect-[4/3] overflow-hidden bg-[#F1EFE8] ${i % 2 === 1 ? "md:order-2" : ""}`}>
-            <img src={d.img} alt={d.name} className="w-full h-full object-cover" />
-          </div>
-          <div className={`flex flex-col justify-center px-10 md:px-14 py-12 ${i % 2 === 1 ? "md:order-1" : ""}`}>
-            <span className="font-mono text-[9px] uppercase tracking-widest opacity-30 mb-3">{d.tag}</span>
-            <h3 className="font-sans text-3xl md:text-4xl font-medium lowercase tracking-[-0.02em] mb-4">{d.name}</h3>
-            <p className="font-mono text-[10px] uppercase tracking-widest opacity-40 leading-loose">{d.note}</p>
-          </div>
-        </div>
-      ))}
-    </section>
-  );
-}
-
-/* ─── Events ─────────────────────────────────────────────── */
-function EventsSection() {
-  const events = [
-    { date: "07.25.26", city: "Richmond, VA",    venue: "District Candle Lab · Mosaic District", time: "11am – 5pm (or sold out)", confirmed: true },
-    { date: "08.09.26", city: "Washington, DC",  venue: "TBA",                                   time: "TBA",                      confirmed: false },
-    { date: "08.23.26", city: "Norfolk, VA",     venue: "TBA",                                   time: "TBA",                      confirmed: false },
-  ];
-
-  return (
-    <section id="events" className="border-t border-black/8">
-      <div className="px-8 md:px-16 py-14">
-        <h2 className="font-sans text-5xl md:text-7xl font-medium lowercase tracking-[-0.04em] leading-[0.85] mb-2">events</h2>
-        <p className="font-mono text-[10px] uppercase tracking-widest opacity-30">summer 2026</p>
-      </div>
-
-      {/* hero photo */}
-      <div className="w-full aspect-[16/6] overflow-hidden border-t border-black/8">
-        <img src={Images.g7} alt="kyru pop-up" className="w-full h-full object-cover object-center" />
-      </div>
-
-      {events.map((e, i) => (
-        <div key={i} className="border-t border-black/8 px-8 md:px-16 py-10 flex flex-col md:flex-row md:items-center gap-4 md:gap-0">
-          <div className="md:w-36 flex-shrink-0">
-            <p className="font-mono text-sm tracking-widest opacity-60">{e.date}</p>
-          </div>
-          <div className="flex-1">
-            <h3 className="font-sans text-2xl md:text-3xl font-medium lowercase tracking-tight">{e.city}</h3>
-            <p className="font-mono text-[10px] uppercase tracking-widest opacity-40 mt-1">{e.venue} · {e.time}</p>
-          </div>
-          <span className={`font-mono text-[9px] uppercase tracking-widest border px-2 py-1 flex-shrink-0 ${e.confirmed ? "border-black/50" : "border-black/15 opacity-35"}`}>
-            {e.confirmed ? "confirmed" : "coming soon"}
-          </span>
-        </div>
-      ))}
-    </section>
-  );
-}
-
 /* ─── Links (Linktree) ───────────────────────────────────── */
 function LinksSection() {
   const links = [
@@ -321,13 +232,10 @@ function Footer() {
 /* ─── Page ────────────────────────────────────────────────── */
 export default function Home() {
   return (
-    <div className="bg-white text-[#181916] overflow-x-hidden">
-      <Nav />
+    <div className="bg-white text-[#181916] overflow-x-hidden pt-[72px]">
       <Hero />
       <Ticker />
       <PhotoWall />
-      <MenuSection />
-      <EventsSection />
       <LinksSection />
       <Footer />
 
