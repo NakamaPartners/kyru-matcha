@@ -6,7 +6,7 @@ export default function Order() {
       <div className="border-b border-black/[0.07] grid grid-cols-1 md:grid-cols-2" style={{ minHeight: '72vh' }}>
 
         {/* Left — white panel, all content lives here */}
-        <div className="relative flex flex-col justify-between px-8 md:px-14 pt-12 pb-10 md:border-r border-black/[0.07] overflow-hidden">
+        <div className="relative flex flex-col justify-between px-8 md:px-14 pt-12 pb-10 overflow-hidden">
 
           {/* Top: label + headline */}
           <div className="relative z-10">
@@ -16,10 +16,10 @@ export default function Order() {
             </h1>
           </div>
 
-          {/* Center: ghost "kai" — fully visible, centered in the dead space */}
+          {/* Ghost "kai" — left-aligned, vertically centered in dead space */}
           <div
             aria-hidden="true"
-            className="absolute inset-0 flex items-center justify-center select-none pointer-events-none"
+            className="absolute inset-0 flex items-center select-none pointer-events-none px-8 md:px-14"
           >
             <span
               className="font-sans font-medium lowercase tracking-[-0.05em] leading-none text-[#181916]/[0.055]"
