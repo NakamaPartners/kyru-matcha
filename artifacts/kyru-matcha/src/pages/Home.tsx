@@ -60,8 +60,23 @@ const Images = {
   gallery8: "/images/731111343_17895541896483743_3598329880635149232_n_1784859145526.jpg",
 };
 
+// poster color frames — sudden swaps every 2s, like flipping through flyers
+const heroFrames = [
+  { bg: "#76805B", fg: "#EFE87B" }, // matcha green / butter yellow
+  { bg: "#264866", fg: "#E9BFD3" }, // denim blue / soft pink
+  { bg: "#F1EFE8", fg: "#181916" }, // bone white / ink black
+  { bg: "#181916", fg: "#F1EFE8" }, // ink black / bone white
+];
+
 function Hero() {
   const ref = useRef<HTMLDivElement>(null);
+  const [frame, setFrame] = useState(0);
+  React.useEffect(() => {
+    const id = setInterval(() => setFrame((f) => (f + 1) % heroFrames.length), 2000);
+    return () => clearInterval(id);
+  }, []);
+  const { bg, fg } = heroFrames[frame];
+  const noteColor = bg === "#F1EFE8" ? "#3049C9" : fg;
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end end"],
@@ -77,11 +92,6 @@ function Hero() {
   const matchaX = useTransform(progress, [0, 1], ["0vw", "14vw"]);
   const wordsOpacity = useTransform(progress, [0, 0.85, 1], [1, 1, 0.9]);
 
-  // photo grows from a small tile into the frame + slight parallax
-  const imgScale = useTransform(progress, [0, 1], [1, 1.18]);
-  const imgY = useTransform(progress, [0, 1], ["0%", "-8%"]);
-  const cardRotate = useTransform(progress, [0, 1], [0, -3]);
-
   // metadata drifts in opposite directions
   const leftY = useTransform(progress, [0, 1], ["0%", "-30%"]);
   const rightY = useTransform(progress, [0, 1], ["0%", "30%"]);
@@ -89,14 +99,17 @@ function Hero() {
 
   return (
     <section id="our-thing" ref={ref} className="relative h-[180vh]">
-      <div className="sticky top-0 h-screen flex flex-col justify-between bottom-line overflow-hidden denim-texture denim-texture-light">
+      <div
+        style={{ backgroundColor: bg, color: fg }}
+        className="sticky top-0 h-screen flex flex-col justify-between bottom-line overflow-hidden denim-texture denim-texture-light"
+      >
         <h1 className="sr-only">kyru matcha — not a brand, just us talking.</h1>
 
         {/* giant KYRU bleeding off the top-left, slides left on scroll */}
         <motion.div
           aria-hidden="true"
           style={{ x: kyruX, opacity: wordsOpacity }}
-          className="select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.03em] leading-[0.72] text-[36vw] md:text-[31vw] -mt-[8vw] -ml-[2vw] text-primary will-change-transform"
+          className="select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.03em] leading-[0.72] text-[36vw] md:text-[31vw] -mt-[8vw] -ml-[2vw] will-change-transform"
         >
           kyru
         </motion.div>
@@ -109,42 +122,24 @@ function Hero() {
               <br />
               nobody. it's just us.
             </p>
-            <p className="font-sans text-sm md:text-base max-w-xs text-primary/80 leading-relaxed lowercase mt-8">
+            <p className="font-sans text-sm md:text-base max-w-xs opacity-80 leading-relaxed lowercase mt-8">
               we're kyru. viet-owned, matcha-obsessed, and slightly too online.
               serious matcha, unserious people.
             </p>
             <a
               href="#what-we-make"
-              className="link-arrow font-mono text-xs lowercase tracking-widest hover:text-brand inline-block mt-8"
+              className="link-arrow font-mono text-xs lowercase tracking-widest hover:opacity-70 inline-block mt-8"
             >
               explore catalogue <span className="text-lg leading-none font-sans">→</span>
             </a>
           </motion.div>
 
-          <div className="hidden md:flex justify-center relative">
+          <div className="hidden md:flex justify-center items-center relative">
             <motion.div
-              style={{ rotate: cardRotate }}
-              className="relative w-full max-w-[260px] aspect-[3/4] will-change-transform"
+              style={{ rotate: noteRotate, color: noteColor }}
+              className="font-serif italic text-3xl lg:text-4xl whitespace-nowrap pointer-events-none will-change-transform"
             >
-              <motion.div
-                style={{ rotate: noteRotate }}
-                className="absolute -top-10 -right-10 z-20 font-serif italic text-2xl lg:text-3xl text-[#3049C9] whitespace-nowrap pointer-events-none"
-              >
-                thanks for being here ♡
-              </motion.div>
-              <div className="w-full h-full overflow-hidden">
-                <motion.img
-                  src={Images.hero}
-                  alt="kyru matcha drink"
-                  style={{ scale: imgScale, y: imgY }}
-                  className="object-cover w-full h-full will-change-transform"
-                />
-              </div>
-              <div className="absolute bottom-3 left-3 flex gap-2">
-                <span className="bg-background px-2 py-1 text-[10px] font-mono uppercase tracking-widest border border-primary">
-                  Fig. 01
-                </span>
-              </div>
+              thanks for being here ♡
             </motion.div>
           </div>
 
@@ -159,7 +154,7 @@ function Hero() {
               <br />
               and&nbsp;&nbsp;more
             </p>
-            <p className="font-mono text-xs md:text-sm uppercase tracking-widest leading-relaxed mt-8 text-brand">
+            <p className="font-mono text-xs md:text-sm uppercase tracking-widest leading-relaxed mt-8 opacity-70">
               next pop-up
               <br />
               richmond, va
@@ -175,7 +170,7 @@ function Hero() {
         <motion.div
           aria-hidden="true"
           style={{ x: matchaX, opacity: wordsOpacity }}
-          className="select-none pointer-events-none font-sans font-medium lowercase tracking-tight leading-[0.72] text-[22vw] md:text-[17.5vw] -mb-[6vw] text-right -mr-[1vw] text-primary will-change-transform"
+          className="select-none pointer-events-none font-sans font-medium lowercase tracking-tight leading-[0.72] text-[26vw] md:text-[21vw] -mb-[5vw] text-right -mr-[1vw] will-change-transform"
         >
           matcha
         </motion.div>
@@ -183,7 +178,7 @@ function Hero() {
         {/* scroll cue */}
         <motion.div
           style={{ opacity: useTransform(progress, [0, 0.2], [1, 0]) }}
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 font-mono text-[10px] uppercase tracking-widest text-primary/50 pointer-events-none"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 font-mono text-[10px] uppercase tracking-widest opacity-50 pointer-events-none"
         >
           scroll ↓
         </motion.div>
