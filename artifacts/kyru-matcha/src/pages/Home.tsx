@@ -98,12 +98,33 @@ function ScribbleFlower({ color, size, className }: { color: string; size: numbe
   );
 }
 
+function Stool({ color, size, className }: { color: string; size: number; className?: string }) {
+  return (
+    <svg width={size} height={size * 1.05} viewBox="0 0 100 105" className={className} aria-hidden="true" fill="none" stroke={color} strokeWidth="3.5" strokeLinejoin="round" strokeLinecap="round">
+      {/* seat */}
+      <ellipse cx="50" cy="18" rx="30" ry="10" />
+      <ellipse cx="50" cy="16" rx="7" ry="2.6" />
+      {/* skirt */}
+      <path d="M20 18 L23 34 L77 34 L80 18" />
+      {/* legs */}
+      <path d="M23 34 L12 96 L22 96 L31 38" />
+      <path d="M77 34 L88 96 L78 96 L69 38" />
+      <path d="M40 36 L36 70" />
+      <path d="M60 36 L64 70" />
+      {/* rails */}
+      <path d="M20 62 Q50 70 80 62" />
+      <path d="M25 44 Q50 50 75 44" />
+    </svg>
+  );
+}
+
 // poster color frames — sudden swaps, like flipping through flyers
 const heroFrames = [
   { bg: "#76805B", fg: "#EFE87B", motif: "scribble", motifColor: "#C97B4A" }, // matcha green / butter yellow / orange scribble flowers
   { bg: "#264866", fg: "#E9BFD3", motif: "asterisk", motifColor: "#1A3049" }, // denim blue / soft pink / navy asterisks
   { bg: "#F1EFE8", fg: "#181916", motif: "star", motifColor: "#181916" }, // bone / ink / black doodle stars
   { bg: "#181916", fg: "#F1EFE8", motif: "flower", motifColor: "#E4E2D5" }, // ink / bone / pale flowers
+  { bg: "#D8D2C4", fg: "#A32A1B", motif: "stool", motifColor: "#A32A1B" }, // kraft tan / brick red / plastic stools
 ];
 
 // scattered motif positions per frame (like the flyer margins)
@@ -138,6 +159,14 @@ function HeroMotifs({ frame }: { frame: (typeof heroFrames)[number] }) {
           <Asterisk color={c} size={44} className="absolute top-[38%] right-[14%] -rotate-12 opacity-80" />
           <Asterisk color={c} size={95} className="absolute bottom-[24%] right-[3%] -rotate-6" />
           <img src={Images.logo} alt="" className="absolute bottom-[30%] left-[8%] w-20 opacity-70 grayscale mix-blend-multiply -rotate-6" />
+        </>
+      )}
+      {frame.motif === "stool" && (
+        <>
+          {/* stacked viet plastic stools, clustered right like the night-market flyer */}
+          <Stool color={c} size={210} className="absolute top-[18%] right-[4%] rotate-3" />
+          <Stool color={c} size={160} className="absolute top-[38%] right-[16%] -rotate-6" />
+          <Stool color={c} size={110} className="absolute bottom-[26%] right-[7%] rotate-12 opacity-80" />
         </>
       )}
       {frame.motif === "flower" && (
