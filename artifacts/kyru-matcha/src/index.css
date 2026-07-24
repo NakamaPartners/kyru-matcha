@@ -114,4 +114,38 @@
   .link-arrow {
     @apply inline-flex items-center gap-2 hover:gap-3 transition-all duration-300;
   }
+
+  /* Denim texture — subtle twill weave (diagonal threads) + fabric grain */
+  .denim-texture {
+    position: relative;
+  }
+  .denim-texture::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+      repeating-linear-gradient(
+        63deg,
+        rgba(255, 255, 255, 0.16) 0px,
+        rgba(255, 255, 255, 0.16) 1px,
+        transparent 1px,
+        transparent 4px
+      ),
+      repeating-linear-gradient(
+        -27deg,
+        rgba(0, 0, 0, 0.14) 0px,
+        rgba(0, 0, 0, 0.14) 1px,
+        transparent 1px,
+        transparent 3px
+      ),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.22;
+    mix-blend-mode: overlay;
+  }
+  /* lighter variant for pale/bone backgrounds */
+  .denim-texture-light::before {
+    opacity: 0.1;
+  }
 }

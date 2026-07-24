@@ -93,7 +93,7 @@ export default function Home() {
       {/* Hero Section — poster style: giant type bleeding off top & bottom */}
       <section
         id="our-thing"
-        className="relative flex flex-col justify-between min-h-[92vh] bottom-line overflow-hidden"
+        className="relative flex flex-col justify-between min-h-[92vh] bottom-line overflow-hidden denim-texture denim-texture-light"
       >
         {/* giant KYRU bleeding off the top-left */}
         <h1 className="sr-only">kyru matcha — not a brand, just us talking.</h1>
@@ -172,7 +172,7 @@ export default function Home() {
       </section>
 
       {/* Ticker Bar */}
-      <div className="bottom-line py-3 overflow-hidden bg-primary text-background flex items-center relative z-10">
+      <div className="bottom-line py-3 overflow-hidden bg-primary text-background flex items-center relative z-10 denim-texture">
         <div className="animate-ticker flex whitespace-nowrap font-mono text-xs uppercase tracking-widest w-max">
           {[...Array(8)].map((_, i) => (
             <div key={i} className="flex items-center">
@@ -339,7 +339,7 @@ export default function Home() {
       </section>
 
       {/* Giveaway Band / Campaign Moment */}
-      <section className="bg-brand text-background bottom-line flex flex-col md:flex-row min-h-[50vh] overflow-hidden">
+      <section className="bg-brand text-background bottom-line flex flex-col md:flex-row min-h-[50vh] overflow-hidden denim-texture">
         <div className="flex-1 flex flex-col justify-center p-12 md:p-20 relative z-10 text-center md:text-left order-2 md:order-1">
           <h2 className="font-mono text-sm md:text-base tracking-widest mb-6 uppercase opacity-90">
             KYRU X NAMI MATCHA
@@ -367,7 +367,7 @@ export default function Home() {
       {/* Footer */}
       <footer id="talk-to-us" className="grid grid-cols-1 md:grid-cols-4 min-h-[40vh]">
         {/* Brand & Mascot */}
-        <div className="p-6 md:p-8 grid-lines flex flex-col justify-between border-b md:border-b-0 border-primary">
+        <div className="p-6 md:p-8 grid-lines flex flex-col justify-between border-b md:border-b-0 border-primary denim-texture denim-texture-light">
           <img
             src={Images.logo}
             alt="kyru matcha mascot doodle"
