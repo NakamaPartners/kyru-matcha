@@ -63,7 +63,7 @@ const Images = {
 function Hero() {
   return (
     <section id="our-thing" className="relative">
-      <div className="relative h-[calc(100dvh-64px)] flex flex-col justify-between bottom-line overflow-hidden bg-white text-[#181916]">
+      <div className="relative h-[100dvh] flex flex-col justify-between bottom-line overflow-hidden bg-white text-[#181916]">
         <h1 className="sr-only">kyru matcha — not a brand, just us talking.</h1>
 
         {/* giant KYRU bleeding off the top-left */}
@@ -143,33 +143,6 @@ export default function Home() {
   return (
     <div className="min-h-[100dvh] flex flex-col bg-background text-primary overflow-x-hidden selection:bg-brand selection:text-background">
       {/* Navigation */}
-      <nav className="flex justify-between items-center px-4 py-3 md:px-6 md:py-4 bottom-line sticky top-0 z-50 bg-background/90 backdrop-blur-sm">
-        <div className="flex items-center gap-3">
-          <img
-            src={Images.logo}
-            alt="kyru matcha"
-            className="w-8 h-8 md:w-10 md:h-10 object-contain grayscale mix-blend-multiply opacity-90"
-          />
-          <a href="#our-thing" className="font-mono text-xs lowercase tracking-widest font-medium hover:opacity-70 transition-opacity">
-            kyru matcha
-          </a>
-        </div>
-        <div className="hidden md:flex items-center gap-6 font-mono text-[10px] lowercase tracking-widest">
-          <a href="#our-thing" className="hover:text-brand transition-colors">our thing</a>
-          <span className="opacity-30">/</span>
-          <a href="#what-we-make" className="hover:text-brand transition-colors">what we're making</a>
-          <span className="opacity-30">/</span>
-          <a href="#where-we-ll-be" className="hover:text-brand transition-colors">where we'll be</a>
-          <span className="opacity-30">/</span>
-          <a href="#talk-to-us" className="hover:text-brand transition-colors">talk to us</a>
-          <span className="opacity-30 mx-2">|</span>
-          <button className="hover:text-brand transition-colors text-primary">cart (0)</button>
-        </div>
-        <div className="md:hidden flex items-center font-mono text-[10px] lowercase tracking-widest">
-          <button className="hover:text-brand transition-colors text-primary">cart (0)</button>
-        </div>
-      </nav>
-
       <Hero />
 
       {/* Ticker Bar */}
