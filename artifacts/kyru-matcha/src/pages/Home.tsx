@@ -2,24 +2,24 @@ import { useState } from "react";
 
 // Every photo used exactly ONCE across the entire site
 const P = {
-  // photowall (6)
-  pw1: "/images/drinks-hero.jpg",
-  pw2: "/images/tray-lineup.jpg",
-  pw3: "/images/hojicha-cup.jpg",
-  pw4: "/images/722407942_17892623676483743_1145642838989791915_n_1784859145526.jpg",
-  pw5: "/images/702968795_17889320874483743_2451634089918204076_n_1784859145526.jpg",
-  pw6: "/images/727041031_17893635627483743_3055211553531975486_n_1784859145526.jpg",
-  // drink card sidebar
-  sidebar: "/images/692380241_17930135799272011_2424829180166639078_n_1784859145526.jpg",
-  // drink cards (3)
-  d1: "/images/650807209_17966637591034187_4600880481792221201_n_1784859145526.jpg",
-  d2: "/images/689893832_17930135811272011_505547332068594853_n_1784859145526.jpg",
-  d3: "/images/701156664_17889320865483743_5410504869034541725_n_1784859145526.jpg",
-  // gallery strip (4)
-  g1: "/images/713664623_17905608681430231_6947000135873404220_n_1784859145526.jpg",
-  g2: "/images/731111343_17895541896483743_3598329880635149232_n_1784859145526.jpg",
-  g3: "/images/742953955_17954256912189611_6899181722383635748_n_1784859145526.jpg",
-  g4: "/images/708528216_17890409895483743_6912389655744703038_n_1784859145526.jpg",
+  // photowall (6) — best wide/editorial shots
+  pw1: "/images/sc_650231045.jpg",   // 4-drink lineup — colourful, brand-defining wide hero
+  pw2: "/images/692380241.jpg",      // matcha drinks + flower arrangement — lush portrait
+  pw3: "/images/713664623.jpg",
+  pw4: "/images/731111343.jpg",
+  pw5: "/images/722407942.jpg",
+  pw6: "/images/702968795.jpg",
+  // drink card sidebar — whisking matcha = craft/process, perfect for "what we're making"
+  sidebar: "/images/689893832.jpg",
+  // drink cards — matched to actual drinks
+  d1: "/images/650807209.jpg",       // white rabbit matcha — the pandan green drink, literally this
+  d2: "/images/sc_649237090.jpg",    // white rabbit hojicha — cinnamon dark iced = hojicha warmth
+  d3: "/images/sc_649894030.jpg",    // the make up — purple swirl seasonal drink
+  // gallery strip — personality shots
+  g1: "/images/sc_641415374.jpg",    // "need matcha?" sandwich board — brand voice
+  g2: "/images/701156664.jpg",       // fig drink + dark on oat milk carton — editorial
+  g3: "/images/742953955.jpg",
+  g4: "/images/708528216.jpg",
   // logo
   logo: "/images/image_1_1784859145526.png",
 };

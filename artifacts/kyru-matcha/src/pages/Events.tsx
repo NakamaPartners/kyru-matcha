@@ -5,7 +5,7 @@ const events = [
     venue: 'District Candle Lab', area: 'Mosaic District',
     time: '11am – 5pm (or sold out)',
     status: 'confirmed',
-    img: '/images/event-crowd.jpg',
+    img: '/images/sc_672459706.jpg',  // literally District Candle Lab shelf with kyru matcha
   },
   {
     date: '08.09.26', day: 'SUN',
