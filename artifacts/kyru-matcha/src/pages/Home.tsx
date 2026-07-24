@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 function SignupForm({ dark = false }: { dark?: boolean }) {
   const [done, setDone] = useState(false);
@@ -59,6 +60,138 @@ const Images = {
   gallery8: "/images/731111343_17895541896483743_3598329880635149232_n_1784859145526.jpg",
 };
 
+function Hero() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end end"],
+  });
+  const progress = useSpring(scrollYProgress, {
+    stiffness: 90,
+    damping: 24,
+    mass: 0.4,
+  });
+
+  // giant words slide apart as you scroll
+  const kyruX = useTransform(progress, [0, 1], ["0vw", "-14vw"]);
+  const matchaX = useTransform(progress, [0, 1], ["0vw", "14vw"]);
+  const wordsOpacity = useTransform(progress, [0, 0.85, 1], [1, 1, 0.9]);
+
+  // photo grows from a small tile into the frame + slight parallax
+  const imgScale = useTransform(progress, [0, 1], [1, 1.18]);
+  const imgY = useTransform(progress, [0, 1], ["0%", "-8%"]);
+  const cardRotate = useTransform(progress, [0, 1], [0, -3]);
+
+  // metadata drifts in opposite directions
+  const leftY = useTransform(progress, [0, 1], ["0%", "-30%"]);
+  const rightY = useTransform(progress, [0, 1], ["0%", "30%"]);
+  const noteRotate = useTransform(progress, [0, 1], [6, -4]);
+
+  return (
+    <section id="our-thing" ref={ref} className="relative h-[180vh]">
+      <div className="sticky top-0 h-screen flex flex-col justify-between bottom-line overflow-hidden denim-texture denim-texture-light">
+        <h1 className="sr-only">kyru matcha — not a brand, just us talking.</h1>
+
+        {/* giant KYRU bleeding off the top-left, slides left on scroll */}
+        <motion.div
+          aria-hidden="true"
+          style={{ x: kyruX, opacity: wordsOpacity }}
+          className="select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.03em] leading-[0.72] text-[36vw] md:text-[31vw] -mt-[8vw] -ml-[2vw] text-primary will-change-transform"
+        >
+          kyru
+        </motion.div>
+
+        {/* middle band — scattered poster metadata */}
+        <div className="relative flex-1 grid grid-cols-2 md:grid-cols-3 gap-8 px-6 md:px-12 lg:px-16 py-6 pt-[7vw] md:pt-[6vw] items-center">
+          <motion.div style={{ y: leftY }} className="col-span-1 self-start will-change-transform">
+            <p className="font-mono text-xs md:text-sm uppercase tracking-widest leading-relaxed">
+              hosted&nbsp;&nbsp;&nbsp;&nbsp;by:
+              <br />
+              nobody. it's just us.
+            </p>
+            <p className="font-sans text-sm md:text-base max-w-xs text-primary/80 leading-relaxed lowercase mt-8">
+              we're kyru. viet-owned, matcha-obsessed, and slightly too online.
+              serious matcha, unserious people.
+            </p>
+            <a
+              href="#what-we-make"
+              className="link-arrow font-mono text-xs lowercase tracking-widest hover:text-brand inline-block mt-8"
+            >
+              explore catalogue <span className="text-lg leading-none font-sans">→</span>
+            </a>
+          </motion.div>
+
+          <div className="hidden md:flex justify-center relative">
+            <motion.div
+              style={{ rotate: cardRotate }}
+              className="relative w-full max-w-[260px] aspect-[3/4] will-change-transform"
+            >
+              <motion.div
+                style={{ rotate: noteRotate }}
+                className="absolute -top-10 -right-10 z-20 font-serif italic text-2xl lg:text-3xl text-[#3049C9] whitespace-nowrap pointer-events-none"
+              >
+                thanks for being here ♡
+              </motion.div>
+              <div className="w-full h-full overflow-hidden">
+                <motion.img
+                  src={Images.hero}
+                  alt="kyru matcha drink"
+                  style={{ scale: imgScale, y: imgY }}
+                  className="object-cover w-full h-full will-change-transform"
+                />
+              </div>
+              <div className="absolute bottom-3 left-3 flex gap-2">
+                <span className="bg-background px-2 py-1 text-[10px] font-mono uppercase tracking-widest border border-primary">
+                  Fig. 01
+                </span>
+              </div>
+            </motion.div>
+          </div>
+
+          <motion.div
+            style={{ y: rightY }}
+            className="col-span-1 self-end text-right md:text-left md:justify-self-end will-change-transform"
+          >
+            <p className="font-mono text-xs md:text-sm uppercase tracking-widest leading-relaxed">
+              matcha,&nbsp;&nbsp;&nbsp;&nbsp;drinks,
+              <br />
+              pop-ups,&nbsp;&nbsp;good&nbsp;people
+              <br />
+              and&nbsp;&nbsp;more
+            </p>
+            <p className="font-mono text-xs md:text-sm uppercase tracking-widest leading-relaxed mt-8 text-brand">
+              next pop-up
+              <br />
+              richmond, va
+              <br />
+              07.25.26 · 11am–5pm
+              <br />
+              (or sold out)
+            </p>
+          </motion.div>
+        </div>
+
+        {/* giant MATCHA bleeding off the bottom-right, slides right on scroll */}
+        <motion.div
+          aria-hidden="true"
+          style={{ x: matchaX, opacity: wordsOpacity }}
+          className="select-none pointer-events-none font-sans font-medium lowercase tracking-tight leading-[0.72] text-[22vw] md:text-[17.5vw] -mb-[6vw] text-right -mr-[1vw] text-primary will-change-transform"
+        >
+          matcha
+        </motion.div>
+
+        {/* scroll cue */}
+        <motion.div
+          style={{ opacity: useTransform(progress, [0, 0.2], [1, 0]) }}
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 font-mono text-[10px] uppercase tracking-widest text-primary/50 pointer-events-none"
+        >
+          scroll ↓
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   return (
     <div className="min-h-[100dvh] flex flex-col bg-background text-primary overflow-x-hidden selection:bg-brand selection:text-background">
@@ -90,86 +223,7 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section — poster style: giant type bleeding off top & bottom */}
-      <section
-        id="our-thing"
-        className="relative flex flex-col justify-between min-h-[92vh] bottom-line overflow-hidden denim-texture denim-texture-light"
-      >
-        {/* giant KYRU bleeding off the top-left */}
-        <h1 className="sr-only">kyru matcha — not a brand, just us talking.</h1>
-        <div
-          aria-hidden="true"
-          className="select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.03em] leading-[0.72] text-[36vw] md:text-[31vw] -mt-[8vw] -ml-[2vw] text-primary"
-        >
-          kyru
-        </div>
-
-        {/* middle band — scattered poster metadata */}
-        <div className="relative flex-1 grid grid-cols-2 md:grid-cols-3 gap-8 px-6 md:px-12 lg:px-16 py-6 pt-[7vw] md:pt-[6vw] items-center">
-          <div className="col-span-1 self-start">
-            <p className="font-mono text-xs md:text-sm uppercase tracking-widest leading-relaxed">
-              hosted&nbsp;&nbsp;&nbsp;&nbsp;by:
-              <br />
-              nobody. it's just us.
-            </p>
-            <p className="font-sans text-sm md:text-base max-w-xs text-primary/80 leading-relaxed lowercase mt-8">
-              we're kyru. viet-owned, matcha-obsessed, and slightly too online.
-              serious matcha, unserious people.
-            </p>
-            <a
-              href="#what-we-make"
-              className="link-arrow font-mono text-xs lowercase tracking-widest hover:text-brand inline-block mt-8"
-            >
-              explore catalogue <span className="text-lg leading-none font-sans">→</span>
-            </a>
-          </div>
-
-          <div className="hidden md:flex justify-center relative">
-            <div className="relative w-full max-w-[260px] aspect-[3/4]">
-              <div className="absolute -top-10 -right-10 z-20 rotate-6 font-serif italic text-2xl lg:text-3xl text-[#3049C9] whitespace-nowrap pointer-events-none">
-                thanks for being here ♡
-              </div>
-              <img
-                src={Images.hero}
-                alt="kyru matcha drink"
-                className="object-cover w-full h-full"
-              />
-              <div className="absolute bottom-3 left-3 flex gap-2">
-                <span className="bg-background px-2 py-1 text-[10px] font-mono uppercase tracking-widest border border-primary">
-                  Fig. 01
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-span-1 self-end text-right md:text-left md:justify-self-end">
-            <p className="font-mono text-xs md:text-sm uppercase tracking-widest leading-relaxed">
-              matcha,&nbsp;&nbsp;&nbsp;&nbsp;drinks,
-              <br />
-              pop-ups,&nbsp;&nbsp;good&nbsp;people
-              <br />
-              and&nbsp;&nbsp;more
-            </p>
-            <p className="font-mono text-xs md:text-sm uppercase tracking-widest leading-relaxed mt-8 text-brand">
-              next pop-up
-              <br />
-              richmond, va
-              <br />
-              07.25.26 · 11am–5pm
-              <br />
-              (or sold out)
-            </p>
-          </div>
-        </div>
-
-        {/* giant MATCHA bleeding off the bottom-right */}
-        <div
-          aria-hidden="true"
-          className="select-none pointer-events-none font-sans font-medium lowercase tracking-tight leading-[0.72] text-[22vw] md:text-[17.5vw] -mb-[6vw] text-right -mr-[1vw] text-primary"
-        >
-          matcha
-        </div>
-      </section>
+      <Hero />
 
       {/* Ticker Bar */}
       <div className="bottom-line py-3 overflow-hidden bg-primary text-background flex items-center relative z-10 denim-texture">
