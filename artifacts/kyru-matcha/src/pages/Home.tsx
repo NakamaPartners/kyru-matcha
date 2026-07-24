@@ -113,9 +113,15 @@ function HeroMotifs({ frame }: { frame: (typeof heroFrames)[number] }) {
     <div className="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
       {frame.motif === "scribble" && (
         <>
+          {/* huge mascot wash bleeding off the left, like the march calendar poster */}
+          <img
+            src="/images/mascot_no_bg.png"
+            alt=""
+            className="absolute top-[6%] -left-[10%] w-[58vw] max-w-none opacity-90 -rotate-6"
+            style={{ filter: "brightness(0) invert(1)" }}
+          />
           <ScribbleFlower color={c} size={170} className="absolute top-[30%] right-[6%] rotate-12 opacity-80" />
           <ScribbleFlower color={c} size={110} className="absolute bottom-[26%] left-[30%] -rotate-6 opacity-60" />
-          <ScribbleFlower color={c} size={80} className="absolute top-[12%] left-[55%] rotate-45 opacity-50" />
         </>
       )}
       {frame.motif === "asterisk" && (
@@ -255,7 +261,7 @@ function Hero() {
         <motion.div
           aria-hidden="true"
           style={{ x: matchaX, opacity: wordsOpacity }}
-          className="select-none pointer-events-none font-sans font-medium lowercase tracking-tight leading-[0.72] text-[26vw] md:text-[21vw] -mb-[5vw] text-right -mr-[1vw] will-change-transform"
+          className="select-none pointer-events-none font-sans font-medium lowercase tracking-tight leading-[0.78] text-[24vw] md:text-[18.5vw] -mb-[2vw] text-right -mr-[1vw] will-change-transform"
         >
           matcha
         </motion.div>
