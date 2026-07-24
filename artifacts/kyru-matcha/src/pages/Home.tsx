@@ -354,6 +354,17 @@ export default function Home() {
         @media (min-width: 768px) {
           .hero-letter { font-size: min(35vw, 50vh); }
         }
+        /* kyru SVG mock sizing — matches hero-letter proportions */
+        .kyru-mock svg {
+          height: calc(48vw * 0.75);
+          width:  calc(48vw * 0.75 * (820 / 340));
+        }
+        @media (min-width: 768px) {
+          .kyru-mock svg {
+            height: calc(min(35vw, 50vh) * 0.75);
+            width:  calc(min(35vw, 50vh) * 0.75 * (820 / 340));
+          }
+        }
       `}} />
     </div>
   );
