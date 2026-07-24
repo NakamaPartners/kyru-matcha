@@ -63,13 +63,13 @@ const Images = {
 function Hero() {
   return (
     <section id="our-thing" className="relative">
-      <div className="relative h-[100dvh] flex flex-col justify-between bottom-line overflow-hidden bg-white text-[#181916]">
+      <div className="relative h-[78dvh] md:h-[100dvh] flex flex-col justify-between bottom-line overflow-hidden bg-white text-[#181916]">
         <h1 className="sr-only">kyru matcha — not a brand, just us talking.</h1>
 
         {/* giant KYRU bleeding off the top-left */}
         <div
           aria-hidden="true"
-          className="select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.04em] leading-[0.72] text-[30vw] -mt-[8vw] -ml-[1.5vw]"
+          className="select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.05em] leading-[0.68] text-[44vw] md:text-[32vw] -mt-[11vw] md:-mt-[8vw] -ml-[1.5vw]"
         >
           kyru
         </div>
@@ -130,7 +130,7 @@ function Hero() {
         {/* giant MATCHA bleeding off the bottom-right */}
         <div
           aria-hidden="true"
-          className="select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.04em] leading-[0.85] text-[30vw] text-right whitespace-nowrap"
+          className="select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.05em] leading-[0.78] text-[29vw] md:text-[31vw] text-right whitespace-nowrap"
         >
           matcha
         </div>
