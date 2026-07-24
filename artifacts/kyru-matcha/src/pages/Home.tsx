@@ -150,9 +150,9 @@ function PhotoWall() {
 
 /* ─── Visual spread ─────────────────────────────────────────── */
 const COLS = [
-  { src: P.v_drink, label: 'matcha',   sub: 'on the pop-up menu',            href: '/order',   cta: 'order matcha →' },
-  { src: P.v_whisk, label: 'prepared', sub: 'made to order, every time',      href: '/booking', cta: 'book a pop-up →' },
-  { src: P.v_life,  label: 'the vibe', sub: 'find us when you least expect it', href: null,      cta: 'find a pop-up →' },
+  { src: P.v_drink, name: 'white rabbit matcha',  available: true, href: '/events' },
+  { src: P.v_whisk, name: 'white rabbit hojicha',  available: true, href: '/events' },
+  { src: P.v_life,  name: 'the make up',           available: true, href: '/events' },
 ];
 
 function Visual() {
@@ -172,28 +172,23 @@ function Visual() {
             </div>
 
             {/* Card footer */}
-            <div className="px-6 py-6 border-t border-black/[0.07] flex flex-col gap-3">
-              <div>
-                <p className="font-sans text-lg font-medium lowercase tracking-tight">{col.label}</p>
-                <p className="font-mono text-[9px] uppercase tracking-widest opacity-30 mt-1">{col.sub}</p>
+            <div className="px-6 py-6 border-t border-black/[0.07] flex flex-col gap-4">
+              {/* Name + availability badge */}
+              <div className="flex items-start justify-between gap-3">
+                <p className="font-sans text-xl font-medium lowercase tracking-tight leading-tight">{col.name}</p>
+                {col.available && (
+                  <span className="font-mono text-[8px] uppercase tracking-widest border border-black/25 px-2 py-1 shrink-0 mt-0.5">
+                    available
+                  </span>
+                )}
               </div>
-              {col.href ? (
-                <Link
-                  to={col.href}
-                  className="inline-block border border-black/20 px-4 py-2 font-mono text-[9px] uppercase tracking-widest hover:bg-[#181916] hover:text-white hover:border-[#181916] transition-colors self-start"
-                >
-                  {col.cta}
-                </Link>
-              ) : (
-                <a
-                  href="https://www.instagram.com/kyrumatcha/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-block border border-black/20 px-4 py-2 font-mono text-[9px] uppercase tracking-widest hover:bg-[#181916] hover:text-white hover:border-[#181916] transition-colors self-start"
-                >
-                  {col.cta}
-                </a>
-              )}
+              <p className="font-mono text-[9px] uppercase tracking-widest opacity-30 -mt-1">on the pop-up menu</p>
+              <Link
+                to={col.href}
+                className="inline-flex items-center justify-between border border-black/20 px-4 py-2.5 font-mono text-[9px] uppercase tracking-widest hover:bg-[#181916] hover:text-white hover:border-[#181916] transition-colors"
+              >
+                find a pop-up <span className="ml-2">→</span>
+              </Link>
             </div>
           </div>
         ))}
