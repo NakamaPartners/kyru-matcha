@@ -77,6 +77,48 @@ function Ticker() {
   );
 }
 
+/* ─── Intro ─────────────────────────────────────────────────── */
+function Intro() {
+  return (
+    <section className="border-b border-black/[0.07]">
+
+      {/* Top text strip */}
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] border-b border-black/[0.07] px-8 md:px-16 py-12 gap-8 items-end">
+        <h2 className="font-sans text-4xl md:text-5xl lg:text-[3.5vw] font-medium lowercase tracking-[-0.04em] leading-[0.9]">
+          specialty matcha.<br />made to order.<br />pop-up only.
+        </h2>
+        <p className="font-serif italic text-lg md:text-xl text-[#181916]/45 leading-relaxed max-w-sm md:ml-auto">
+          "we show up, we set up, we pour — and when it's gone, it's gone."
+        </p>
+      </div>
+
+      {/* Three-video triptych */}
+      <div className="grid grid-cols-3">
+        {['intro-v1.mp4', 'intro-v2.mp4', 'intro-v3.mp4'].map((file, i) => (
+          <div
+            key={i}
+            className={`relative overflow-hidden ${i < 2 ? 'border-r border-black/[0.07]' : ''}`}
+            style={{ aspectRatio: '9/16' }}
+          >
+            <video
+              src={`/images/${file}`}
+              autoPlay muted loop playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Bottom label strip */}
+      <div className="flex items-center justify-between px-8 md:px-16 py-5 border-t border-black/[0.07]">
+        <p className="font-mono text-[10px] uppercase tracking-widest opacity-25">viet-owned · matcha-obsessed</p>
+        <p className="font-mono text-[10px] uppercase tracking-widest opacity-25">richmond · dc · norfolk</p>
+      </div>
+
+    </section>
+  );
+}
+
 /* ─── Photo wall ────────────────────────────────────────────── */
 function PhotoWall() {
   return (
@@ -291,6 +333,7 @@ export default function Home() {
     <div className="bg-white text-[#181916] overflow-x-hidden pt-[72px]">
       <Hero />
       <Ticker />
+      <Intro />
       <Visual />
       <Collab />
       <NowPlaying />
