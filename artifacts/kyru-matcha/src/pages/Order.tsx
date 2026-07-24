@@ -7,8 +7,16 @@ export default function Order() {
         <div className="flex flex-col md:flex-row md:items-stretch">
 
           {/* Left — text */}
-          <div className="px-8 md:px-16 pt-16 pb-0 flex flex-col justify-between flex-1 z-10">
-            <div className="pb-10">
+          <div className="relative px-8 md:px-16 pt-16 pb-0 flex flex-col justify-between flex-1 z-10 overflow-hidden">
+            {/* Ghost "kai" watermark */}
+            <div
+              aria-hidden="true"
+              className="absolute -bottom-[0.15em] -left-[0.05em] font-sans font-medium lowercase tracking-[-0.05em] leading-none select-none pointer-events-none text-[#181916]/[0.045]"
+              style={{ fontSize: 'clamp(140px, 20vw, 280px)' }}
+            >
+              kai
+            </div>
+            <div className="pb-10 relative">
               <p className="font-mono text-[10px] uppercase tracking-widest opacity-35 mb-4">ceremonial grade · single origin</p>
               <h1 className="font-sans text-6xl md:text-8xl font-medium lowercase tracking-[-0.05em] leading-[0.85]">
                 order<br />matcha
