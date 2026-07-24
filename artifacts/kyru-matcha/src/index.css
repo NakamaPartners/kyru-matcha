@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-brand: hsl(var(--brand));
+  --color-cobalt: hsl(var(--cobalt));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  
+  --radius: var(--radius);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+}
+
+@layer base {
+  :root {
+    --background: 49 20% 93%; /* #F1EFE8 - Base warm bone white */
+    --foreground: 90 6% 9%; /* #181916 - Primary softened ink black */
+
+    --card: 49 20% 93%;
+    --card-foreground: 90 6% 9%;
+
+    --popover: 49 20% 93%;
+    --popover-foreground: 90 6% 9%;
+
+    --primary: 90 6% 9%; /* #181916 */
+    --primary-foreground: 49 20% 93%; /* #F1EFE8 */
+
+    --secondary: 32 16% 41%; /* #796957 - Secondary roasted brown */
+    --secondary-foreground: 49 20% 93%;
+
+    --muted: 60 5% 70%; /* #B8B7B0 - Support brushed stainless grey */
+    --muted-foreground: 90 6% 9%;
+
+    --accent: 76 17% 43%; /* #76805B - Product Accent dry matcha green */
+    --accent-foreground: 49 20% 93%;
+
+    --brand: 208 46% 27%; /* #264866 - Brand Accent faded denim blue */
+    --cobalt: 230 61% 49%; /* #3049C9 - Cobalt */
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 90 6% 9%; /* Using primary black for 1px dividing lines */
+    --input: 90 6% 9%;
+    --ring: 90 6% 9%;
+
+    --radius: 0rem; /* No rounded corners */
+    
+    --font-sans: 'Instrument Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+    --font-serif: 'Instrument Serif', serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  /* Remove scrollbar only where explicitly requested */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+  .font-sans {
+    font-family: var(--font-sans);
+  }
+}
+
+@layer utilities {
+  .grid-lines {
+    @apply border-x border-border;
+  }
+  .bottom-line {
+    @apply border-b border-border;
+  }
+  .top-line {
+    @apply border-t border-border;
+  }
+  .link-arrow {
+    @apply inline-flex items-center gap-2 hover:gap-3 transition-all duration-300;
+  }
+}

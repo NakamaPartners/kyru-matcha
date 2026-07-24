@@ -1,45 +1,19 @@
-# [Project name]
+# Kyru Matcha
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+## Overview
+Brand website for Kyru Matcha — a Vietnamese-owned matcha pop-up project (Instagram: @kyrumatcha). Single-page, presentation-first site: hero, pop-up ticker, drink catalogue, event list, KYRU X NAMI giveaway band, footer with email signup. No backend; email forms are UI-only.
 
-## Run & Operate
+## Architecture
+- pnpm monorepo. Main artifact: `artifacts/kyru-matcha` (React + Vite + Tailwind v4, wouter). Workflow: `artifacts/kyru-matcha: web`.
+- Photos/mascot are copied into `artifacts/kyru-matcha/public/images/` (originals in `attached_assets/`).
+- Main page: `src/pages/Home.tsx`; theme tokens in `src/index.css`.
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
-- `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
-
-## Stack
-
-- pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
-
-## Where things live
-
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
-
-## Architecture decisions
-
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
-
-## Product
-
-_Describe the high-level user-facing capabilities of this app once they exist._
+## Design rules (from user's Notion moodboard — follow strictly)
+- Palette: base #F1EFE8 bone white (~70%), #181916 ink black, #264866 denim blue accent, #76805B matcha green, #B8B7B0 grey, #796957 brown; #3049C9 cobalt only for handwritten annotations. No gradients or bright greens.
+- Type: Instrument Sans (headlines 500–600, tight), IBM Plex Mono for dates/locations/labels, Instrument Serif Italic only for campaign words ("giveaway").
+- Voice: brief, lowercase, slightly cryptic. No rounded cards, no emojis in UI, thin 1px rules, arrow-text CTAs.
+- Layout follows the user's mockup (`attached_assets/image_1784859145526.png`) closely — no exceptions.
+- Real menu names only: white rabbit matcha, white rabbit hojicha, the make up. Do not invent facts (events, sourcing claims).
 
 ## User preferences
-
-_Populate as you build — explicit user instructions worth remembering across sessions._
-
-## Gotchas
-
-_Populate as you build — sharp edges, "always run X before Y" rules._
-
-## Pointers
-
-- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
+- (none recorded yet)
