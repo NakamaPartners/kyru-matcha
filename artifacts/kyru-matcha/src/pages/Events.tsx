@@ -1,82 +1,71 @@
 const events = [
   {
-    date: '07.25.26', day: 'SAT',
+    date: '07.25', day: 'SAT', year: '2026',
     city: 'Richmond, VA',
-    venue: 'District Candle Lab', area: 'Mosaic District',
-    time: '11am – 5pm (or sold out)',
+    venue: 'District Candle Lab · Mosaic District',
+    time: '11am – 5pm',
     status: 'confirmed',
-    img: '/images/sc_672459706.jpg',  // literally District Candle Lab shelf with kyru matcha
   },
   {
-    date: '08.09.26', day: 'SUN',
+    date: '08.09', day: 'SUN', year: '2026',
     city: 'Washington, DC',
-    venue: 'TBA', area: '',
+    venue: 'TBA',
     time: 'TBA',
     status: 'coming soon',
-    img: '/images/731292787_17894619918483743_3853595151744230689_n_1784859145526.jpg',
   },
   {
-    date: '08.23.26', day: 'SAT',
+    date: '08.23', day: 'SAT', year: '2026',
     city: 'Norfolk, VA',
-    venue: 'TBA', area: '',
+    venue: 'TBA',
     time: 'TBA',
     status: 'coming soon',
-    img: '/images/702844941_17889320883483743_7037693079210767412_n_1784859145526.jpg',
   },
 ];
 
 export default function Events() {
   return (
-    <main className="bg-white text-[#181916] pt-[72px] pb-32">
+    <main className="bg-white text-[#181916] pt-[72px]">
 
-      {/* Page header */}
-      <div className="px-8 md:px-16 py-16 border-b border-black/[0.07]">
-        <p className="font-mono text-[10px] uppercase tracking-widest opacity-35 mb-4">summer 2026</p>
-        <h1 className="font-sans text-6xl md:text-8xl font-medium lowercase tracking-[-0.04em] leading-[0.85]">
-          where we'll<br />be next
-        </h1>
+      {/* Full-bleed hero — the only photo, make it the main thing */}
+      <div className="w-full overflow-hidden" style={{ height: '88vh', minHeight: 520 }}>
+        <img
+          src="/images/events-hero.png"
+          alt="kyru matcha pop-up"
+          className="w-full h-full object-cover object-center"
+        />
       </div>
 
-      {/* Event rows — each with its own photo */}
-      {events.map((e, i) => (
-        <div key={i} className="border-b border-black/[0.07] grid grid-cols-1 md:grid-cols-2">
+      {/* Event list — clean, minimal, directly below */}
+      <div className="border-t border-black/[0.07]">
+        {events.map((e, i) => (
+          <div key={i} className="border-b border-black/[0.07] px-8 md:px-16 py-10 flex flex-col md:flex-row md:items-center gap-3 md:gap-0">
 
-          {/* Photo */}
-          <div className={`aspect-[4/3] overflow-hidden bg-[#F1EFE8] ${i % 2 === 1 ? 'md:order-2' : ''}`}>
-            <img
-              src={e.img}
-              alt={e.city}
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
-
-          {/* Info */}
-          <div className={`flex flex-col justify-center px-10 md:px-14 py-14 ${i % 2 === 1 ? 'md:order-1' : ''}`}>
-            <div className="flex items-center gap-4 mb-6">
-              <span className="font-mono text-[9px] uppercase tracking-widest opacity-35">{e.day}</span>
-              <span className="font-mono text-sm tracking-widest opacity-55">{e.date}</span>
-              <span className={`ml-auto font-mono text-[9px] uppercase tracking-widest border px-2 py-1 ${
-                e.status === 'confirmed' ? 'border-black/50' : 'border-black/15 opacity-35'
-              }`}>
-                {e.status}
-              </span>
+            {/* Date block */}
+            <div className="md:w-32 flex-shrink-0">
+              <p className="font-mono text-xs uppercase tracking-widest opacity-40">{e.day} · {e.year}</p>
+              <p className="font-sans text-2xl font-medium tracking-tight mt-0.5">{e.date}</p>
             </div>
 
-            <h2 className="font-sans text-4xl md:text-5xl font-medium lowercase tracking-[-0.03em] mb-3">
-              {e.city}
-            </h2>
+            {/* City + venue */}
+            <div className="flex-1 md:pl-8">
+              <h2 className="font-sans text-3xl md:text-4xl font-medium lowercase tracking-[-0.02em]">{e.city}</h2>
+              <p className="font-mono text-[10px] uppercase tracking-widest opacity-35 mt-1">{e.venue} {e.time !== 'TBA' ? `· ${e.time}` : ''}</p>
+            </div>
 
-            <p className="font-mono text-[10px] uppercase tracking-widest opacity-40 leading-loose">
-              {e.venue}{e.area ? ` · ${e.area}` : ''}
-              <br />
-              {e.time}
-            </p>
+            {/* Status pill */}
+            <span className={`flex-shrink-0 font-mono text-[9px] uppercase tracking-widest border px-3 py-1 self-start md:self-auto ${
+              e.status === 'confirmed'
+                ? 'border-black/50 text-[#181916]'
+                : 'border-black/15 opacity-30'
+            }`}>
+              {e.status}
+            </span>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
 
       {/* Follow note */}
-      <div className="px-8 md:px-16 pt-16">
+      <div className="px-8 md:px-16 py-12">
         <p className="font-mono text-[10px] uppercase tracking-widest opacity-25">
           more dates dropping —{' '}
           <a href="https://www.instagram.com/kyrumatcha/" target="_blank" rel="noreferrer"
