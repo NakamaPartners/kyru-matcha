@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 // Every photo used exactly ONCE across the entire site
 const P = {
@@ -147,6 +147,120 @@ function Visual() {
   );
 }
 
+/* ─── Collab ────────────────────────────────────────────────── */
+const COLLAB_SLIDES = [
+  "/images/collab-1.jpg",
+  "/images/collab-2.jpg",
+  "/images/collab-3.jpg",
+  "/images/collab-4.jpg",
+  "/images/collab-5.jpg",
+];
+const COLLAB_DURATION = 3500; // ms per slide
+
+function Collab() {
+  const [idx, setIdx] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const startRef = useRef<number>(Date.now());
+  const rafRef = useRef<number>(0);
+
+  const advance = (next: number) => {
+    setIdx(next);
+    setProgress(0);
+    startRef.current = Date.now();
+  };
+
+  useEffect(() => {
+    const tick = () => {
+      const elapsed = Date.now() - startRef.current;
+      const pct = Math.min(elapsed / COLLAB_DURATION, 1);
+      setProgress(pct);
+      if (pct >= 1) {
+        advance((idx + 1) % COLLAB_SLIDES.length);
+      } else {
+        rafRef.current = requestAnimationFrame(tick);
+      }
+    };
+    rafRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [idx]);
+
+  return (
+    <section className="border-t border-black/[0.07]">
+      {/* Header row */}
+      <div className="flex items-end justify-between px-8 md:px-16 py-10 border-b border-black/[0.07]">
+        <div>
+          <p className="font-mono text-[10px] uppercase tracking-widest opacity-35 mb-2">past & present</p>
+          <h2 className="font-sans text-5xl md:text-7xl font-medium lowercase tracking-[-0.04em] leading-[0.85]">collab</h2>
+        </div>
+        <p className="hidden md:block font-mono text-[10px] uppercase tracking-widest opacity-25 text-right max-w-[180px]">
+          we make things<br />with people we like
+        </p>
+      </div>
+
+      {/* Photo area — left: fixed tall portrait, right: advancing slides */}
+      <div className="grid grid-cols-1 md:grid-cols-2">
+
+        {/* Left — static accent: first slide shown as a darker, slightly offset crop */}
+        <div
+          className="relative overflow-hidden border-b md:border-b-0 md:border-r border-black/[0.07]"
+          style={{ height: '70vh', minHeight: 400 }}
+        >
+          <img
+            src={COLLAB_SLIDES[(idx + 2) % COLLAB_SLIDES.length]}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover grayscale opacity-60"
+            style={{ transition: 'opacity 600ms ease' }}
+          />
+          {/* Slide index label */}
+          <span className="absolute bottom-5 left-6 font-mono text-[10px] uppercase tracking-widest text-white/30 select-none">
+            {String(idx + 1).padStart(2, '0')} / {String(COLLAB_SLIDES.length).padStart(2, '0')}
+          </span>
+        </div>
+
+        {/* Right — live slide with progress bar */}
+        <div
+          className="relative overflow-hidden"
+          style={{ height: '70vh', minHeight: 400 }}
+        >
+          {COLLAB_SLIDES.map((src, i) => (
+            <img
+              key={src}
+              src={src}
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{
+                opacity: i === idx ? 1 : 0,
+                transition: 'opacity 500ms ease',
+                zIndex: i === idx ? 1 : 0,
+              }}
+            />
+          ))}
+
+          {/* Progress bar — thin line sweeping across bottom */}
+          <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-white/10 z-10">
+            <div
+              className="h-full bg-white/60"
+              style={{ width: `${progress * 100}%`, transition: 'width 100ms linear' }}
+            />
+          </div>
+
+          {/* Tap left/right to navigate */}
+          <button
+            className="absolute left-0 top-0 h-full w-1/2 z-20 focus:outline-none cursor-w-resize"
+            onClick={() => advance((idx - 1 + COLLAB_SLIDES.length) % COLLAB_SLIDES.length)}
+            aria-label="Previous"
+          />
+          <button
+            className="absolute right-0 top-0 h-full w-1/2 z-20 focus:outline-none cursor-e-resize"
+            onClick={() => advance((idx + 1) % COLLAB_SLIDES.length)}
+            aria-label="Next"
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ─── Links ─────────────────────────────────────────────────── */
 function Links() {
   const links = [
@@ -220,6 +334,7 @@ export default function Home() {
       <Hero />
       <Ticker />
       <Visual />
+      <Collab />
       <Links />
       <Footer />
 
