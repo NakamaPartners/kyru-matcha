@@ -14,6 +14,7 @@ const Images = {
   g4: "/images/713664623_17905608681430231_6947000135873404220_n_1784859145526.jpg",
   g5: "/images/731111343_17895541896483743_3598329880635149232_n_1784859145526.jpg",
   g6: "/images/742953955_17954256912189611_6899181722383635748_n_1784859145526.jpg",
+  g7: "/images/702844941_17889320883483743_7037693079210767412_n_1784859145526.jpg",
 };
 
 /* ─── Nav ─────────────────────────────────────────────────── */
@@ -186,7 +187,7 @@ function EventsSection() {
 
       {/* hero photo */}
       <div className="w-full aspect-[16/6] overflow-hidden border-t border-black/8">
-        <img src={Images.sign} alt="kyru pop-up" className="w-full h-full object-cover object-center" />
+        <img src={Images.g7} alt="kyru pop-up" className="w-full h-full object-cover object-center" />
       </div>
 
       {events.map((e, i) => (
