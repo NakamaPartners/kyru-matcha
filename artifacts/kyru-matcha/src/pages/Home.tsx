@@ -19,7 +19,7 @@ function Hero() {
         <h1 className="sr-only">kyru matcha</h1>
 
         <div aria-hidden="true"
-          className="select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.05em] leading-[0.72] text-[48vw] md:text-[35vw] -mt-[11vw] md:-mt-[4vw] -ml-[1.5vw]">
+          className="hero-letter select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.05em] leading-[0.72] text-[48vw] -mt-[11vw] md:-mt-[4vw] -ml-[1.5vw]">
           kyru
         </div>
 
@@ -53,7 +53,7 @@ function Hero() {
         </div>
 
         <div aria-hidden="true"
-          className="select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.05em] leading-[0.85] text-[32vw] md:text-[35vw] -mb-[2vw] text-right whitespace-nowrap">
+          className="hero-letter select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.05em] leading-[0.85] text-[32vw] -mb-[2vw] text-right whitespace-nowrap">
           matcha
         </div>
       </div>
@@ -350,6 +350,9 @@ export default function Home() {
         @keyframes collab-scroll {
           0%   { transform: translate3d(0,0,0); }
           100% { transform: translate3d(-50%,0,0); }
+        }
+        @media (min-width: 768px) {
+          .hero-letter { font-size: min(35vw, 50vh); }
         }
       `}} />
     </div>
