@@ -182,10 +182,10 @@ function Hero() {
   const noteRotate = useTransform(progress, [0, 1], [6, -4]);
 
   return (
-    <section id="our-thing" ref={ref} className="relative h-[180vh]">
+    <section id="our-thing" ref={ref} className="relative h-[120vh]">
       <div
         style={{ backgroundColor: bg, color: fg }}
-        className="sticky top-0 h-screen flex flex-col justify-between bottom-line overflow-hidden denim-texture denim-texture-light"
+        className="sticky top-0 h-[calc(100dvh-64px)] flex flex-col justify-between bottom-line overflow-hidden denim-texture denim-texture-light"
       >
         <h1 className="sr-only">kyru matcha — not a brand, just us talking.</h1>
 
