@@ -287,7 +287,7 @@ function Footer() {
     <footer className="border-t border-black/[0.07] px-8 md:px-16 py-16 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0 items-start">
       {/* Brand */}
       <div>
-        <img src={P.logo} alt="kyru" className="w-10 h-10 object-contain opacity-50 mb-6 grayscale mix-blend-multiply" />
+        <img src="/images/kyru-icon.png" alt="kyru" className="w-12 h-12 object-contain mb-6" />
         <p className="font-mono text-[10px] uppercase tracking-widest opacity-30">© 2026 kyru matcha</p>
         <p className="font-sans text-sm opacity-35 lowercase mt-1">serious matcha, unserious people.</p>
       </div>
