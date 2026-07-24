@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 // Every photo used exactly ONCE across the entire site
 const P = {
@@ -104,9 +105,9 @@ function PhotoWall() {
 
 /* ─── Visual spread ─────────────────────────────────────────── */
 const COLS = [
-  { src: P.v_drink, label: 'matcha',   sub: 'on the pop-up menu' },
-  { src: P.v_whisk, label: 'prepared',  sub: 'made to order, every time' },
-  { src: P.v_life,  label: 'the vibe',  sub: 'find us when you least expect it' },
+  { src: P.v_drink, label: 'matcha',   sub: 'on the pop-up menu',            href: '/order',   cta: 'order matcha →' },
+  { src: P.v_whisk, label: 'prepared', sub: 'made to order, every time',      href: '/booking', cta: 'book a pop-up →' },
+  { src: P.v_life,  label: 'the vibe', sub: 'find us when you least expect it', href: null,      cta: 'find a pop-up →' },
 ];
 
 function Visual() {
@@ -131,14 +132,23 @@ function Visual() {
                 <p className="font-sans text-lg font-medium lowercase tracking-tight">{col.label}</p>
                 <p className="font-mono text-[9px] uppercase tracking-widest opacity-30 mt-1">{col.sub}</p>
               </div>
-              <a
-                href="https://www.instagram.com/kyrumatcha/"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-block border border-black/20 px-4 py-2 font-mono text-[9px] uppercase tracking-widest hover:bg-[#181916] hover:text-white hover:border-[#181916] transition-colors self-start"
-              >
-                find a pop-up →
-              </a>
+              {col.href ? (
+                <Link
+                  to={col.href}
+                  className="inline-block border border-black/20 px-4 py-2 font-mono text-[9px] uppercase tracking-widest hover:bg-[#181916] hover:text-white hover:border-[#181916] transition-colors self-start"
+                >
+                  {col.cta}
+                </Link>
+              ) : (
+                <a
+                  href="https://www.instagram.com/kyrumatcha/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-block border border-black/20 px-4 py-2 font-mono text-[9px] uppercase tracking-widest hover:bg-[#181916] hover:text-white hover:border-[#181916] transition-colors self-start"
+                >
+                  {col.cta}
+                </a>
+              )}
             </div>
           </div>
         ))}
