@@ -38,22 +38,37 @@ export default function Events() {
   return (
     <main className="bg-white text-[#181916] pt-[72px]">
 
-      {/* ── Dual-video hero ──────────────────────────────────────── */}
-      <div className="grid grid-cols-2 border-b border-black/[0.07]" style={{ height: '92vh', minHeight: 520 }}>
-        {(['event-v1.mp4', 'event-v2.mp4'] as const).map((file, i) => (
-          <div key={i} className={`relative overflow-hidden ${i === 0 ? 'border-r border-black/[0.07]' : ''}`}>
+      {/* ── Dual-video hero — horizontal crop ───────────────────── */}
+      <div className="border-b border-black/[0.07]">
+
+        {/* Label row above the videos */}
+        <div className="flex items-center justify-between px-8 md:px-16 py-5 border-b border-black/[0.07]">
+          <p className="font-mono text-[10px] uppercase tracking-widest opacity-30">summer 2026</p>
+          <p className="font-serif italic text-lg opacity-40">find us.</p>
+        </div>
+
+        {/* Asymmetric split — v1 dominant (3/5), v2 accent (2/5) */}
+        <div className="grid grid-cols-[3fr_2fr]" style={{ height: '60vh', minHeight: 320 }}>
+          {/* v1 — primary, crops portrait to wide landscape */}
+          <div className="relative overflow-hidden border-r border-black/[0.07]">
             <video
-              src={`/images/${file}`}
+              src="/images/event-v1.mp4"
               autoPlay muted loop playsInline
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover object-center"
             />
           </div>
-        ))}
-
-        {/* Overlaid label on left video */}
-        <div className="absolute bottom-8 left-8 pointer-events-none">
-          <p className="font-mono text-[10px] uppercase tracking-widest text-white/40">summer 2026</p>
-          <p className="font-serif italic text-white/70 text-2xl mt-1">find us.</p>
+          {/* v2 — tighter crop, accent panel */}
+          <div className="relative overflow-hidden">
+            <video
+              src="/images/event-v2.mp4"
+              autoPlay muted loop playsInline
+              className="absolute inset-0 w-full h-full object-cover object-center"
+            />
+            {/* Subtle date stamp overlay on accent panel */}
+            <div className="absolute bottom-4 right-4 text-right pointer-events-none">
+              <p className="font-mono text-[9px] uppercase tracking-widest text-white/30">summer · 2026</p>
+            </div>
+          </div>
         </div>
       </div>
 
