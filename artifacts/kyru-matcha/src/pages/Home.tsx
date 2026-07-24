@@ -60,22 +60,100 @@ const Images = {
   gallery8: "/images/731111343_17895541896483743_3598329880635149232_n_1784859145526.jpg",
 };
 
-// poster color frames — sudden swaps every 2s, like flipping through flyers
+// ── poster motifs ────────────────────────────────────────────────
+function Asterisk({ color, size, className }: { color: string; size: number; className?: string }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" className={className} aria-hidden="true">
+      <g fill={color}>
+        <rect x="42" y="2" width="16" height="96" rx="8" />
+        <rect x="42" y="2" width="16" height="96" rx="8" transform="rotate(60 50 50)" />
+        <rect x="42" y="2" width="16" height="96" rx="8" transform="rotate(120 50 50)" />
+      </g>
+    </svg>
+  );
+}
+
+function Flower({ petal, center, size, className }: { petal: string; center: string; size: number; className?: string }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" className={className} aria-hidden="true">
+      {[0, 60, 120, 180, 240, 300].map((a) => (
+        <circle key={a} cx={50 + 28 * Math.cos((a * Math.PI) / 180)} cy={50 + 28 * Math.sin((a * Math.PI) / 180)} r="20" fill={petal} />
+      ))}
+      <circle cx="50" cy="50" r="11" fill={center} />
+    </svg>
+  );
+}
+
+function ScribbleFlower({ color, size, className }: { color: string; size: number; className?: string }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" className={className} aria-hidden="true" fill="none">
+      <path
+        d="M50 52 C 30 20, 62 12, 54 40 C 78 18, 92 44, 60 48 C 92 56, 78 80, 56 58 C 64 88, 34 86, 46 58 C 20 80, 8 54, 42 50 C 12 42, 26 18, 48 42"
+        stroke={color}
+        strokeWidth="3.5"
+        strokeLinecap="round"
+      />
+      <path d="M50 58 C 48 74, 46 84, 44 96" stroke={color} strokeWidth="3.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+// poster color frames — sudden swaps, like flipping through flyers
 const heroFrames = [
-  { bg: "#76805B", fg: "#EFE87B" }, // matcha green / butter yellow
-  { bg: "#264866", fg: "#E9BFD3" }, // denim blue / soft pink
-  { bg: "#F1EFE8", fg: "#181916" }, // bone white / ink black
-  { bg: "#181916", fg: "#F1EFE8" }, // ink black / bone white
+  { bg: "#76805B", fg: "#EFE87B", motif: "scribble", motifColor: "#C97B4A" }, // matcha green / butter yellow / orange scribble flowers
+  { bg: "#264866", fg: "#E9BFD3", motif: "asterisk", motifColor: "#1A3049" }, // denim blue / soft pink / navy asterisks
+  { bg: "#F1EFE8", fg: "#181916", motif: "star", motifColor: "#181916" }, // bone / ink / black doodle stars
+  { bg: "#181916", fg: "#F1EFE8", motif: "flower", motifColor: "#E4E2D5" }, // ink / bone / pale flowers
 ];
+
+// scattered motif positions per frame (like the flyer margins)
+function HeroMotifs({ frame }: { frame: (typeof heroFrames)[number] }) {
+  const c = frame.motifColor;
+  return (
+    <div className="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
+      {frame.motif === "scribble" && (
+        <>
+          <ScribbleFlower color={c} size={170} className="absolute top-[30%] right-[6%] rotate-12 opacity-80" />
+          <ScribbleFlower color={c} size={110} className="absolute bottom-[26%] left-[30%] -rotate-6 opacity-60" />
+          <ScribbleFlower color={c} size={80} className="absolute top-[12%] left-[55%] rotate-45 opacity-50" />
+        </>
+      )}
+      {frame.motif === "asterisk" && (
+        <>
+          <Asterisk color={c} size={90} className="absolute top-[24%] left-[3%] -rotate-12" />
+          <Asterisk color={c} size={60} className="absolute top-[14%] right-[10%] rotate-12" />
+          <Asterisk color={c} size={120} className="absolute bottom-[20%] right-[4%] rotate-6 opacity-90" />
+          <Asterisk color={c} size={48} className="absolute bottom-[32%] left-[38%] rotate-45 opacity-80" />
+        </>
+      )}
+      {frame.motif === "star" && (
+        <>
+          <Asterisk color={c} size={70} className="absolute top-[20%] left-[4%] rotate-12 opacity-90" />
+          <Asterisk color={c} size={44} className="absolute top-[38%] right-[14%] -rotate-12 opacity-80" />
+          <Asterisk color={c} size={95} className="absolute bottom-[24%] right-[3%] -rotate-6" />
+          <img src={Images.logo} alt="" className="absolute bottom-[30%] left-[8%] w-20 opacity-70 grayscale mix-blend-multiply -rotate-6" />
+        </>
+      )}
+      {frame.motif === "flower" && (
+        <>
+          <Flower petal={c} center="#8FA6C4" size={130} className="absolute top-[16%] right-[7%] opacity-90" />
+          <Flower petal={c} center="#8FA6C4" size={80} className="absolute top-[42%] left-[5%] opacity-70" />
+          <Flower petal="#EFE87B" center="#C97B4A" size={100} className="absolute bottom-[22%] right-[30%] opacity-80" />
+        </>
+      )}
+    </div>
+  );
+}
 
 function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const [frame, setFrame] = useState(0);
   React.useEffect(() => {
-    const id = setInterval(() => setFrame((f) => (f + 1) % heroFrames.length), 2000);
+    const id = setInterval(() => setFrame((f) => (f + 1) % heroFrames.length), 500);
     return () => clearInterval(id);
   }, []);
-  const { bg, fg } = heroFrames[frame];
+  const current = heroFrames[frame];
+  const { bg, fg } = current;
   const noteColor = bg === "#F1EFE8" ? "#3049C9" : fg;
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -105,6 +183,9 @@ function Hero() {
       >
         <h1 className="sr-only">kyru matcha — not a brand, just us talking.</h1>
 
+        {/* per-frame scattered motifs */}
+        <HeroMotifs frame={current} />
+
         {/* giant KYRU bleeding off the top-left, slides left on scroll */}
         <motion.div
           aria-hidden="true"
@@ -114,55 +195,59 @@ function Hero() {
           kyru
         </motion.div>
 
-        {/* middle band — scattered poster metadata */}
-        <div className="relative flex-1 grid grid-cols-2 md:grid-cols-3 gap-8 px-6 md:px-12 lg:px-16 py-6 pt-[7vw] md:pt-[6vw] items-center">
-          <motion.div style={{ y: leftY }} className="col-span-1 self-start will-change-transform">
-            <p className="font-mono text-xs md:text-sm uppercase tracking-widest leading-relaxed">
-              hosted&nbsp;&nbsp;&nbsp;&nbsp;by:
+        {/* middle band — scattered flyer metadata */}
+        <div className="relative flex-1 px-6 md:px-12 lg:px-16 py-6">
+          {/* hosted by — upper left */}
+          <motion.div style={{ y: leftY }} className="absolute top-[8%] left-[4%] md:left-[6%] will-change-transform">
+            <p className="font-mono text-xs md:text-sm uppercase tracking-widest leading-loose">
+              hosted&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by:
               <br />
-              nobody. it's just us.
+              nobody.&nbsp;&nbsp;it's just us.
             </p>
-            <p className="font-sans text-sm md:text-base max-w-xs opacity-80 leading-relaxed lowercase mt-8">
+          </motion.div>
+
+          {/* intro copy — mid left, indented like the flyers */}
+          <motion.div style={{ y: leftY }} className="absolute top-[44%] left-[8%] md:left-[12%] max-w-[16rem] md:max-w-xs will-change-transform">
+            <p className="font-sans text-sm md:text-base opacity-80 leading-relaxed lowercase">
               we're kyru. viet-owned, matcha-obsessed, and slightly too online.
               serious matcha, unserious people.
             </p>
             <a
               href="#what-we-make"
-              className="link-arrow font-mono text-xs lowercase tracking-widest hover:opacity-70 inline-block mt-8"
+              className="link-arrow font-mono text-xs lowercase tracking-widest hover:opacity-70 inline-block mt-6"
             >
               explore catalogue <span className="text-lg leading-none font-sans">→</span>
             </a>
           </motion.div>
 
-          <div className="hidden md:flex justify-center items-center relative">
-            <motion.div
-              style={{ rotate: noteRotate, color: noteColor }}
-              className="font-serif italic text-3xl lg:text-4xl whitespace-nowrap pointer-events-none will-change-transform"
-            >
-              thanks for being here ♡
-            </motion.div>
-          </div>
-
-          <motion.div
-            style={{ y: rightY }}
-            className="col-span-1 self-end text-right md:text-left md:justify-self-end will-change-transform"
-          >
-            <p className="font-mono text-xs md:text-sm uppercase tracking-widest leading-relaxed">
+          {/* vendor-list style block — upper right */}
+          <motion.div style={{ y: rightY }} className="absolute top-[4%] right-[6%] md:right-[14%] text-left will-change-transform">
+            <p className="font-mono text-xs md:text-sm uppercase tracking-widest leading-loose">
               matcha,&nbsp;&nbsp;&nbsp;&nbsp;drinks,
               <br />
               pop-ups,&nbsp;&nbsp;good&nbsp;people
               <br />
-              and&nbsp;&nbsp;more
+              &amp;&nbsp;&nbsp;more
             </p>
-            <p className="font-mono text-xs md:text-sm uppercase tracking-widest leading-relaxed mt-8 opacity-70">
-              next pop-up
+          </motion.div>
+
+          {/* next pop-up — lower right, stepped like the flyers */}
+          <motion.div style={{ y: rightY }} className="absolute bottom-[6%] right-[4%] md:right-[8%] text-left will-change-transform">
+            <p className="font-mono text-xs md:text-sm uppercase tracking-widest leading-loose">
+              next&nbsp;pop-up
               <br />
-              richmond, va
+              &nbsp;&nbsp;richmond,&nbsp;va&nbsp;·&nbsp;07.25.26
               <br />
-              07.25.26 · 11am–5pm
-              <br />
-              (or sold out)
+              &nbsp;&nbsp;&nbsp;&nbsp;11am–5pm&nbsp;(or&nbsp;sold&nbsp;out)
             </p>
+          </motion.div>
+
+          {/* handwritten note — tucked lower-center-left, tilted */}
+          <motion.div
+            style={{ rotate: noteRotate, color: noteColor }}
+            className="hidden md:block absolute bottom-[14%] left-[38%] font-serif italic text-2xl lg:text-3xl whitespace-nowrap pointer-events-none will-change-transform"
+          >
+            thanks for being here ♡
           </motion.div>
         </div>
 
