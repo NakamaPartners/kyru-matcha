@@ -3,47 +3,60 @@ export default function Order() {
     <main className="bg-white text-[#181916] pt-[72px] min-h-screen">
 
       {/* ── Hero header ─────────────────────────────────────────── */}
-      <div className="border-b border-black/[0.07] grid grid-cols-1 md:grid-cols-2">
+      <div className="border-b border-black/[0.07] grid grid-cols-1 md:grid-cols-2" style={{ minHeight: '72vh' }}>
 
-        {/* Left — headline, ghost kai sits directly behind it */}
-        <div className="relative px-8 md:px-16 pt-16 pb-0 overflow-hidden md:border-r border-black/[0.07]">
-          {/* Ghost "kai" — anchored top-left, scales with column, lives behind headline */}
-          <div
-            aria-hidden="true"
-            className="absolute top-[3.5rem] -left-[0.04em] font-sans font-medium lowercase tracking-[-0.05em] leading-none select-none pointer-events-none text-[#181916]/[0.05]"
-            style={{ fontSize: 'clamp(96px, 13vw, 200px)' }}
-          >
-            kai
-          </div>
+        {/* Left — white panel, all content lives here */}
+        <div className="relative flex flex-col justify-between px-8 md:px-14 pt-12 pb-10 md:border-r border-black/[0.07] overflow-hidden">
 
-          <div className="relative pb-10">
-            <p className="font-mono text-[10px] uppercase tracking-widest opacity-35 mb-4">ceremonial grade · single origin</p>
+          {/* Top: label + headline */}
+          <div className="relative z-10">
+            <p className="font-mono text-[10px] uppercase tracking-widest opacity-35 mb-5">ceremonial grade · single origin</p>
             <h1 className="font-sans text-6xl md:text-7xl font-medium lowercase tracking-[-0.05em] leading-[0.85]">
               order<br />matcha
             </h1>
           </div>
 
-          {/* Pull quote */}
-          <div className="relative border-t border-black/[0.07] py-8">
-            <p className="font-serif italic text-xl md:text-2xl text-[#181916]/55 max-w-sm leading-snug">
+          {/* Center: ghost "kai" — fully visible, centered in the dead space */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 flex items-center justify-center select-none pointer-events-none"
+          >
+            <span
+              className="font-sans font-medium lowercase tracking-[-0.05em] leading-none text-[#181916]/[0.055]"
+              style={{ fontSize: 'clamp(72px, 9.5vw, 148px)' }}
+            >
+              kai
+            </span>
+          </div>
+
+          {/* Bottom: quote + specs */}
+          <div className="relative z-10 flex flex-col gap-6">
+            <p className="font-serif italic text-xl md:text-2xl text-[#181916]/55 leading-snug max-w-xs">
               "the matcha that got us into all this."
             </p>
+            <div className="flex gap-8 border-t border-black/[0.07] pt-5">
+              {[['grade','ceremonial'],['origin','okumidori'],['vendor','kai']].map(([k,v]) => (
+                <div key={k}>
+                  <p className="font-mono text-[8px] uppercase tracking-widest opacity-25">{k}</p>
+                  <p className="font-mono text-[9px] uppercase tracking-widest mt-0.5">{v}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Right — KAI tin as a contained product shot */}
-        <div className="hidden md:flex items-center justify-center p-10 lg:p-16 bg-white">
-          <div className="w-full max-w-[320px]">
-            <img
-              src="/images/kai-tin.jpg"
-              alt="KAI ceremonial matcha — Okumidori"
-              className="w-full h-auto rounded-[2px]"
-              style={{ aspectRatio: '4/5', objectFit: 'cover' }}
-            />
-            <p className="font-mono text-[9px] uppercase tracking-widest opacity-25 mt-4 text-center">
-              kai · okumidori · ceremonial uji matcha
-            </p>
-          </div>
+        {/* Right — tin photo, full-bleed, dramatic */}
+        <div className="relative overflow-hidden" style={{ minHeight: 360 }}>
+          <img
+            src="/images/kai-tin.jpg"
+            alt="KAI ceremonial matcha tin"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+          />
+          {/* Left fade into white */}
+          <div
+            className="absolute inset-y-0 left-0 w-2/5 pointer-events-none"
+            style={{ background: 'linear-gradient(to right, #ffffff 0%, transparent 100%)' }}
+          />
         </div>
 
       </div>
