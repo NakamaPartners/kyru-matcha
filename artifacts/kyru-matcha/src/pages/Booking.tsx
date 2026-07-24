@@ -10,22 +10,40 @@ export default function Booking() {
     <main className="bg-white text-[#181916] pt-[72px] min-h-screen">
 
       {/* ── Hero header ─────────────────────────────────────────── */}
-      <div className="border-b border-black/[0.07] px-8 md:px-16 pt-16 overflow-hidden">
-        <div className="pb-10">
-          <p className="font-mono text-[10px] uppercase tracking-widest opacity-35 mb-4">pop-ups · events · collabs</p>
-          <h1 className="font-sans text-6xl md:text-8xl font-medium lowercase tracking-[-0.05em] leading-[0.85]">
-            let's work<br />together
-          </h1>
-        </div>
+      <div className="border-b border-black/[0.07] overflow-hidden">
+        {/* Split: text left / image right */}
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_42%] min-h-[60vh]">
 
-        {/* Pull quote */}
-        <div className="border-t border-black/[0.07] py-8 flex items-end justify-between gap-4">
-          <p className="font-serif italic text-2xl md:text-3xl text-[#181916]/55 max-w-lg leading-snug">
-            "if you think we'd be a good fit — we probably are."
-          </p>
-          <p className="hidden md:block font-mono text-[9px] uppercase tracking-widest opacity-20 text-right shrink-0">
-            virginia born<br />&amp; raised
-          </p>
+          {/* Left — headline */}
+          <div className="flex flex-col justify-between px-8 md:px-16 pt-16 pb-10 md:border-r border-black/[0.07]">
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-widest opacity-35 mb-8">pop-ups · events · collabs</p>
+              <h1 className="font-sans text-6xl md:text-7xl lg:text-8xl font-medium lowercase tracking-[-0.05em] leading-[0.85]">
+                let's work<br />together
+              </h1>
+            </div>
+
+            {/* Pull quote pinned to bottom of text col */}
+            <div className="mt-12 pt-8 border-t border-black/[0.07]">
+              <p className="font-serif italic text-xl md:text-2xl text-[#181916]/50 max-w-md leading-snug">
+                "if you think we'd be a good fit — we probably are."
+              </p>
+              <p className="font-mono text-[9px] uppercase tracking-widest opacity-20 mt-5">
+                virginia born · raised · always moving
+              </p>
+            </div>
+          </div>
+
+          {/* Right — photo bleeding to edge */}
+          <div className="relative hidden md:block min-h-[60vh]">
+            <img
+              src="/images/booking-hero.jpg"
+              alt="kyru matcha cups at a pop-up"
+              className="absolute inset-0 w-full h-full object-cover object-center"
+            />
+            {/* thin left-edge fade into white */}
+            <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent pointer-events-none" />
+          </div>
         </div>
       </div>
 
