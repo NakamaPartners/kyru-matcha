@@ -69,25 +69,16 @@ function Hero() {
         {/* giant KYRU bleeding off the top-left */}
         <div
           aria-hidden="true"
-          className="select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.05em] leading-[0.68] text-[44vw] md:text-[32vw] -mt-[11vw] md:-mt-[8vw] -ml-[1.5vw]"
+          className="select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.05em] leading-[0.68] text-[48vw] md:text-[35vw] -mt-[11vw] md:-mt-[8vw] -ml-[1.5vw]"
         >
           kyru
         </div>
 
         {/* middle band — scattered flyer metadata */}
         <div className="relative flex-1 px-6 md:px-12 lg:px-16 py-6">
-          {/* hosted by — upper left */}
-          <div className="absolute top-[8%] left-[4%] md:left-[6%] text-[#264866]">
-            <p className="font-mono text-xs md:text-sm uppercase tracking-widest leading-loose">
-              hosted&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by:
-              <br />
-              nobody.&nbsp;&nbsp;it's just us.
-            </p>
-          </div>
-
-          {/* intro copy — mid left, indented like the flyers */}
+{/* intro copy — mid left, indented like the flyers */}
           <div className="absolute top-[44%] left-[8%] md:left-[12%] max-w-[16rem] md:max-w-xs">
-            <p className="font-sans text-sm md:text-base text-[#796957] leading-relaxed lowercase">
+            <p className="font-sans text-sm md:text-base text-[#181916] leading-relaxed lowercase">
               we're kyru. viet-owned, matcha-obsessed, and slightly too online.
               serious matcha, unserious people.
             </p>
@@ -100,7 +91,7 @@ function Hero() {
           </div>
 
           {/* vendor-list style block — upper right */}
-          <div className="absolute top-[4%] right-[6%] md:right-[14%] text-left text-[#76805B]">
+          <div className="absolute top-[4%] right-[6%] md:right-[14%] text-left text-[#181916]">
             <p className="font-mono text-xs md:text-sm uppercase tracking-widest leading-loose">
               matcha,&nbsp;&nbsp;&nbsp;&nbsp;drinks,
               <br />
@@ -111,7 +102,7 @@ function Hero() {
           </div>
 
           {/* next pop-up — lower right, stepped like the flyers */}
-          <div className="absolute bottom-[6%] right-[4%] md:right-[8%] text-left text-[#A32A1B]">
+          <div className="absolute bottom-[6%] right-[4%] md:right-[8%] text-left text-[#181916]">
             <p className="font-mono text-xs md:text-sm uppercase tracking-widest leading-loose">
               next&nbsp;pop-up
               <br />
@@ -122,7 +113,7 @@ function Hero() {
           </div>
 
           {/* handwritten note — tucked lower-center-left, tilted */}
-          <div className="hidden md:block absolute bottom-[14%] left-[38%] font-serif italic text-2xl lg:text-3xl whitespace-nowrap pointer-events-none rotate-[-4deg] text-[#3049C9]">
+          <div className="hidden md:block absolute bottom-[14%] left-[38%] font-serif italic text-2xl lg:text-3xl whitespace-nowrap pointer-events-none rotate-[-4deg] text-[#181916]">
             thanks for being here ♡
           </div>
         </div>
@@ -130,7 +121,7 @@ function Hero() {
         {/* giant MATCHA bleeding off the bottom-right */}
         <div
           aria-hidden="true"
-          className="select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.05em] leading-[0.78] text-[29vw] md:text-[31vw] text-right whitespace-nowrap"
+          className="select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.05em] leading-[0.78] text-[32vw] md:text-[35vw] text-right whitespace-nowrap -mb-[2vw]"
         >
           matcha
         </div>
