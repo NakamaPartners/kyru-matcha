@@ -1,112 +1,90 @@
 const events = [
   {
-    date: '07.25.26',
-    day: 'SAT',
+    date: '07.25.26', day: 'SAT',
     city: 'Richmond, VA',
-    venue: 'District Candle Lab',
-    area: 'Mosaic District',
+    venue: 'District Candle Lab', area: 'Mosaic District',
     time: '11am – 5pm (or sold out)',
     status: 'confirmed',
+    img: '/images/event-crowd.jpg',
   },
   {
-    date: '08.09.26',
-    day: 'SUN',
+    date: '08.09.26', day: 'SUN',
     city: 'Washington, DC',
-    venue: 'TBA',
-    area: '',
+    venue: 'TBA', area: '',
     time: 'TBA',
     status: 'coming soon',
+    img: '/images/731292787_17894619918483743_3853595151744230689_n_1784859145526.jpg',
   },
   {
-    date: '08.23.26',
-    day: 'SAT',
+    date: '08.23.26', day: 'SAT',
     city: 'Norfolk, VA',
-    venue: 'TBA',
-    area: '',
+    venue: 'TBA', area: '',
     time: 'TBA',
     status: 'coming soon',
+    img: '/images/702844941_17889320883483743_7037693079210767412_n_1784859145526.jpg',
   },
 ];
 
 export default function Events() {
   return (
-    <main className="pt-32 pb-32 px-6 md:px-16 max-w-5xl mx-auto">
-      {/* header */}
-      <div className="mb-20">
-        <p className="font-mono text-[10px] uppercase tracking-widest opacity-40 mb-4">
-          summer 2026
-        </p>
-        <h1 className="font-sans text-5xl md:text-7xl font-medium lowercase tracking-tight leading-[0.9]">
+    <main className="bg-white text-[#181916] pt-[72px] pb-32">
+
+      {/* Page header */}
+      <div className="px-8 md:px-16 py-16 border-b border-black/[0.07]">
+        <p className="font-mono text-[10px] uppercase tracking-widest opacity-35 mb-4">summer 2026</p>
+        <h1 className="font-sans text-6xl md:text-8xl font-medium lowercase tracking-[-0.04em] leading-[0.85]">
           where we'll<br />be next
         </h1>
       </div>
 
-      {/* photo */}
-      <div className="w-full aspect-[16/7] overflow-hidden mb-20 bg-[#F1EFE8]">
-        <img
-          src="/images/sign-drinks.jpg"
-          alt="kyru specialty matcha sign"
-          className="w-full h-full object-cover object-top"
-        />
-      </div>
+      {/* Event rows — each with its own photo */}
+      {events.map((e, i) => (
+        <div key={i} className="border-b border-black/[0.07] grid grid-cols-1 md:grid-cols-2">
 
-      {/* event list */}
-      <div>
-        {events.map((e, i) => (
-          <div
-            key={i}
-            className="border-t border-[#181916]/10 py-10 flex flex-col md:flex-row md:items-start gap-6 md:gap-0 last:border-b"
-          >
-            {/* date */}
-            <div className="md:w-40 flex-shrink-0">
-              <p className="font-mono text-[10px] uppercase tracking-widest opacity-40">
-                {e.day}
-              </p>
-              <p className="font-mono text-sm tracking-widest mt-1">{e.date}</p>
-            </div>
+          {/* Photo */}
+          <div className={`aspect-[4/3] overflow-hidden bg-[#F1EFE8] ${i % 2 === 1 ? 'md:order-2' : ''}`}>
+            <img
+              src={e.img}
+              alt={e.city}
+              className="w-full h-full object-cover object-center"
+            />
+          </div>
 
-            {/* location */}
-            <div className="flex-1">
-              <h2 className="font-sans text-2xl md:text-3xl font-medium lowercase tracking-tight">
-                {e.city}
-              </h2>
-              <p className="font-mono text-[11px] uppercase tracking-widest opacity-50 mt-2">
-                {e.venue}{e.area ? ` · ${e.area}` : ''}
-              </p>
-              <p className="font-mono text-[11px] uppercase tracking-widest opacity-40 mt-1">
-                {e.time}
-              </p>
-            </div>
-
-            {/* status */}
-            <div className="md:w-32 flex-shrink-0 flex md:justify-end items-start md:pt-1">
-              <span
-                className={`font-mono text-[9px] uppercase tracking-widest border px-2 py-1 ${
-                  e.status === 'confirmed'
-                    ? 'border-[#181916]/60 text-[#181916]'
-                    : 'border-[#181916]/20 text-[#181916]/40'
-                }`}
-              >
+          {/* Info */}
+          <div className={`flex flex-col justify-center px-10 md:px-14 py-14 ${i % 2 === 1 ? 'md:order-1' : ''}`}>
+            <div className="flex items-center gap-4 mb-6">
+              <span className="font-mono text-[9px] uppercase tracking-widest opacity-35">{e.day}</span>
+              <span className="font-mono text-sm tracking-widest opacity-55">{e.date}</span>
+              <span className={`ml-auto font-mono text-[9px] uppercase tracking-widest border px-2 py-1 ${
+                e.status === 'confirmed' ? 'border-black/50' : 'border-black/15 opacity-35'
+              }`}>
                 {e.status}
               </span>
             </div>
-          </div>
-        ))}
-      </div>
 
-      {/* follow note */}
-      <p className="font-mono text-[10px] uppercase tracking-widest opacity-30 mt-20">
-        more dates dropping — follow{' '}
-        <a
-          href="https://www.instagram.com/kyrumatcha/"
-          target="_blank"
-          rel="noreferrer"
-          className="underline underline-offset-4 hover:opacity-60 transition-opacity"
-        >
-          @kyrumatcha
-        </a>{' '}
-        for real-time updates
-      </p>
+            <h2 className="font-sans text-4xl md:text-5xl font-medium lowercase tracking-[-0.03em] mb-3">
+              {e.city}
+            </h2>
+
+            <p className="font-mono text-[10px] uppercase tracking-widest opacity-40 leading-loose">
+              {e.venue}{e.area ? ` · ${e.area}` : ''}
+              <br />
+              {e.time}
+            </p>
+          </div>
+        </div>
+      ))}
+
+      {/* Follow note */}
+      <div className="px-8 md:px-16 pt-16">
+        <p className="font-mono text-[10px] uppercase tracking-widest opacity-25">
+          more dates dropping —{' '}
+          <a href="https://www.instagram.com/kyrumatcha/" target="_blank" rel="noreferrer"
+            className="underline underline-offset-4 hover:opacity-60 transition-opacity">
+            @kyrumatcha
+          </a>
+        </p>
+      </div>
     </main>
   );
 }

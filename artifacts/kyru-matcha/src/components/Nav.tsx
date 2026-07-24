@@ -12,7 +12,6 @@ export default function Nav() {
         kyru matcha
       </NavLink>
       <nav style={{ display: 'flex', gap: '2.5rem' }}>
-        <NavLink to="/menu"   className={link}>menu</NavLink>
         <NavLink to="/events" className={link}>events</NavLink>
         <NavLink to="/about"  className={link}>about</NavLink>
       </nav>
