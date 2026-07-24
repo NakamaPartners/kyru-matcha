@@ -2,24 +2,19 @@ import { useState } from "react";
 
 // Every photo used exactly ONCE across the entire site
 const P = {
-  // photowall (6) — best wide/editorial shots
-  pw1: "/images/sc_650231045.jpg",   // 4-drink lineup — colourful, brand-defining wide hero
-  pw2: "/images/692380241.jpg",      // matcha drinks + flower arrangement — lush portrait
-  pw3: "/images/713664623.jpg",
-  pw4: "/images/731111343.jpg",
-  pw5: "/images/722407942.jpg",
-  pw6: "/images/702968795.jpg",
-  // drink card sidebar — whisking matcha = craft/process, perfect for "what we're making"
-  sidebar: "/images/689893832.jpg",
-  // drink cards — matched to actual drinks
-  d1: "/images/650807209.jpg",       // white rabbit matcha — the pandan green drink, literally this
-  d2: "/images/sc_649237090.jpg",    // white rabbit hojicha — cinnamon dark iced = hojicha warmth
-  d3: "/images/sc_649894030.jpg",    // the make up — purple swirl seasonal drink
-  // gallery strip — personality shots
-  g1: "/images/sc_641415374.jpg",    // "need matcha?" sandwich board — brand voice
-  g2: "/images/701156664.jpg",       // fig drink + dark on oat milk carton — editorial
-  g3: "/images/742953955.jpg",
-  g4: "/images/708528216.jpg",
+  // visual section
+  v_wide:  "/images/sc_650231045.jpg",   // 4-drink lineup — cinematic full-bleed
+  v_tall1: "/images/692380241.jpg",      // flowers + matcha — lush portrait
+  v_tall2: "/images/sc_649894030.jpg",   // purple swirl — striking close-up
+  v_sq1:   "/images/650807209.jpg",      // green pandan matcha
+  v_sq2:   "/images/sc_649237090.jpg",   // cinnamon iced
+  v_sq3:   "/images/689893832.jpg",      // whisking hands — craft
+  v_sq4:   "/images/sc_641415374.jpg",   // "need matcha?" sign
+  v_sq5:   "/images/701156664.jpg",      // fig drink editorial
+  v_sq6:   "/images/713664623.jpg",
+  v_sq7:   "/images/722407942.jpg",
+  v_sq8:   "/images/742953955.jpg",
+  v_sq9:   "/images/708528216.jpg",
   // logo
   logo: "/images/image_1_1784859145526.png",
 };
@@ -116,52 +111,53 @@ function PhotoWall() {
   );
 }
 
-/* ─── Drink catalogue ───────────────────────────────────────── */
-function Catalogue() {
-  const drinks = [
-    { img: P.d1, name: "white rabbit matcha",  sub: "ceremonial grade · oat milk · pandan" },
-    { img: P.d2, name: "white rabbit hojicha", sub: "roasted hojicha · oat milk · cinnamon" },
-    { img: P.d3, name: "the make up",          sub: "rotating · ask us at the pop-up" },
-  ];
-
+/* ─── Visual spread ─────────────────────────────────────────── */
+function Visual() {
   return (
-    <section id="catalogue" className="border-t border-black/[0.07]">
+    <section className="border-t border-black/[0.07]">
 
-      {/* Section header */}
-      <div className="px-8 md:px-16 py-12 flex items-end justify-between">
-        <h2 className="font-sans text-5xl md:text-7xl font-medium lowercase tracking-[-0.04em] leading-[0.85]">on rotation</h2>
-        <p className="font-mono text-[10px] uppercase tracking-widest opacity-25 hidden md:block">small · seasonal · always changing</p>
+      {/* 1. Full-bleed cinematic — one big moment */}
+      <div className="w-full overflow-hidden" style={{ height: '62vh', minHeight: 420 }}>
+        <img src={P.v_wide} alt="" className="w-full h-full object-cover" />
       </div>
 
-      {/* Full-width alternating rows */}
-      {drinks.map((d, i) => (
-        <div key={i} className="border-t border-black/[0.07] grid grid-cols-1 md:grid-cols-2">
+      {/* 2. Broken grid — three unequal columns, one replaced by text */}
+      <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1.4fr] border-t border-black/[0.07]">
 
-          {/* Photo — large, dominant */}
-          <div className={`aspect-[3/4] md:aspect-auto md:min-h-[520px] overflow-hidden bg-[#F1EFE8] ${i % 2 === 1 ? 'md:order-2' : ''}`}>
-            <img src={d.img} alt={d.name} className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700" />
-          </div>
-
-          {/* Text — minimal, centered */}
-          <div className={`flex flex-col justify-center px-10 md:px-16 py-14 ${i % 2 === 1 ? 'md:order-1' : ''}`}>
-            <h3 className="font-sans text-4xl md:text-5xl font-medium lowercase tracking-[-0.03em] leading-[0.9] mb-5">{d.name}</h3>
-            <p className="font-mono text-[10px] uppercase tracking-widest opacity-35 leading-loose">{d.sub}</p>
-          </div>
+        {/* Left — tall portrait */}
+        <div className="aspect-[3/4] md:aspect-auto overflow-hidden md:border-r border-black/[0.07]" style={{ minHeight: 480 }}>
+          <img src={P.v_tall1} alt="" className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700" />
         </div>
-      ))}
-    </section>
-  );
-}
 
-/* ─── Gallery strip ─────────────────────────────────────────── */
-function GalleryStrip() {
-  return (
-    <section className="flex flex-row overflow-x-auto border-t border-black/[0.07]" style={{ scrollbarWidth: 'none' }}>
-      {[P.g1, P.g2, P.g3, P.g4].map((src, i) => (
-        <div key={i} className="flex-none w-[70vw] md:w-[33vw] lg:w-[25vw] aspect-square overflow-hidden">
-          <img src={src} alt="" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" />
+        {/* Center — text panel, breaks the photo rhythm */}
+        <div className="hidden md:flex flex-col justify-between px-10 py-12 border-r border-black/[0.07] bg-[#F9F8F5]">
+          <p className="font-mono text-[9px] uppercase tracking-widest opacity-30">@kyrumatcha</p>
+          <div>
+            <p className="font-serif italic text-3xl leading-snug mb-8" style={{ opacity: 0.75 }}>
+              find us<br />when you<br />least expect it.
+            </p>
+            <a href="https://www.instagram.com/kyrumatcha/" target="_blank" rel="noreferrer"
+              className="font-mono text-[10px] uppercase tracking-widest opacity-40 hover:opacity-80 transition-opacity">
+              follow along →
+            </a>
+          </div>
+          <p className="font-mono text-[9px] uppercase tracking-widest opacity-20">viet-owned · matcha-obsessed</p>
         </div>
-      ))}
+
+        {/* Right — tall portrait, different crop feel */}
+        <div className="aspect-[3/4] md:aspect-auto overflow-hidden border-t md:border-t-0 border-black/[0.07]" style={{ minHeight: 480 }}>
+          <img src={P.v_tall2} alt="" className="w-full h-full object-cover object-top hover:scale-[1.02] transition-transform duration-700" />
+        </div>
+      </div>
+
+      {/* 3. Photo strip — 4 equal squares, scrollable on mobile */}
+      <div className="border-t border-black/[0.07] flex md:grid md:grid-cols-4 overflow-x-auto" style={{ scrollbarWidth: 'none' }}>
+        {[P.v_sq1, P.v_sq2, P.v_sq3, P.v_sq4].map((src, i) => (
+          <div key={i} className="flex-none w-[72vw] md:w-auto aspect-square overflow-hidden border-r border-black/[0.07] last:border-0">
+            <img src={src} alt="" className="w-full h-full object-cover hover:scale-[1.04] transition-transform duration-700" />
+          </div>
+        ))}
+      </div>
     </section>
   );
 }
@@ -238,8 +234,7 @@ export default function Home() {
     <div className="bg-white text-[#181916] overflow-x-hidden pt-[72px]">
       <Hero />
       <Ticker />
-      <Catalogue />
-      <GalleryStrip />
+      <Visual />
       <Links />
       <Footer />
 
