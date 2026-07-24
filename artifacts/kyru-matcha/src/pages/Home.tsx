@@ -250,7 +250,6 @@ export default function Home() {
     <div className="bg-white text-[#181916] overflow-x-hidden pt-[72px]">
       <Hero />
       <Ticker />
-      <PhotoWall />
       <Catalogue />
       <GalleryStrip />
       <Links />
