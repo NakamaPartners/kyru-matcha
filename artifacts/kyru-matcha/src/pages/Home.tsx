@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 // Every photo used exactly ONCE across the entire site
 const P = {
   // visual section — 3 photos only
-  v_drink:   "/images/sc_649894030.jpg",   // purple swirl matcha — striking close-up
+  v_drink:   "/images/sc_658925107.jpg",    // 4-cup flat lay, sunlit — hero matcha shot
   v_whisk:   "/images/689893832.jpg",      // whisking hands — craft/process
   v_life:    "/images/692380241.jpg",      // flowers + matcha — lifestyle, different vibe
   // logo
