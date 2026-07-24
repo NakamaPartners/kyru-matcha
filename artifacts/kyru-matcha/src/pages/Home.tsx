@@ -271,40 +271,40 @@ function Collab() {
   );
 }
 
-/* ─── Links ─────────────────────────────────────────────────── */
-function Links() {
-  const links = [
-    { label: "order KAI ceremonial matcha",          sub: "fill out the order form",                    href: "https://forms.gle/y4TgUshBGLF54e1T8",                                                                                                icon: "🍵" },
-    { label: "booking inquiries",                     sub: "pop-up collabs & events — dm or email",      href: "https://www.instagram.com/kyrumatcha/",                                                                                              icon: "📅" },
-    { label: "amazon storefront",                     sub: "matcha & pop-up essentials we actually use", href: "https://www.amazon.com/shop/kyrumatcha",                                                                                             icon: "📦" },
-    { label: "15% off nami matcha",                   sub: "use code KEVIN32625 at checkout",            href: "https://namimatcha.com",                                                                                                            icon: "✦"  },
-    { label: "currently playing — v.1",               sub: "the kyru playlist on spotify",               href: "https://open.spotify.com/playlist/2LVtZJETaWrxMSQkN8q1u6?si=bcca59165f944082",                                                   icon: "♪"  },
-    { label: "@kyrumatcha",                           sub: "instagram",                                  href: "https://www.instagram.com/kyrumatcha/",                                                                                             icon: "↗"  },
-    { label: "@kyrukev",                              sub: "tiktok",                                     href: "https://www.tiktok.com/@kyrukev",                                                                                                    icon: "↗"  },
-  ];
-
+/* ─── Now Playing ───────────────────────────────────────────── */
+function NowPlaying() {
   return (
-    <section id="links" className="border-t border-black/[0.07]">
-      <div className="px-8 md:px-16 py-14">
-        <h2 className="font-sans text-5xl md:text-7xl font-medium lowercase tracking-[-0.04em] leading-[0.85] mb-2">links</h2>
-        <p className="font-mono text-[10px] uppercase tracking-widest opacity-30">everything in one place</p>
+    <a
+      href="https://open.spotify.com/playlist/2LVtZJETaWrxMSQkN8q1u6?si=bcca59165f944082"
+      target="_blank"
+      rel="noreferrer"
+      className="group flex items-center justify-between px-8 md:px-16 py-5 bg-[#181916] text-white border-t border-white/[0.07] hover:bg-[#222] transition-colors"
+    >
+      <div className="flex items-center gap-4">
+        {/* Animated bars icon */}
+        <span className="flex items-end gap-[3px] h-4 shrink-0">
+          {[1, 1.5, 0.8, 1.3].map((h, i) => (
+            <span
+              key={i}
+              className="w-[3px] bg-white/50 rounded-sm"
+              style={{
+                height: `${h * 10}px`,
+                animation: `bar-bounce ${0.6 + i * 0.15}s ease-in-out infinite alternate`,
+              }}
+            />
+          ))}
+        </span>
+        <div>
+          <p className="font-mono text-[10px] uppercase tracking-widest text-white/35">currently playing</p>
+          <p className="font-sans text-sm font-medium lowercase tracking-tight text-white/80 mt-0.5">
+            the kyru playlist — v.1
+          </p>
+        </div>
       </div>
-      <div className="border-t border-black/[0.07]">
-        {links.map((l, i) => (
-          <a key={i} href={l.href} target="_blank" rel="noreferrer"
-            className="flex items-center justify-between px-8 md:px-16 py-7 border-b border-black/[0.07] hover:bg-[#F9F8F5] transition-colors group">
-            <div className="flex items-center gap-6">
-              <span className="text-xl w-8 flex-shrink-0 opacity-60">{l.icon}</span>
-              <div>
-                <p className="font-sans text-lg md:text-xl font-medium lowercase tracking-[-0.01em]">{l.label}</p>
-                <p className="font-mono text-[10px] uppercase tracking-widest opacity-40 mt-1">{l.sub}</p>
-              </div>
-            </div>
-            <span className="font-mono text-xl opacity-20 group-hover:opacity-60 transition-opacity">→</span>
-          </a>
-        ))}
-      </div>
-    </section>
+      <span className="font-mono text-xs text-white/25 group-hover:text-white/60 transition-colors">
+        open spotify ↗
+      </span>
+    </a>
   );
 }
 
@@ -312,12 +312,28 @@ function Links() {
 function Footer() {
   const [done, setDone] = useState(false);
   return (
-    <footer className="border-t border-black/[0.07] px-8 md:px-16 py-16 flex flex-col md:flex-row gap-12 md:gap-0 justify-between items-start">
+    <footer className="border-t border-black/[0.07] px-8 md:px-16 py-16 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0 items-start">
+      {/* Brand */}
       <div>
         <img src={P.logo} alt="kyru" className="w-10 h-10 object-contain opacity-50 mb-6 grayscale mix-blend-multiply" />
         <p className="font-mono text-[10px] uppercase tracking-widest opacity-30">© 2026 kyru matcha</p>
         <p className="font-sans text-sm opacity-35 lowercase mt-1">serious matcha, unserious people.</p>
       </div>
+
+      {/* Social */}
+      <div className="flex flex-col gap-3">
+        <p className="font-mono text-[10px] uppercase tracking-widest opacity-30 mb-1">follow along</p>
+        <a href="https://www.instagram.com/kyrumatcha/" target="_blank" rel="noreferrer"
+          className="font-mono text-xs lowercase tracking-wide opacity-50 hover:opacity-90 transition-opacity">
+          @kyrumatcha · instagram ↗
+        </a>
+        <a href="https://www.tiktok.com/@kyrukev" target="_blank" rel="noreferrer"
+          className="font-mono text-xs lowercase tracking-wide opacity-50 hover:opacity-90 transition-opacity">
+          @kyrukev · tiktok ↗
+        </a>
+      </div>
+
+      {/* Email signup */}
       <div className="max-w-sm w-full">
         <p className="font-mono text-[10px] uppercase tracking-widest opacity-40 mb-5">get first dibs on pop-ups</p>
         {done ? (
@@ -345,7 +361,7 @@ export default function Home() {
       <Ticker />
       <Visual />
       <Collab />
-      <Links />
+      <NowPlaying />
       <Footer />
 
       <style dangerouslySetInnerHTML={{ __html: `
@@ -354,6 +370,10 @@ export default function Home() {
           100% { transform: translate3d(-50%,0,0); }
         }
         .animate-ticker { animation: ticker 22s linear infinite; will-change: transform; backface-visibility: hidden; }
+        @keyframes bar-bounce {
+          from { transform: scaleY(0.4); }
+          to   { transform: scaleY(1); }
+        }
       `}} />
     </div>
   );

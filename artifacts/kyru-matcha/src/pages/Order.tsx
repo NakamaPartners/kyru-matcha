@@ -66,6 +66,19 @@ export default function Order() {
         </div>
       </div>
 
+      {/* Nami callout */}
+      <div className="border-t border-black/[0.07] px-8 md:px-16 py-8 flex flex-col md:flex-row md:items-center gap-3 md:gap-8">
+        <p className="font-mono text-[9px] uppercase tracking-widest opacity-25">also worth trying</p>
+        <a
+          href="https://namimatcha.com"
+          target="_blank"
+          rel="noreferrer"
+          className="font-mono text-[10px] uppercase tracking-widest opacity-40 hover:opacity-80 transition-opacity"
+        >
+          nami matcha · 15% off with code <strong className="font-semibold">KEVIN32625</strong> ↗
+        </a>
+      </div>
+
     </main>
   );
 }
