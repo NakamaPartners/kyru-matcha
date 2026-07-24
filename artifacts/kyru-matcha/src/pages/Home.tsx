@@ -2,19 +2,10 @@ import { useState } from "react";
 
 // Every photo used exactly ONCE across the entire site
 const P = {
-  // visual section
-  v_wide:  "/images/sc_650231045.jpg",   // 4-drink lineup — cinematic full-bleed
-  v_tall1: "/images/692380241.jpg",      // flowers + matcha — lush portrait
-  v_tall2: "/images/sc_649894030.jpg",   // purple swirl — striking close-up
-  v_sq1:   "/images/650807209.jpg",      // green pandan matcha
-  v_sq2:   "/images/sc_649237090.jpg",   // cinnamon iced
-  v_sq3:   "/images/689893832.jpg",      // whisking hands — craft
-  v_sq4:   "/images/sc_641415374.jpg",   // "need matcha?" sign
-  v_sq5:   "/images/701156664.jpg",      // fig drink editorial
-  v_sq6:   "/images/713664623.jpg",
-  v_sq7:   "/images/722407942.jpg",
-  v_sq8:   "/images/742953955.jpg",
-  v_sq9:   "/images/708528216.jpg",
+  // visual section — 3 photos only
+  v_drink:   "/images/sc_649894030.jpg",   // purple swirl matcha — striking close-up
+  v_whisk:   "/images/689893832.jpg",      // whisking hands — craft/process
+  v_life:    "/images/692380241.jpg",      // flowers + matcha — lifestyle, different vibe
   // logo
   logo: "/images/image_1_1784859145526.png",
 };
@@ -112,49 +103,43 @@ function PhotoWall() {
 }
 
 /* ─── Visual spread ─────────────────────────────────────────── */
+const COLS = [
+  { src: P.v_drink, label: 'matcha',   sub: 'on the pop-up menu' },
+  { src: P.v_whisk, label: 'prepared',  sub: 'made to order, every time' },
+  { src: P.v_life,  label: 'the vibe',  sub: 'find us when you least expect it' },
+];
+
 function Visual() {
   return (
     <section className="border-t border-black/[0.07]">
+      <div className="grid grid-cols-1 md:grid-cols-3">
+        {COLS.map((col, i) => (
+          <div key={i} className={`flex flex-col border-black/[0.07] ${i < COLS.length - 1 ? 'md:border-r' : ''} ${i > 0 ? 'border-t md:border-t-0' : ''}`}>
 
-      {/* 1. Full-bleed cinematic — one big moment */}
-      <div className="w-full overflow-hidden" style={{ height: '62vh', minHeight: 420 }}>
-        <img src={P.v_wide} alt="" className="w-full h-full object-cover" />
-      </div>
+            {/* Photo — tall portrait */}
+            <div className="overflow-hidden" style={{ aspectRatio: '4/5' }}>
+              <img
+                src={col.src}
+                alt=""
+                className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700"
+              />
+            </div>
 
-      {/* 2. Broken grid — three unequal columns, one replaced by text */}
-      <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1.4fr] border-t border-black/[0.07]">
-
-        {/* Left — tall portrait */}
-        <div className="aspect-[3/4] md:aspect-auto overflow-hidden md:border-r border-black/[0.07]" style={{ minHeight: 480 }}>
-          <img src={P.v_tall1} alt="" className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700" />
-        </div>
-
-        {/* Center — text panel, breaks the photo rhythm */}
-        <div className="hidden md:flex flex-col justify-between px-10 py-12 border-r border-black/[0.07] bg-[#F9F8F5]">
-          <p className="font-mono text-[9px] uppercase tracking-widest opacity-30">@kyrumatcha</p>
-          <div>
-            <p className="font-serif italic text-3xl leading-snug mb-8" style={{ opacity: 0.75 }}>
-              find us<br />when you<br />least expect it.
-            </p>
-            <a href="https://www.instagram.com/kyrumatcha/" target="_blank" rel="noreferrer"
-              className="font-mono text-[10px] uppercase tracking-widest opacity-40 hover:opacity-80 transition-opacity">
-              follow along →
-            </a>
-          </div>
-          <p className="font-mono text-[9px] uppercase tracking-widest opacity-20">viet-owned · matcha-obsessed</p>
-        </div>
-
-        {/* Right — tall portrait, different crop feel */}
-        <div className="aspect-[3/4] md:aspect-auto overflow-hidden border-t md:border-t-0 border-black/[0.07]" style={{ minHeight: 480 }}>
-          <img src={P.v_tall2} alt="" className="w-full h-full object-cover object-top hover:scale-[1.02] transition-transform duration-700" />
-        </div>
-      </div>
-
-      {/* 3. Photo strip — 4 equal squares, scrollable on mobile */}
-      <div className="border-t border-black/[0.07] flex md:grid md:grid-cols-4 overflow-x-auto" style={{ scrollbarWidth: 'none' }}>
-        {[P.v_sq1, P.v_sq2, P.v_sq3, P.v_sq4].map((src, i) => (
-          <div key={i} className="flex-none w-[72vw] md:w-auto aspect-square overflow-hidden border-r border-black/[0.07] last:border-0">
-            <img src={src} alt="" className="w-full h-full object-cover hover:scale-[1.04] transition-transform duration-700" />
+            {/* Card footer */}
+            <div className="px-6 py-6 border-t border-black/[0.07] flex flex-col gap-3">
+              <div>
+                <p className="font-sans text-lg font-medium lowercase tracking-tight">{col.label}</p>
+                <p className="font-mono text-[9px] uppercase tracking-widest opacity-30 mt-1">{col.sub}</p>
+              </div>
+              <a
+                href="https://www.instagram.com/kyrumatcha/"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-block border border-black/20 px-4 py-2 font-mono text-[9px] uppercase tracking-widest hover:bg-[#181916] hover:text-white hover:border-[#181916] transition-colors self-start"
+              >
+                find a pop-up →
+              </a>
+            </div>
           </div>
         ))}
       </div>
