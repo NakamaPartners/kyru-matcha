@@ -225,7 +225,7 @@ function Hero() {
         <motion.div
           aria-hidden="true"
           style={{ x: kyruX, opacity: wordsOpacity }}
-          className="select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.03em] leading-[0.72] text-[36vw] md:text-[31vw] -mt-[8vw] -ml-[2vw] will-change-transform"
+          className="select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.03em] leading-[0.72] text-[42vw] md:text-[37vw] -mt-[10vw] -ml-[2.5vw] will-change-transform"
         >
           kyru
         </motion.div>
@@ -290,7 +290,7 @@ function Hero() {
         <motion.div
           aria-hidden="true"
           style={{ x: matchaX, opacity: wordsOpacity }}
-          className="select-none pointer-events-none font-sans font-medium lowercase tracking-tight leading-[0.78] text-[24vw] md:text-[18.5vw] -mb-[2vw] text-right -mr-[1vw] will-change-transform"
+          className="select-none pointer-events-none font-sans font-medium lowercase tracking-tight leading-[0.78] text-[28vw] md:text-[23vw] -mb-[3vw] text-right -mr-[1.5vw] will-change-transform"
         >
           matcha
         </motion.div>
