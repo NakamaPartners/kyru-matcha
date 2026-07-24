@@ -90,49 +90,84 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section id="our-thing" className="relative flex flex-col md:flex-row min-h-[85vh] bottom-line">
-        <div className="flex-1 flex flex-col justify-end p-6 md:p-12 lg:p-20 grid-lines">
-          <div className="max-w-3xl relative">
-            <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-medium tracking-tight leading-[0.9] mb-8 font-sans lowercase">
-              not a brand,<br />just us talking.
-            </h1>
-            <div className="flex flex-col sm:flex-row gap-8 sm:items-end mt-12 md:mt-24">
-              <p className="text-sm md:text-base max-w-sm text-primary/80 leading-relaxed font-sans lowercase">
-                we're kyru. viet-owned, matcha-obsessed, and slightly too online. serious matcha, unserious people.
-              </p>
-              <a
-                href="#what-we-make"
-                className="link-arrow font-mono text-xs lowercase tracking-widest hover:text-brand"
-              >
-                explore catalogue <span className="text-lg leading-none font-sans">→</span>
-              </a>
-            </div>
-          </div>
+      {/* Hero Section — poster style: giant type bleeding off top & bottom */}
+      <section
+        id="our-thing"
+        className="relative flex flex-col justify-between min-h-[92vh] bottom-line overflow-hidden"
+      >
+        {/* giant KYRU bleeding off the top-left */}
+        <h1 className="sr-only">kyru matcha — not a brand, just us talking.</h1>
+        <div
+          aria-hidden="true"
+          className="select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.03em] leading-[0.72] text-[36vw] md:text-[31vw] -mt-[8vw] -ml-[2vw] text-primary"
+        >
+          kyru
         </div>
-        <div className="md:w-2/5 border-t border-primary md:border-t-0 p-8 md:p-12 flex items-center justify-center bg-secondary/5 relative overflow-hidden">
-          <div className="relative w-full max-w-md aspect-[3/4] max-h-[75vh]">
-            {/* Cobalt handwritten note */}
-            <div className="absolute -top-12 -right-4 md:-right-8 z-20 rotate-6 font-serif italic text-3xl md:text-4xl text-[#3049C9] whitespace-nowrap pointer-events-none">
-              thanks for being here ♡
-            </div>
-            
-            <div className="w-full h-full overflow-hidden">
+
+        {/* middle band — scattered poster metadata */}
+        <div className="relative flex-1 grid grid-cols-2 md:grid-cols-3 gap-8 px-6 md:px-12 lg:px-16 py-6 pt-[7vw] md:pt-[6vw] items-center">
+          <div className="col-span-1 self-start">
+            <p className="font-mono text-xs md:text-sm uppercase tracking-widest leading-relaxed">
+              hosted&nbsp;&nbsp;&nbsp;&nbsp;by:
+              <br />
+              nobody. it's just us.
+            </p>
+            <p className="font-sans text-sm md:text-base max-w-xs text-primary/80 leading-relaxed lowercase mt-8">
+              we're kyru. viet-owned, matcha-obsessed, and slightly too online.
+              serious matcha, unserious people.
+            </p>
+            <a
+              href="#what-we-make"
+              className="link-arrow font-mono text-xs lowercase tracking-widest hover:text-brand inline-block mt-8"
+            >
+              explore catalogue <span className="text-lg leading-none font-sans">→</span>
+            </a>
+          </div>
+
+          <div className="hidden md:flex justify-center relative">
+            <div className="relative w-full max-w-[260px] aspect-[3/4]">
+              <div className="absolute -top-10 -right-10 z-20 rotate-6 font-serif italic text-2xl lg:text-3xl text-[#3049C9] whitespace-nowrap pointer-events-none">
+                thanks for being here ♡
+              </div>
               <img
                 src={Images.hero}
-                alt="Kyru preparation"
-                className="object-cover w-full h-full hover:scale-105 transition-transform duration-[1.5s] ease-out"
+                alt="kyru matcha drink"
+                className="object-cover w-full h-full"
               />
-            </div>
-            <div className="absolute bottom-4 left-4 flex gap-2">
-              <span className="bg-background px-2 py-1 text-[10px] font-mono uppercase tracking-widest border border-primary">
-                Fig. 01
-              </span>
-              <span className="bg-background px-2 py-1 text-[10px] font-mono uppercase tracking-widest border border-primary text-brand">
-                POP-UP, RICHMOND VA
-              </span>
+              <div className="absolute bottom-3 left-3 flex gap-2">
+                <span className="bg-background px-2 py-1 text-[10px] font-mono uppercase tracking-widest border border-primary">
+                  Fig. 01
+                </span>
+              </div>
             </div>
           </div>
+
+          <div className="col-span-1 self-end text-right md:text-left md:justify-self-end">
+            <p className="font-mono text-xs md:text-sm uppercase tracking-widest leading-relaxed">
+              matcha,&nbsp;&nbsp;&nbsp;&nbsp;drinks,
+              <br />
+              pop-ups,&nbsp;&nbsp;good&nbsp;people
+              <br />
+              and&nbsp;&nbsp;more
+            </p>
+            <p className="font-mono text-xs md:text-sm uppercase tracking-widest leading-relaxed mt-8 text-brand">
+              next pop-up
+              <br />
+              richmond, va
+              <br />
+              07.25.26 · 11am–5pm
+              <br />
+              (or sold out)
+            </p>
+          </div>
+        </div>
+
+        {/* giant MATCHA bleeding off the bottom-right */}
+        <div
+          aria-hidden="true"
+          className="select-none pointer-events-none font-sans font-medium lowercase tracking-tight leading-[0.72] text-[22vw] md:text-[17.5vw] -mb-[6vw] text-right -mr-[1vw] text-primary"
+        >
+          matcha
         </div>
       </section>
 
