@@ -41,12 +41,6 @@ export default function Events() {
       {/* ── Dual-video hero — horizontal crop ───────────────────── */}
       <div className="border-b border-black/[0.07]">
 
-        {/* Label row above the videos */}
-        <div className="flex items-center justify-between px-8 md:px-16 py-5 border-b border-black/[0.07]">
-          <p className="font-mono text-[10px] uppercase tracking-widest opacity-30">summer 2026</p>
-          <p className="font-serif italic text-lg opacity-40">find us.</p>
-        </div>
-
         {/* Asymmetric split — v1 dominant (3/5), v2 accent (2/5) */}
         <div className="grid grid-cols-[3fr_2fr]" style={{ height: '60vh', minHeight: 320 }}>
           {/* v1 — primary, crops portrait to wide landscape */}
