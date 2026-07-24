@@ -130,7 +130,7 @@ function Hero() {
         {/* giant MATCHA bleeding off the bottom-right */}
         <div
           aria-hidden="true"
-          className="select-none pointer-events-none font-sans font-medium lowercase tracking-tight leading-[0.78] text-[28vw] md:text-[23vw] -mb-[3vw] text-right -mr-[1.5vw]"
+          className="select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.03em] leading-[0.72] text-[42vw] md:text-[37vw] -mb-[13vw] text-right -mr-[3vw] whitespace-nowrap"
         >
           matcha
         </div>
