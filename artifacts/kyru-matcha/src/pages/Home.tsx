@@ -122,7 +122,7 @@ function Stool({ color, size, className }: { color: string; size: number; classN
 // each frame gets a real photo texture behind a color tint
 const heroFrames = [
   { bg: "#76805B", fg: "#EFE87B", motif: "scribble", motifColor: "#C97B4A", tex: "/images/tex-matcha.png", tint: 0.5 }, // matcha swirl / butter yellow
-  { bg: "#264866", fg: "#E9BFD3", motif: "asterisk", motifColor: "#1A3049", tex: "/images/tex-denim.png", tint: 0.55 }, // denim / soft pink
+  { bg: "#8FA6B8", fg: "#1E3A5C", motif: "asterisk", motifColor: "#1E3A5C", tex: "/images/tex-chambray.png", tint: 0.2 }, // light chambray / navy, like the cowboy flyer
   { bg: "#F1EFE8", fg: "#181916", motif: "star", motifColor: "#181916", tex: "/images/tex-stone.png", tint: 0.25 }, // bone stone / ink
   { bg: "#181916", fg: "#F1EFE8", motif: "flower", motifColor: "#E4E2D5", tex: "/images/tex-matcha.png", tint: 0.88 }, // ink-washed swirl / bone
   { bg: "#D8D2C4", fg: "#A32A1B", motif: "stool", motifColor: "#A32A1B", tex: "/images/tex-kraft.png", tint: 0.3 }, // kraft paper / brick red
