@@ -39,13 +39,6 @@
 }
 
 @layer base {
-  html, body {
-    background-image: url('/images/texture-paper.webp');
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-  }
-
   :root {
     --background: 49 20% 93%; /* #F1EFE8 - Base warm bone white */
     --foreground: 90 6% 9%; /* #181916 - Primary softened ink black */
