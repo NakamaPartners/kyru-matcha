@@ -281,7 +281,7 @@ function Visual() {
 
         {/* Name 1 — white rabbit matcha — big, lower-left, rotated */}
         <div className="absolute" style={{ left: '1%', bottom: '9%', transform: 'rotate(-1.5deg)' }}>
-          <p className="font-sans font-medium lowercase tracking-[-0.05em] leading-[0.85] text-[#181916]"
+          <p className="font-sans font-medium lowercase tracking-[-0.05em] leading-[0.85] text-white"
             style={{ fontSize: 'clamp(2rem, 4.5vw, 5.5rem)' }}>
             white rabbit<br />matcha
           </p>
