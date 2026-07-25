@@ -66,10 +66,11 @@ export default function Booking() {
       </section>
 
       {/* ── SERVICES — two-col with photo collage ────────────────── */}
-      <section className="border-b border-black/[0.07] grid grid-cols-1 md:grid-cols-[1.1fr_1fr]">
+      <section className="border-b border-black/[0.07] grid grid-cols-1 md:grid-cols-[1.1fr_1fr]"
+        style={{ backgroundImage: "url('/images/texture-tan.webp')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
 
         {/* Left — header + services */}
-        <div className="px-8 md:px-14 py-14 md:border-r border-black/[0.07]">
+        <div className="px-8 md:px-14 py-14 md:border-r border-black/[0.15]">
           <div className="flex items-baseline justify-between mb-12">
             <h2
               className="font-display lowercase tracking-[-0.04em] leading-none"
@@ -106,39 +107,39 @@ export default function Booking() {
         {/* Right — scattered photo collage */}
         <div className="relative hidden md:block" style={{ minHeight: 520 }}>
 
-          {/* Photo 1 — upper-left, tilted */}
+          {/* Photo 1 — KYRU sign, top-left, tall portrait */}
           <div className="absolute overflow-hidden"
-            style={{ top: '6%', left: '8%', width: '54%', transform: 'rotate(-2deg)', zIndex: 3 }}>
-            <div style={{ aspectRatio: '4/5' }}>
-              <img src="/images/about-3.webp" alt="" loading="lazy" decoding="async"
-                className="w-full h-full object-cover" />
-            </div>
-            <p className="font-mono text-[7px] uppercase tracking-widest opacity-25 mt-1">pop-up vol. iv</p>
-          </div>
-
-          {/* Photo 2 — lower-right, opposite tilt */}
-          <div className="absolute overflow-hidden"
-            style={{ bottom: '5%', right: '6%', width: '46%', transform: 'rotate(2.2deg)', zIndex: 4 }}>
-            <div style={{ aspectRatio: '1/1' }}>
-              <img src="/images/collab-1.webp" alt="" loading="lazy" decoding="async"
-                className="w-full h-full object-cover object-center" />
-            </div>
-            <p className="font-mono text-[7px] uppercase tracking-widest opacity-25 mt-1 text-right">collab</p>
-          </div>
-
-          {/* Photo 3 — mid, small, peeking between */}
-          <div className="absolute overflow-hidden"
-            style={{ top: '38%', right: '12%', width: '30%', transform: 'rotate(-1.3deg)', zIndex: 5 }}>
+            style={{ top: '5%', left: '5%', width: '46%', transform: 'rotate(-2deg)', zIndex: 3 }}>
             <div style={{ aspectRatio: '3/4' }}>
-              <img src="/images/about-5.webp" alt="" loading="lazy" decoding="async"
+              <img src="/images/svc-kyru-sign.jpg" alt="" loading="lazy" decoding="async"
+                className="w-full h-full object-cover object-top" />
+            </div>
+            <p className="font-mono text-[7px] uppercase tracking-widest opacity-40 mt-1">kyru specialty matcha</p>
+          </div>
+
+          {/* Photo 2 — drinks tray, bottom-right, landscape */}
+          <div className="absolute overflow-hidden"
+            style={{ bottom: '6%', right: '4%', width: '52%', transform: 'rotate(1.6deg)', zIndex: 4 }}>
+            <div style={{ aspectRatio: '4/3' }}>
+              <img src="/images/svc-drinks-tray.jpg" alt="" loading="lazy" decoding="async"
                 className="w-full h-full object-cover" />
+            </div>
+            <p className="font-mono text-[7px] uppercase tracking-widest opacity-40 mt-1 text-right">custom drinks</p>
+          </div>
+
+          {/* Photo 3 — need matcha sign, tucked between, small */}
+          <div className="absolute overflow-hidden"
+            style={{ top: '38%', right: '8%', width: '32%', transform: 'rotate(-1.5deg)', zIndex: 5 }}>
+            <div style={{ aspectRatio: '3/4' }}>
+              <img src="/images/svc-need-matcha.jpg" alt="" loading="lazy" decoding="async"
+                className="w-full h-full object-cover object-center" />
             </div>
           </div>
 
           {/* Ambient label */}
-          <p className="absolute font-mono text-[8px] uppercase tracking-widest opacity-15 pointer-events-none"
-            style={{ bottom: '52%', left: '6%', transform: 'rotate(-90deg)', transformOrigin: 'left bottom', whiteSpace: 'nowrap' }}>
-            richmond · dc · norfolk
+          <p className="absolute font-mono text-[8px] uppercase tracking-widest opacity-20 pointer-events-none"
+            style={{ top: '48%', left: '5%', transform: 'rotate(-90deg)', transformOrigin: 'left top', whiteSpace: 'nowrap' }}>
+            markets · events · collabs
           </p>
 
         </div>
