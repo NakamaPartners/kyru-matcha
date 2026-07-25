@@ -65,41 +65,82 @@ export default function Booking() {
         </div>
       </section>
 
-      {/* ── SERVICES — typographic scale variation ────────────────── */}
-      <section className="border-b border-black/[0.07] px-8 md:px-14 py-14">
+      {/* ── SERVICES — two-col with photo collage ────────────────── */}
+      <section className="border-b border-black/[0.07] grid grid-cols-1 md:grid-cols-[1.1fr_1fr]">
 
-        {/* Header */}
-        <div className="flex items-baseline justify-between mb-12">
-          <h2
-            className="font-display lowercase tracking-[-0.04em] leading-none"
-            style={{ fontSize: 'clamp(2rem, 5vw, 5.5rem)' }}
-          >
-            what we do.
-          </h2>
-          <p className="font-mono text-[8px] uppercase tracking-widest opacity-20 hidden md:block">
-            four services
-          </p>
+        {/* Left — header + services */}
+        <div className="px-8 md:px-14 py-14 md:border-r border-black/[0.07]">
+          <div className="flex items-baseline justify-between mb-12">
+            <h2
+              className="font-display lowercase tracking-[-0.04em] leading-none"
+              style={{ fontSize: 'clamp(2rem, 5vw, 5.5rem)' }}
+            >
+              what we do.
+            </h2>
+            <p className="font-mono text-[8px] uppercase tracking-widest opacity-20 hidden md:block">
+              four services
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-8">
+            {services.map((s, i) => (
+              <div
+                key={s.num}
+                className={`flex items-baseline gap-6 ${i % 2 === 1 ? 'md:pl-16' : ''}`}
+              >
+                <span className="font-mono text-[8px] opacity-15 shrink-0 w-5 hidden md:block">{s.num}</span>
+                <div>
+                  <p
+                    className="font-display lowercase tracking-[-0.04em] leading-none"
+                    style={{ fontSize: s.size }}
+                  >
+                    {s.label}
+                  </p>
+                  <p className="font-mono text-[8px] uppercase tracking-widest opacity-25 mt-2">{s.sub}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Service list — no borders, stacked with space */}
-        <div className="flex flex-col gap-8">
-          {services.map((s, i) => (
-            <div
-              key={s.num}
-              className={`flex items-baseline gap-6 ${i % 2 === 1 ? 'md:pl-16' : ''}`}
-            >
-              <span className="font-mono text-[8px] opacity-15 shrink-0 w-5 hidden md:block">{s.num}</span>
-              <div>
-                <p
-                  className="font-display lowercase tracking-[-0.04em] leading-none"
-                  style={{ fontSize: s.size }}
-                >
-                  {s.label}
-                </p>
-                <p className="font-mono text-[8px] uppercase tracking-widest opacity-25 mt-2">{s.sub}</p>
-              </div>
+        {/* Right — scattered photo collage */}
+        <div className="relative hidden md:block" style={{ minHeight: 520 }}>
+
+          {/* Photo 1 — upper-left, tilted */}
+          <div className="absolute overflow-hidden"
+            style={{ top: '6%', left: '8%', width: '54%', transform: 'rotate(-2deg)', zIndex: 3 }}>
+            <div style={{ aspectRatio: '4/5' }}>
+              <img src="/images/about-3.webp" alt="" loading="lazy" decoding="async"
+                className="w-full h-full object-cover" />
             </div>
-          ))}
+            <p className="font-mono text-[7px] uppercase tracking-widest opacity-25 mt-1">pop-up vol. iv</p>
+          </div>
+
+          {/* Photo 2 — lower-right, opposite tilt */}
+          <div className="absolute overflow-hidden"
+            style={{ bottom: '5%', right: '6%', width: '46%', transform: 'rotate(2.2deg)', zIndex: 4 }}>
+            <div style={{ aspectRatio: '1/1' }}>
+              <img src="/images/collab-1.webp" alt="" loading="lazy" decoding="async"
+                className="w-full h-full object-cover object-center" />
+            </div>
+            <p className="font-mono text-[7px] uppercase tracking-widest opacity-25 mt-1 text-right">collab</p>
+          </div>
+
+          {/* Photo 3 — mid, small, peeking between */}
+          <div className="absolute overflow-hidden"
+            style={{ top: '38%', right: '12%', width: '30%', transform: 'rotate(-1.3deg)', zIndex: 5 }}>
+            <div style={{ aspectRatio: '3/4' }}>
+              <img src="/images/about-5.webp" alt="" loading="lazy" decoding="async"
+                className="w-full h-full object-cover" />
+            </div>
+          </div>
+
+          {/* Ambient label */}
+          <p className="absolute font-mono text-[8px] uppercase tracking-widest opacity-15 pointer-events-none"
+            style={{ bottom: '52%', left: '6%', transform: 'rotate(-90deg)', transformOrigin: 'left bottom', whiteSpace: 'nowrap' }}>
+            richmond · dc · norfolk
+          </p>
+
         </div>
       </section>
 
