@@ -33,6 +33,21 @@ function Hero() {
           }}
         />
 
+        {/* SVG motif — bleeds in from the right, vertically centred */}
+        <img
+          src="/images/hero-motif.svg"
+          alt=""
+          aria-hidden="true"
+          className="absolute top-1/2 pointer-events-none select-none"
+          style={{
+            width: 'clamp(320px, 44vw, 640px)',
+            transform: 'translateY(-50%) translateX(28%)',
+            right: 0,
+            opacity: 0.09,
+            zIndex: 0,
+          }}
+        />
+
         <div aria-hidden="true"
           className="hero-letter select-none pointer-events-none font-display lowercase tracking-[-0.05em] leading-[0.72] text-[48vw] -mt-[11vw] md:-mt-[4vw] -ml-[1.5vw] relative z-10">
           kyru
