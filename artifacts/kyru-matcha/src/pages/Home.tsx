@@ -239,12 +239,12 @@ function Visual() {
   return (
     <section className="border-t border-black/[0.07] overflow-hidden relative"
       style={{
-        backgroundImage: "url('/images/texture-linen.png')",
+        backgroundImage: "url('/images/texture-blue.png')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}>
       {/* Warm white wash — keeps text crisp, lets grain breathe */}
-      <div className="absolute inset-0 bg-white/70 pointer-events-none" />
+      <div className="absolute inset-0 bg-white/50 pointer-events-none" />
 
       {/* ── Desktop: scattered poster layout ── */}
       <div className="hidden md:block relative" style={{ minHeight: '88vh' }}>
