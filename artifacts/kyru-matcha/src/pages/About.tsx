@@ -88,102 +88,110 @@ export default function About() {
 
       </section>
 
-      {/* ── STATS — staggered baseline ──────────────────────────── */}
-      <section className="border-t border-black/[0.07] overflow-hidden">
-        <div className="flex items-end gap-0 border-b border-black/[0.07]">
-          {[
-            { n: '2023', label: 'founded',     size: '8vw',  pb: '3rem' },
-            { n: '10+',  label: 'pop-ups',     size: '13vw', pb: '1rem' },
-            { n: '3',    label: 'states',      size: '10vw', pb: '2rem' },
-            { n: '∞',    label: 'cups poured', size: '15vw', pb: '0.5rem' },
-          ].map((s, i) => (
-            <div key={i}
-              className="flex-1 px-6 md:px-10 border-r last:border-r-0 border-black/[0.07]"
-              style={{ paddingBottom: s.pb, paddingTop: '2rem' }}>
-              <p className="font-display lowercase leading-none tracking-[-0.04em]"
-                style={{ fontSize: `clamp(2.5rem,${s.size},9rem)` }}>{s.n}</p>
-              <p className="font-mono text-[8px] uppercase tracking-widest opacity-25 mt-3">{s.label}</p>
-            </div>
-          ))}
+      {/* ── STATS — scattered baseline ───────────────────────────── */}
+      <section className="border-t border-black/[0.07] overflow-hidden relative px-8 md:px-14 py-12">
+        {/* Ghost word behind */}
+        <span aria-hidden="true" className="absolute right-0 bottom-0 font-display lowercase leading-none opacity-[0.03] pointer-events-none select-none"
+          style={{ fontSize: 'clamp(8rem,20vw,20rem)' }}>pop-up</span>
+
+        <div className="relative z-10 flex flex-wrap items-end gap-x-12 gap-y-6">
+          <div style={{ transform: 'rotate(-1.2deg)', marginBottom: '1rem' }}>
+            <p className="font-display lowercase leading-none tracking-[-0.05em]"
+              style={{ fontSize: 'clamp(3rem,10vw,9rem)' }}>10+</p>
+            <p className="font-mono text-[8px] uppercase tracking-widest opacity-25 mt-2">pop-ups</p>
+          </div>
+          <div style={{ transform: 'rotate(0.8deg)', marginBottom: '3.5rem' }}>
+            <p className="font-display lowercase leading-none tracking-[-0.05em]"
+              style={{ fontSize: 'clamp(1.8rem,5vw,5rem)' }}>2023</p>
+            <p className="font-mono text-[8px] uppercase tracking-widest opacity-25 mt-2">founded</p>
+          </div>
+          <div style={{ transform: 'rotate(-0.5deg)', marginBottom: '2rem' }}>
+            <p className="font-display lowercase leading-none tracking-[-0.05em]"
+              style={{ fontSize: 'clamp(2.5rem,7vw,7rem)' }}>3</p>
+            <p className="font-mono text-[8px] uppercase tracking-widest opacity-25 mt-2">states</p>
+          </div>
+          <div style={{ transform: 'rotate(1.5deg)' }}>
+            <p className="font-display lowercase leading-none tracking-[-0.05em]"
+              style={{ fontSize: 'clamp(4rem,13vw,12rem)' }}>∞</p>
+            <p className="font-mono text-[8px] uppercase tracking-widest opacity-25 mt-2">cups poured</p>
+          </div>
         </div>
       </section>
 
-      {/* ── STORY — editorial spread ─────────────────────────────── */}
-      <section className="border-b border-black/[0.07]">
+      {/* ── STORY — chaos spread ──────────────────────────────────── */}
+      <section className="border-t border-black/[0.07] border-b relative overflow-hidden px-8 md:px-14 py-16">
 
-        {/* Giant pull quote — full width */}
-        <div className="px-8 md:px-16 pt-16 pb-10 border-b border-black/[0.07]">
+        {/* Headline — tilted, big */}
+        <div style={{ transform: 'rotate(-0.6deg)', marginLeft: '1%' }} className="mb-14 relative z-10">
           <h1 className="font-display lowercase tracking-[-0.05em] leading-[0.85]"
             style={{ fontSize: 'clamp(2.8rem,7vw,8rem)' }}>
             started as a feeling.<br />turned into a thing.
           </h1>
         </div>
 
-        {/* Two-column spread */}
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.8fr]">
-
-          {/* Left — big photo + label */}
-          <div className="md:border-r border-black/[0.07] border-b md:border-b-0 relative overflow-hidden"
-            style={{ minHeight: 360 }}>
+        {/* Photo — floats right, overlapping */}
+        <div className="absolute overflow-hidden hidden md:block"
+          style={{ top: '8%', right: '5%', width: 'clamp(180px,22vw,320px)', transform: 'rotate(2deg)', zIndex: 3 }}>
+          <div style={{ aspectRatio: '3/4' }}>
             <img src="/images/about-1.webp" alt="" loading="lazy" decoding="async"
-              className="w-full h-full object-cover" style={{ minHeight: 360 }} />
-            {/* overlay label */}
-            <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/50 to-transparent">
-              <p className="font-mono text-[9px] uppercase tracking-widest text-white/60">
-                kyru matcha team
-              </p>
-            </div>
+              className="w-full h-full object-cover" />
           </div>
+          <p className="font-mono text-[8px] uppercase tracking-widest opacity-25 mt-1">kyru matcha team</p>
+        </div>
 
-          {/* Right — copy, scattered */}
-          <div className="px-8 md:px-14 py-14 flex flex-col gap-7">
+        {/* Copy — staggered, not a column */}
+        <div className="relative z-10 max-w-lg mb-10" style={{ transform: 'rotate(0.4deg)', marginLeft: '4%' }}>
+          <p className="font-mono text-[8px] uppercase tracking-widest opacity-25 mb-4">our thing</p>
+          <p className="text-lg leading-relaxed lowercase text-[#181916]/60">
+            kyru is viet-owned and obsessed with specialty matcha. we started as a pop-up
+            because we wanted to make something we actually cared about — not a brand,
+            not a concept — just really good matcha, made to order, in places we love.
+          </p>
+        </div>
 
-            <p className="font-mono text-[9px] uppercase tracking-widest opacity-30">our thing</p>
+        {/* Pull quote — off-axis, big */}
+        <div className="relative z-10 mb-10" style={{ transform: 'rotate(-1.1deg)', marginLeft: '10%', maxWidth: '55%' }}>
+          <p className="font-serif italic text-[#181916]/30 leading-snug"
+            style={{ fontSize: 'clamp(1.4rem,2.5vw,2.8rem)' }}>
+            "the people behind it are the same ones at the table."
+          </p>
+        </div>
 
-            <p className="text-lg leading-relaxed lowercase text-[#181916]/60 max-w-lg">
-              kyru is viet-owned and obsessed with specialty matcha. we started as a pop-up
-              because we wanted to make something we actually cared about — not a brand,
-              not a concept — just really good matcha, made to order, in places we love.
-            </p>
+        <div className="relative z-10 max-w-md" style={{ transform: 'rotate(0.3deg)', marginLeft: '2%' }}>
+          <p className="text-base leading-relaxed lowercase text-[#181916]/40">
+            small on purpose. ceremonial grade, whisked to order — we'd rather do fewer
+            pop-ups and do them right than chase volume.
+          </p>
+        </div>
 
-            <p className="text-base leading-relaxed lowercase text-[#181916]/40 max-w-lg">
-              we're picky about what we pour. ceremonial grade, whisked to order —
-              we'd rather do fewer pop-ups and do them right than chase volume.
-            </p>
-
-            {/* Scattered mid-quote */}
-            <div className="py-5 border-y border-black/[0.07]" style={{ transform: 'rotate(-0.5deg)' }}>
-              <p className="font-serif italic text-2xl md:text-3xl text-[#181916]/35 leading-snug max-w-md">
-                "the people behind it are the same ones at the table."
-              </p>
-            </div>
-
-            <p className="text-base leading-relaxed lowercase text-[#181916]/40 max-w-lg">
-              small on purpose. we set up the booth, pour the drinks, and pack up at
-              the end of the night — every time.
-            </p>
-
-            <div className="flex items-center gap-8 pt-2">
-              <a href="https://www.instagram.com/kyrumatcha/" target="_blank" rel="noreferrer"
-                className="font-mono text-[10px] uppercase tracking-widest hover:opacity-50 transition-opacity">
-                @kyrumatcha ↗
-              </a>
-              <a href="https://www.tiktok.com/@kyrukev" target="_blank" rel="noreferrer"
-                className="font-mono text-[10px] uppercase tracking-widest opacity-40 hover:opacity-70 transition-opacity">
-                @kyrukev ↗
-              </a>
-            </div>
-          </div>
+        {/* Socials — bottom right drift */}
+        <div className="relative z-10 flex items-center gap-8 mt-12 justify-end pr-[4%]"
+          style={{ transform: 'rotate(-0.4deg)' }}>
+          <a href="https://www.instagram.com/kyrumatcha/" target="_blank" rel="noreferrer"
+            className="font-mono text-[10px] uppercase tracking-widest hover:opacity-50 transition-opacity">
+            @kyrumatcha ↗
+          </a>
+          <a href="https://www.tiktok.com/@kyrukev" target="_blank" rel="noreferrer"
+            className="font-mono text-[10px] uppercase tracking-widest opacity-40 hover:opacity-70 transition-opacity">
+            @kyrukev ↗
+          </a>
         </div>
       </section>
 
-      {/* ── CLOSING statement ───────────────────────────────────── */}
-      <div className="px-8 md:px-16 py-16 md:py-24 flex items-end justify-between gap-6">
-        <p className="font-display lowercase tracking-[-0.05em] leading-[0.85] text-[#181916]/10"
-          style={{ fontSize: 'clamp(3rem,9vw,10rem)' }}>
-          see you<br />out there.
+      {/* ── CLOSING ──────────────────────────────────────────────── */}
+      <div className="relative overflow-hidden px-8 md:px-16 py-20">
+        <p className="font-display lowercase tracking-[-0.05em] leading-[0.85] text-[#181916]/08 absolute inset-0 flex items-center pl-8 pointer-events-none select-none"
+          style={{ fontSize: 'clamp(4rem,12vw,14rem)' }} aria-hidden="true">
+          see you.
         </p>
-        <p className="font-serif italic text-base text-[#181916]/25 text-right max-w-[180px] leading-snug shrink-0 mb-2">
+        <div style={{ transform: 'rotate(-0.8deg)', marginLeft: '5%' }}>
+          <p className="font-display lowercase tracking-[-0.05em] leading-[0.85] relative z-10"
+            style={{ fontSize: 'clamp(3rem,9vw,10rem)' }}>
+            see you<br />out there.
+          </p>
+        </div>
+        <p className="font-serif italic text-base text-[#181916]/25 leading-snug mt-8 ml-auto mr-[6%] max-w-[200px] text-right"
+          style={{ transform: 'rotate(1deg)' }}>
           "find us when you least expect it."
         </p>
       </div>

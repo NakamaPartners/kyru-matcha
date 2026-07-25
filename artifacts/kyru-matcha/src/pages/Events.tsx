@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 
-const VIDEOS = ['/images/event-v1.mp4', '/images/event-v2.mp4', '/images/event-v3.mp4'];
+const VIDEOS = ['/images/event-v1-hq.mp4', '/images/event-v2-hq.mp4', '/images/event-v3-hq.mp4'];
 
 const confirmed = {
   date: '07.25',
@@ -73,8 +73,8 @@ function VideoEventHero() {
       )}
 
       {/* ── Dark overlay — gradient top + full dim ── */}
-      <div className="absolute inset-0 bg-black/55" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/70" />
+      <div className="absolute inset-0 bg-black/35" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/55" />
 
       {/* ── Content ── */}
       <div className="absolute inset-0 flex flex-col justify-between px-8 md:px-16 py-10">

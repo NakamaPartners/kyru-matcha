@@ -60,7 +60,7 @@ export default function Booking() {
             fetchPriority="high"
             decoding="async"
             className="absolute inset-0 w-full h-full object-cover"
-            style={{ objectPosition: '60% 50%' }}
+            style={{ objectPosition: '60% 80%' }}
           />
           {/* Subtle left edge fade */}
           <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent pointer-events-none" />
@@ -105,75 +105,73 @@ export default function Booking() {
         </div>
       </section>
 
-      {/* ── PRICING ──────────────────────────────────────────────── */}
-      <section className="border-b border-black/[0.07] relative overflow-hidden">
+      {/* ── PRICING — organized chaos ─────────────────────────────── */}
+      <section className="border-b border-black/[0.07] relative overflow-hidden px-8 md:px-14 py-16">
 
-        {/* Ghost $200 */}
+        {/* Ghost $200 bleeds off right */}
         <div
           aria-hidden="true"
           className="absolute select-none pointer-events-none font-sans font-medium leading-none hidden md:block"
-          style={{ fontSize: 'clamp(8rem,24vw,22rem)', bottom: '-0.05em', right: '-0.01em', opacity: 0.03, lineHeight: 1 }}
+          style={{ fontSize: 'clamp(10rem,28vw,28rem)', bottom: '-0.08em', right: '-0.04em', opacity: 0.035, lineHeight: 1 }}
         >
           $200
         </div>
 
-        <div className="relative grid grid-cols-1 md:grid-cols-2">
+        {/* Label + headline — tilted, indented */}
+        <div className="relative z-10 mb-12" style={{ transform: 'rotate(-0.5deg)', marginLeft: '2%' }}>
+          <p className="font-mono text-[8px] uppercase tracking-widest opacity-20 mb-4">read before you dm</p>
+          <h2
+            className="font-display lowercase tracking-[-0.05em] leading-[0.84]"
+            style={{ fontSize: 'clamp(2.8rem, 6.5vw, 8rem)' }}
+          >
+            here's<br />how it<br />works.
+          </h2>
+        </div>
 
-          {/* Left */}
-          <div className="px-8 md:px-14 py-14 md:border-r border-black/[0.07] border-b md:border-b-0 flex flex-col justify-between gap-12">
-            <div>
-              <p className="font-mono text-[9px] uppercase tracking-widest opacity-22 mb-6">
-                read before you dm
-              </p>
-              <h2
-                className="font-display lowercase tracking-[-0.05em] leading-[0.84]"
-                style={{ fontSize: 'clamp(2.8rem, 6.5vw, 8rem)' }}
-              >
-                here's<br />how it<br />works.
-              </h2>
-            </div>
-            <p
-              className="font-serif italic text-lg text-[#181916]/30 leading-relaxed max-w-xs"
-              style={{ transform: 'rotate(-1deg)', transformOrigin: 'left bottom' }}
-            >
-              "no decks, no proposals — just a dm and we'll figure it out."
-            </p>
-          </div>
-
-          {/* Right — receipt */}
-          <div className="px-8 md:px-14 py-14 flex flex-col gap-0">
-            <div className="flex items-baseline justify-between pb-6 border-b border-dashed border-black/[0.12]">
-              <span className="font-mono text-[10px] uppercase tracking-widest opacity-35">booking fee</span>
-              <span className="font-sans font-medium tracking-tight leading-none" style={{ fontSize: 'clamp(2.2rem,4.5vw,5rem)' }}>
-                $200 <span className="text-base opacity-28">flat</span>
-              </span>
-            </div>
-
-            {[
-              'up to 2 hrs beverage service',
-              'custom drink preparation',
-              'cart setup & breakdown',
-              'marketing materials',
-              'travel expenses',
-            ].map((item, i) => (
-              <div key={i} className="flex items-center gap-3 py-4 border-b border-black/[0.05]">
-                <span className="font-mono text-[8px] opacity-15">—</span>
-                <span className="font-sans text-sm lowercase text-[#181916]/50">{item}</span>
-              </div>
-            ))}
-
-            <div className="mt-6 flex items-start gap-3 px-4 py-4 bg-[#F9F8F5]">
-              <span className="font-mono text-[10px] opacity-30 shrink-0 mt-[1px]">*</span>
-              <p className="font-mono text-[9px] uppercase tracking-wide opacity-30 leading-relaxed">
-                +$50 if event is over 30 miles from Richmond, VA 23294
-              </p>
-            </div>
-
-            <p className="font-mono text-[9px] uppercase tracking-wide opacity-18 leading-relaxed mt-4">
-              On-site beverages billed separately unless pre-paid.
+        {/* Price — huge, off-axis, floats right */}
+        <div className="relative z-10 flex justify-end mb-10 pr-[5%]" style={{ transform: 'rotate(0.8deg)' }}>
+          <div>
+            <p className="font-mono text-[8px] uppercase tracking-widest opacity-20 mb-1 text-right">booking fee</p>
+            <p className="font-sans font-medium tracking-tight leading-none" style={{ fontSize: 'clamp(3.5rem, 8vw, 9rem)' }}>
+              $200<span className="text-[0.3em] opacity-30 ml-2 align-middle">flat</span>
             </p>
           </div>
         </div>
+
+        {/* Includes list — scattered, not a table */}
+        <div className="relative z-10 flex flex-wrap gap-x-10 gap-y-4 mb-14 max-w-2xl" style={{ marginLeft: '6%' }}>
+          {[
+            ['up to 2 hrs beverage service', '1.1deg'],
+            ['custom drink preparation', '-1.4deg'],
+            ['cart setup & breakdown', '0.6deg'],
+            ['marketing materials', '-0.8deg'],
+            ['travel expenses', '1.3deg'],
+          ].map(([item, rot], i) => (
+            <div key={i} style={{ transform: `rotate(${rot})` }} className={i % 2 === 1 ? 'mt-3' : ''}>
+              <span className="font-mono text-[8px] opacity-15 mr-2">—</span>
+              <span className="font-sans text-sm lowercase text-[#181916]/50">{item}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Footnotes — bottom right, drifted */}
+        <div className="relative z-10 text-right" style={{ transform: 'rotate(-0.4deg)' }}>
+          <p className="font-mono text-[8px] uppercase tracking-wide opacity-22 leading-loose">
+            +$50 if over 30 miles from Richmond, VA
+          </p>
+          <p className="font-mono text-[8px] uppercase tracking-wide opacity-15 leading-loose">
+            on-site beverages billed separately unless pre-paid
+          </p>
+        </div>
+
+        {/* Italic quote — lower left, ambient */}
+        <p
+          className="relative z-10 font-serif italic text-lg text-[#181916]/25 leading-relaxed max-w-xs mt-10"
+          style={{ transform: 'rotate(-1.2deg)', transformOrigin: 'left bottom' }}
+        >
+          "no decks, no proposals — just a dm and we'll figure it out."
+        </p>
+
       </section>
 
       {/* ── CONTACT ──────────────────────────────────────────────── */}
