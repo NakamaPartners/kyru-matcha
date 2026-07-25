@@ -282,10 +282,11 @@ function Visual() {
         {/* Name 1 — white rabbit matcha — big, lower-left, rotated */}
         <div className="absolute" style={{ left: '1%', bottom: '9%', transform: 'rotate(-1.5deg)' }}>
           <p className="font-sans font-medium lowercase tracking-[-0.05em] leading-[0.85] text-white"
-            style={{ fontSize: 'clamp(2rem, 4.5vw, 5.5rem)' }}>
+            style={{ fontSize: 'clamp(2rem, 4.5vw, 5.5rem)', textShadow: '0 2px 16px rgba(0,0,0,0.35), 0 1px 4px rgba(0,0,0,0.2)' }}>
             white rabbit<br />matcha
           </p>
-          <span className="font-mono text-[8px] uppercase tracking-widest opacity-30 mt-2 inline-block">
+          <span className="font-mono text-[8px] uppercase tracking-widest opacity-60 mt-2 inline-block text-white"
+            style={{ textShadow: '0 1px 6px rgba(0,0,0,0.4)' }}>
             pop-up menu · matcha
           </span>
         </div>
