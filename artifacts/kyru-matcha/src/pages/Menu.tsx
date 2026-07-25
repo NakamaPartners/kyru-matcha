@@ -27,7 +27,7 @@ export default function Menu() {
     <main className="text-[#181916] pt-[72px]">
 
       {/* Full-bleed hero image */}
-      <div className="w-full aspect-[21/9] overflow-hidden bg-[#F1EFE8]">
+      <div className="w-full aspect-[4/3] md:aspect-[21/9] overflow-hidden bg-[#F1EFE8]">
         <img
           src="/images/sign-drinks.jpg"
           alt="kyru specialty matcha"

@@ -37,7 +37,7 @@ export default function Booking() {
             <a
               href="https://www.instagram.com/kyrumatcha/"
               target="_blank" rel="noreferrer"
-              className="group inline-flex items-center justify-between bg-[#181916] text-white px-7 py-5 hover:bg-black transition-colors self-start min-w-[260px]"
+              className="group inline-flex items-center justify-between bg-[#181916] text-white px-7 py-5 hover:bg-black transition-colors w-full md:w-auto md:min-w-[260px]"
             >
               <span className="font-mono text-[10px] uppercase tracking-widest">dm @kyrumatcha</span>
               <span className="font-mono group-hover:translate-x-1 transition-transform ml-6">→</span>
@@ -61,7 +61,7 @@ export default function Booking() {
 
       {/* ── SERVICES — two-col with photo collage ────────────────── */}
       <section className="border-b border-black/[0.07] grid grid-cols-1 md:grid-cols-[1.1fr_1fr]"
-        style={{ backgroundImage: "url('/images/texture-tan.webp')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        style={{ backgroundImage: "url('/images/texture-paper.webp')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
 
         {/* Left — header + services */}
         <div className="px-8 md:px-14 py-14 md:border-r border-black/[0.15]">
@@ -116,7 +116,8 @@ export default function Booking() {
       </section>
 
       {/* ── PRICING — organized chaos ─────────────────────────────── */}
-      <section className="border-b border-black/[0.07] relative overflow-hidden px-8 md:px-14 py-16">
+      <section className="border-b border-black/[0.07] relative overflow-hidden px-8 md:px-14 py-16"
+        style={{ backgroundImage: "url('/images/texture-gradient.webp')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
 
         {/* Headline */}
         <div className="relative z-10 mb-12" style={{ marginLeft: '2%' }}>
@@ -147,8 +148,7 @@ export default function Booking() {
             ['travel expenses'],
           ].map(([item], i) => (
             <div key={i} className={i % 2 === 1 ? 'mt-3' : ''}>
-              <span className="font-mono text-[10px] opacity-70 mr-2">—</span>
-              <span className="font-sans text-base lowercase text-[#181916]/80">{item}</span>
+              <span className="font-sans text-base font-semibold lowercase text-[#181916]">{item}</span>
             </div>
           ))}
         </div>

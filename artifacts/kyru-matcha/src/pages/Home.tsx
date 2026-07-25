@@ -75,9 +75,9 @@ function Hero() {
               viet-owned. matcha-obsessed.<br />
               serious matcha, unserious people.
             </p>
-            <a href="/order" className="font-mono text-[11px] lowercase tracking-widest hover:opacity-60 inline-block mt-5 transition-opacity">
+            <Link to="/menu" className="font-mono text-[11px] lowercase tracking-widest hover:opacity-60 inline-block mt-5 transition-opacity">
               explore menu <span className="text-base leading-none">→</span>
-            </a>
+            </Link>
           </div>
 
           {/* ② "ceremonial grade" — upper-center, just below kyru descenders */}
@@ -162,8 +162,8 @@ function Intro() {
         </p>
       </div>
 
-      {/* Three-video triptych */}
-      <div className="grid grid-cols-3">
+      {/* Three-video triptych — horizontal scroll on mobile */}
+      <div className="grid grid-cols-3 md:grid-cols-3 overflow-x-auto md:overflow-visible" style={{ gridAutoColumns: '70vw' }}>
         {['intro-v1.mp4', 'intro-v2.mp4', 'intro-v3.mp4'].map((file, i) => (
           <div
             key={i}
@@ -182,32 +182,6 @@ function Intro() {
 
       
 
-    </section>
-  );
-}
-
-/* ─── Photo wall ────────────────────────────────────────────── */
-function PhotoWall() {
-  return (
-    <section className="grid grid-cols-2 md:grid-cols-3">
-      <div className="col-span-2 aspect-[16/9] overflow-hidden">
-        <img src={P.pw1} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700" />
-      </div>
-      <div className="row-span-2 overflow-hidden hidden md:block" style={{ aspectRatio: 'auto' }}>
-        <img src={P.pw2} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700" style={{ minHeight: '100%' }} />
-      </div>
-      <div className="aspect-square overflow-hidden">
-        <img src={P.pw3} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700" />
-      </div>
-      <div className="aspect-square overflow-hidden">
-        <img src={P.pw4} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700" />
-      </div>
-      <div className="col-span-2 aspect-[16/7] overflow-hidden">
-        <img src={P.pw5} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700" />
-      </div>
-      <div className="aspect-square overflow-hidden">
-        <img src={P.pw6} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700" />
-      </div>
     </section>
   );
 }
