@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 
 const slides = [
-  "/images/about-1.png",
-  "/images/about-2.png",
+  "/images/about-1.jpg",
+  "/images/about-2.jpg",
   "/images/about-3.jpg",
   "/images/about-4.jpg",
   "/images/about-5.jpg",

@@ -1,4 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&display=swap');
+
+@font-face {
+  font-family: 'AscenderSans';
+  src: url('/fonts/ascender-sans-bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 @import "tailwindcss";
 
 @theme {
@@ -98,6 +106,11 @@
   }
   .font-sans {
     font-family: var(--font-sans);
+  }
+  /* Ascender Sans — used for hero kyru/matcha wordmark and page titles */
+  .font-display {
+    font-family: 'AscenderSans', var(--font-sans);
+    font-weight: 700;
   }
 }
 

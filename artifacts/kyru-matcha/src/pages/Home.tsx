@@ -18,8 +18,23 @@ function Hero() {
       <div className="relative h-[100dvh] flex flex-col justify-between overflow-hidden bg-white text-[#181916]">
         <h1 className="sr-only">kyru matcha</h1>
 
+        {/* Mascot — bleeds in from the left, vertically centred */}
+        <img
+          src="/images/kyru-icon.png"
+          alt=""
+          aria-hidden="true"
+          className="absolute top-1/2 pointer-events-none select-none"
+          style={{
+            width: 'clamp(280px, 38vw, 560px)',
+            transform: 'translateY(-50%) translateX(-32%)',
+            left: 0,
+            opacity: 0.09,
+            zIndex: 0,
+          }}
+        />
+
         <div aria-hidden="true"
-          className="hero-letter select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.05em] leading-[0.72] text-[48vw] -mt-[11vw] md:-mt-[4vw] -ml-[1.5vw]">
+          className="hero-letter select-none pointer-events-none font-display lowercase tracking-[-0.05em] leading-[0.72] text-[48vw] -mt-[11vw] md:-mt-[4vw] -ml-[1.5vw] relative z-10">
           kyru
         </div>
 
@@ -53,7 +68,7 @@ function Hero() {
         </div>
 
         <div aria-hidden="true"
-          className="hero-letter select-none pointer-events-none font-sans font-medium lowercase tracking-[-0.05em] leading-[0.85] text-[32vw] -mb-[2vw] text-right whitespace-nowrap">
+          className="hero-letter select-none pointer-events-none font-display lowercase tracking-[-0.05em] leading-[0.85] text-[32vw] -mb-[2vw] text-right whitespace-nowrap">
           matcha
         </div>
       </div>
@@ -82,10 +97,19 @@ function Intro() {
   return (
     <section className="border-b border-black/[0.07]">
 
-      {/* Top text strip */}
-      <div className="border-b border-black/[0.07] px-6 md:px-12 pt-12 pb-10">
+      {/* Top text strip — sky texture background */}
+      <div
+        className="border-b border-black/[0.07] px-6 md:px-12 pt-12 pb-10 relative overflow-hidden"
+        style={{
+          backgroundImage: "url('/images/texture-gradient.jpg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center top',
+        }}
+      >
+        {/* Soft white wash so dark text stays fully legible */}
+        <div className="absolute inset-0 bg-white/65 pointer-events-none" />
         <h2
-          className="font-sans font-medium lowercase tracking-[-0.05em] leading-[0.82] select-none"
+          className="font-display lowercase tracking-[-0.05em] leading-[0.82] select-none"
           style={{ fontSize: 'clamp(52px, 8.2vw, 140px)' }}
         >
           specialty matcha.<br />made to order.<br />pop-up only.
@@ -106,6 +130,7 @@ function Intro() {
             <video
               src={`/images/${file}`}
               autoPlay muted loop playsInline
+              preload="auto"
               className="absolute inset-0 w-full h-full object-cover"
             />
           </div>
@@ -127,72 +152,159 @@ function PhotoWall() {
   return (
     <section className="grid grid-cols-2 md:grid-cols-3">
       <div className="col-span-2 aspect-[16/9] overflow-hidden">
-        <img src={P.pw1} alt="" className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700" />
+        <img src={P.pw1} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700" />
       </div>
       <div className="row-span-2 overflow-hidden hidden md:block" style={{ aspectRatio: 'auto' }}>
-        <img src={P.pw2} alt="" className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700" style={{ minHeight: '100%' }} />
+        <img src={P.pw2} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700" style={{ minHeight: '100%' }} />
       </div>
       <div className="aspect-square overflow-hidden">
-        <img src={P.pw3} alt="" className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700" />
+        <img src={P.pw3} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700" />
       </div>
       <div className="aspect-square overflow-hidden">
-        <img src={P.pw4} alt="" className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700" />
+        <img src={P.pw4} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700" />
       </div>
       <div className="col-span-2 aspect-[16/7] overflow-hidden">
-        <img src={P.pw5} alt="" className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700" />
+        <img src={P.pw5} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700" />
       </div>
       <div className="aspect-square overflow-hidden">
-        <img src={P.pw6} alt="" className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700" />
+        <img src={P.pw6} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700" />
       </div>
     </section>
   );
 }
 
-/* ─── Visual spread ─────────────────────────────────────────── */
-const COLS = [
-  { src: P.v_drink, name: 'white rabbit matcha',  available: true, href: '/events' },
-  { src: P.v_whisk, name: 'white rabbit hojicha',  available: true, href: '/events' },
-  { src: P.v_life,  name: 'the make up',           available: true, href: '/events' },
-];
-
+/* ─── Visual spread — scattered canvas ──────────────────────── */
 function Visual() {
   return (
-    <section className="border-t border-black/[0.07]">
-      <div className="grid grid-cols-1 md:grid-cols-3">
-        {COLS.map((col, i) => (
-          <div key={i} className={`flex flex-col border-black/[0.07] ${i < COLS.length - 1 ? 'md:border-r' : ''} ${i > 0 ? 'border-t md:border-t-0' : ''}`}>
+    <section className="border-t border-black/[0.07] bg-white overflow-hidden">
 
-            {/* Photo — tall portrait */}
-            <div className="overflow-hidden" style={{ aspectRatio: '4/5' }}>
-              <img
-                src={col.src}
-                alt=""
-                className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700"
-              />
+      {/* ── Desktop: scattered poster layout ── */}
+      <div className="hidden md:block relative" style={{ minHeight: '88vh' }}>
+
+        {/* Photo 1 — matcha, large, anchored left */}
+        <div className="absolute overflow-hidden" style={{ left: '2%', top: '7%', width: '35%' }}>
+          <div style={{ aspectRatio: '3/4' }} className="overflow-hidden">
+            <img src={P.v_drink} alt="" loading="lazy" decoding="async"
+              className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" />
+          </div>
+        </div>
+
+        {/* Photo 2 — hojicha, small, top-right, slightly tilted */}
+        <div className="absolute overflow-hidden" style={{ right: '15%', top: '3%', width: '22%', transform: 'rotate(1.8deg)' }}>
+          <div style={{ aspectRatio: '4/5' }} className="overflow-hidden">
+            <img src={P.v_whisk} alt="" loading="lazy" decoding="async"
+              className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" />
+          </div>
+          <span className="absolute top-3 left-3 font-mono text-[7px] uppercase tracking-widest bg-white/90 border border-black/15 px-2 py-1 -rotate-[4deg]">
+            available
+          </span>
+        </div>
+
+        {/* Photo 3 — the make up, mid-right, grounded */}
+        <div className="absolute overflow-hidden" style={{ right: '2%', top: '44%', width: '30%' }}>
+          <div style={{ aspectRatio: '4/5' }} className="overflow-hidden">
+            <img src={P.v_life} alt="" loading="lazy" decoding="async"
+              className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" />
+          </div>
+          <span className="absolute bottom-3 right-3 font-mono text-[7px] uppercase tracking-widest bg-white/90 border border-black/15 px-2 py-1 rotate-[5deg]">
+            available
+          </span>
+        </div>
+
+        {/* Name 1 — white rabbit matcha — big, lower-left, rotated */}
+        <div className="absolute" style={{ left: '1%', bottom: '9%', transform: 'rotate(-1.5deg)' }}>
+          <p className="font-sans font-medium lowercase tracking-[-0.05em] leading-[0.85] text-[#181916]"
+            style={{ fontSize: 'clamp(2rem, 4.5vw, 5.5rem)' }}>
+            white rabbit<br />matcha
+          </p>
+          <span className="font-mono text-[8px] uppercase tracking-widest opacity-20 mt-2 inline-block">
+            pop-up menu · matcha
+          </span>
+        </div>
+
+        {/* Name 2 — hojicha — smaller, mid-canvas, slight tilt */}
+        <div className="absolute" style={{ left: '39%', top: '35%', transform: 'rotate(2.5deg)' }}>
+          <p className="font-sans font-medium lowercase tracking-[-0.04em] leading-[0.88] text-[#181916]/55"
+            style={{ fontSize: 'clamp(1.5rem, 3vw, 4rem)' }}>
+            white rabbit<br />hojicha
+          </p>
+          <span className="font-mono text-[8px] uppercase tracking-widest opacity-20 mt-1 inline-block -rotate-[2deg]">
+            available now
+          </span>
+        </div>
+
+        {/* Name 3 — the make up — right-anchored bottom, big */}
+        <div className="absolute" style={{ right: '2%', bottom: '3%', textAlign: 'right', transform: 'rotate(-1deg)' }}>
+          <p className="font-sans font-medium lowercase tracking-[-0.05em] leading-[0.85]"
+            style={{ fontSize: 'clamp(2rem, 5vw, 6rem)' }}>
+            the make up
+          </p>
+          <span className="font-mono text-[8px] uppercase tracking-widest opacity-20 mt-2 inline-block">
+            pop-up menu · special
+          </span>
+        </div>
+
+        {/* Vertical section label */}
+        <div className="absolute font-mono text-[8px] uppercase tracking-widest opacity-15 select-none"
+          style={{ left: '38%', top: '8%', writingMode: 'vertical-rl', letterSpacing: '0.3em' }}>
+          this month's menu
+        </div>
+
+        {/* Single shared CTA — floating in the negative space */}
+        <Link
+          to="/events"
+          className="absolute flex items-center gap-3 border border-black/20 px-5 py-3 font-mono text-[9px] uppercase tracking-widest hover:bg-[#181916] hover:text-white hover:border-[#181916] transition-colors group"
+          style={{ left: '39%', bottom: '9%' }}
+        >
+          find a pop-up
+          <span className="group-hover:translate-x-1 transition-transform">→</span>
+        </Link>
+
+        {/* Ghost "available" stamp floating top-left area */}
+        <span className="absolute font-mono text-[7px] uppercase tracking-widest border border-black/12 px-2 py-1 opacity-40"
+          style={{ left: '37%', top: '5%', transform: 'rotate(-6deg)' }}>
+          available
+        </span>
+      </div>
+
+      {/* ── Mobile: zigzag stagger ── */}
+      <div className="md:hidden flex flex-col">
+        {[
+          { src: P.v_drink, name: 'white rabbit matcha', tag: 'matcha', align: 'left' },
+          { src: P.v_whisk, name: 'white rabbit hojicha', tag: 'hojicha', align: 'right' },
+          { src: P.v_life,  name: 'the make up', tag: 'special', align: 'left' },
+        ].map((item, i) => (
+          <div key={i} className="border-t border-black/[0.07]">
+            {/* Photo — offset left or right */}
+            <div className={`overflow-hidden ${item.align === 'right' ? 'ml-[15%]' : 'mr-[15%]'}`}
+              style={{ aspectRatio: '4/5', position: 'relative' }}>
+              <img src={item.src} alt="" loading="lazy" decoding="async"
+                className="w-full h-full object-cover" />
+              <span className="absolute top-3 right-3 font-mono text-[7px] uppercase tracking-widest bg-white border border-black/20 px-2 py-1 rotate-[6deg]">
+                available
+              </span>
             </div>
-
-            {/* Card footer */}
-            <div className="px-6 py-6 border-t border-black/[0.07] flex flex-col gap-4">
-              {/* Name + availability badge */}
-              <div className="flex items-start justify-between gap-3">
-                <p className="font-sans text-xl font-medium lowercase tracking-tight leading-tight">{col.name}</p>
-                {col.available && (
-                  <span className="font-mono text-[8px] uppercase tracking-widest border border-black/25 px-2 py-1 shrink-0 mt-0.5">
-                    available
-                  </span>
-                )}
-              </div>
-              <p className="font-mono text-[9px] uppercase tracking-widest opacity-30 -mt-1">on the pop-up menu</p>
-              <Link
-                to={col.href}
-                className="inline-flex items-center justify-between border border-black/20 px-4 py-2.5 font-mono text-[9px] uppercase tracking-widest hover:bg-[#181916] hover:text-white hover:border-[#181916] transition-colors"
-              >
-                find a pop-up <span className="ml-2">→</span>
-              </Link>
+            {/* Name block — opposite alignment to photo */}
+            <div className={`px-6 py-5 ${item.align === 'right' ? 'text-left' : 'text-right'}`}
+              style={{ transform: i === 1 ? 'rotate(1deg)' : i === 2 ? 'rotate(-1deg)' : undefined }}>
+              <p className="font-sans text-3xl font-medium lowercase tracking-[-0.04em] leading-tight">
+                {item.name}
+              </p>
+              <p className="font-mono text-[8px] uppercase tracking-widest opacity-25 mt-1">
+                pop-up menu · {item.tag}
+              </p>
             </div>
           </div>
         ))}
+        <div className="border-t border-black/[0.07] px-6 py-5">
+          <Link to="/events"
+            className="flex items-center justify-between bg-[#181916] text-white px-5 py-4 font-mono text-[9px] uppercase tracking-widest group">
+            find a pop-up
+            <span className="group-hover:translate-x-1 transition-transform">→</span>
+          </Link>
+        </div>
       </div>
+
     </section>
   );
 }
@@ -207,19 +319,32 @@ const COLLAB_IMGS = [
 ];
 
 function Collab() {
-  // duplicate for seamless loop
   const strip = [...COLLAB_IMGS, ...COLLAB_IMGS];
+  const ticker = Array(6).fill('we make things with people we like  ///  collab  ///  ').join('');
   return (
     <section className="border-t border-black/[0.07] overflow-hidden">
 
-      {/* Label row — inline with the strip, no separate header block */}
-      <div className="flex items-center justify-between px-8 md:px-16 py-6 border-b border-black/[0.07]">
-        <p className="font-mono text-[10px] uppercase tracking-widest opacity-35">collab</p>
-        <p className="font-mono text-[10px] uppercase tracking-widest opacity-20">we make things with people we like</p>
+      {/* Bold editorial header — sky texture */}
+      <div
+        className="flex items-end justify-between px-8 md:px-16 pt-10 pb-8 border-b border-black/[0.07] relative overflow-hidden"
+        style={{
+          backgroundImage: "url('/images/texture-gradient.jpg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="absolute inset-0 bg-white/60 pointer-events-none" />
+        <h2 className="font-serif italic text-4xl md:text-6xl text-[#181916] leading-none">
+          collab.
+        </h2>
+        <div className="text-right">
+          <p className="font-mono text-[9px] uppercase tracking-widest opacity-20">5 partnerships</p>
+          <p className="font-sans text-sm lowercase opacity-40 mt-1">we make things with people we like</p>
+        </div>
       </div>
 
-      {/* Continuous horizontal film strip */}
-      <div className="overflow-hidden" style={{ height: '56vh', minHeight: 320 }}>
+      {/* Film strip */}
+      <div className="relative overflow-hidden" style={{ height: '56vh', minHeight: 320 }}>
         <div
           className="flex h-full w-max"
           style={{ animation: 'collab-scroll 28s linear infinite' }}
@@ -233,10 +358,23 @@ function Collab() {
               <img
                 src={src}
                 alt=""
+                loading="lazy"
+                decoding="async"
                 className="h-full w-full object-cover"
               />
             </div>
           ))}
+        </div>
+
+        {/* Counter-scrolling text ribbon over the strip */}
+        <div className="absolute bottom-0 left-0 right-0 overflow-hidden bg-black/40 backdrop-blur-[1px] py-2">
+          <div
+            className="flex whitespace-nowrap w-max font-mono text-[9px] uppercase tracking-widest text-white/50"
+            style={{ animation: 'collab-scroll 18s linear infinite reverse' }}
+          >
+            <span>{ticker}</span>
+            <span>{ticker}</span>
+          </div>
         </div>
       </div>
     </section>

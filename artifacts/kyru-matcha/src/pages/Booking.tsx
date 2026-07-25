@@ -18,7 +18,7 @@ export default function Booking() {
           <div className="flex flex-col justify-between px-8 md:px-16 pt-16 pb-10 md:border-r border-black/[0.07]">
             <div>
               <p className="font-mono text-[10px] uppercase tracking-widest opacity-35 mb-8">pop-ups · events · collabs</p>
-              <h1 className="font-sans text-6xl md:text-7xl lg:text-8xl font-medium lowercase tracking-[-0.05em] leading-[0.85]">
+              <h1 className="font-display lowercase tracking-[-0.05em] leading-[0.82] text-[18vw] md:text-[11vw]">
                 let's work<br />together
               </h1>
             </div>
@@ -39,6 +39,8 @@ export default function Booking() {
             <img
               src="/images/booking-hero.jpg"
               alt="kyru matcha cups at a pop-up"
+              fetchPriority="high"
+              decoding="async"
               className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: '60% 80%' }}
             />
             {/* thin left-edge fade into white */}
@@ -61,6 +63,81 @@ export default function Booking() {
             <span className="font-mono text-sm opacity-10 group-hover:opacity-40 transition-opacity">→</span>
           </div>
         ))}
+      </div>
+
+      {/* ── Booking terms ────────────────────────────────────────── */}
+      <div
+        className="relative border-b border-black/[0.07] overflow-hidden"
+        style={{
+          backgroundImage: "url('/images/texture-paper.jpg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        {/* Slight warm wash so text stays crisp on the paper grain */}
+        <div className="absolute inset-0 bg-[#faf8f4]/80 pointer-events-none" />
+
+        {/* Ghost $200 behind everything */}
+        <span
+          aria-hidden="true"
+          className="absolute right-0 top-1/2 -translate-y-1/2 font-sans font-medium leading-none select-none pointer-events-none"
+          style={{ fontSize: 'clamp(8rem,22vw,18rem)', opacity: 0.03, color: '#181916', lineHeight: 1 }}
+        >
+          $200
+        </span>
+
+        <div className="relative grid grid-cols-1 md:grid-cols-2 gap-0">
+
+          {/* Left — label + headline */}
+          <div className="px-8 md:px-16 py-12 md:border-r border-black/[0.07] border-b md:border-b-0 flex flex-col justify-between gap-10">
+            <div>
+              <p className="font-mono text-[9px] uppercase tracking-widest opacity-30 mb-5">booking inquiries · read before you dm</p>
+              <h2 className="font-display text-4xl md:text-5xl lowercase tracking-[-0.04em] leading-[0.9]">
+                here's<br />how it<br />works.
+              </h2>
+            </div>
+            <p className="font-serif italic text-lg text-[#181916]/40 leading-relaxed max-w-xs">
+              "no decks, no proposals — just a dm and we'll figure it out."
+            </p>
+          </div>
+
+          {/* Right — receipt-style breakdown */}
+          <div className="px-8 md:px-16 py-12 flex flex-col gap-0">
+
+            {/* Fee line */}
+            <div className="flex items-baseline justify-between pb-5 border-b border-dashed border-black/[0.12]">
+              <span className="font-mono text-[10px] uppercase tracking-widest opacity-50">booking fee</span>
+              <span className="font-sans text-3xl font-medium tracking-tight">$200 <span className="text-base opacity-40">flat</span></span>
+            </div>
+
+            {/* What's included — dot-leader rows */}
+            {[
+              'up to 2 hrs beverage service',
+              'custom drink preparation',
+              'cart setup & breakdown',
+              'marketing materials',
+              'travel expenses',
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-2 py-3 border-b border-black/[0.05]">
+                <span className="font-mono text-[8px] opacity-20">—</span>
+                <span className="font-sans text-sm lowercase text-[#181916]/60">{item}</span>
+              </div>
+            ))}
+
+            {/* Distance footnote */}
+            <div className="mt-5 flex items-start gap-3 py-4 px-4 bg-[#F9F8F5]">
+              <span className="font-mono text-[10px] opacity-40 mt-[1px] shrink-0">*</span>
+              <p className="font-mono text-[9px] uppercase tracking-wide opacity-40 leading-relaxed">
+                +$50 if event is over 30 miles from Richmond, VA&nbsp;23294
+              </p>
+            </div>
+
+            {/* On-site note */}
+            <p className="font-mono text-[9px] uppercase tracking-wide opacity-30 leading-relaxed mt-5">
+              On-site beverages billed separately unless pre-paid. Additional details sent after submission.
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* ── Contact split ────────────────────────────────────────── */}

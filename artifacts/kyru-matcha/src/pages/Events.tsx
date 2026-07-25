@@ -1,119 +1,166 @@
-const events = [
+import { useState, useRef, useEffect } from 'react';
+
+const VIDEOS = ['/images/event-v1.mp4', '/images/event-v2.mp4', '/images/event-v3.mp4'];
+
+const confirmed = {
+  date: '07.25',
+  day: 'SAT',
+  year: '2026',
+  city: 'Richmond',
+  state: 'VA',
+  venue: 'District Candle Lab · Mosaic District',
+  time: '11am – 5pm',
+  note: 'this weekend.',
+};
+
+const upcoming = [
   {
-    date: '07.25',
-    day: 'SAT',
-    year: '2026',
-    city: 'Richmond',
-    state: 'VA',
-    venue: 'District Candle Lab · Mosaic District',
-    time: '11am – 5pm',
-    status: 'confirmed',
-    note: 'this weekend.',
+    date: '08.09', day: 'SUN', year: '2026',
+    city: 'Washington', state: 'DC',
+    venue: 'TBA', time: 'TBA',
   },
   {
-    date: '08.09',
-    day: 'SUN',
-    year: '2026',
-    city: 'Washington',
-    state: 'DC',
-    venue: 'TBA',
-    time: 'TBA',
-    status: 'coming soon',
-    note: null,
-  },
-  {
-    date: '08.23',
-    day: 'SAT',
-    year: '2026',
-    city: 'Norfolk',
-    state: 'VA',
-    venue: 'TBA',
-    time: 'TBA',
-    status: 'coming soon',
-    note: null,
+    date: '08.23', day: 'SAT', year: '2026',
+    city: 'Norfolk', state: 'VA',
+    venue: 'TBA', time: 'TBA',
   },
 ];
+
+function VideoEventHero() {
+  const [current, setCurrent] = useState(0);
+  const [next, setNext]       = useState<number | null>(null);
+  const [fading, setFading]   = useState(false);
+
+  const handleEnded = () => {
+    const nextIdx = (current + 1) % VIDEOS.length;
+    setNext(nextIdx);
+    setFading(false);
+    requestAnimationFrame(() => requestAnimationFrame(() => setFading(true)));
+  };
+
+  useEffect(() => {
+    if (!fading || next === null) return;
+    const timer = setTimeout(() => {
+      setCurrent(next);
+      setNext(null);
+      setFading(false);
+    }, 700);
+    return () => clearTimeout(timer);
+  }, [fading, next]);
+
+  return (
+    <div
+      className="relative overflow-hidden"
+      style={{ height: 'calc(100vh - 72px)', minHeight: 480 }}
+    >
+      {/* ── Video background ── */}
+      <video
+        key={current}
+        src={VIDEOS[current]}
+        autoPlay muted playsInline preload="auto"
+        onEnded={handleEnded}
+        className="absolute inset-0 w-full h-full object-cover object-center"
+        style={{ transition: 'opacity 0.7s ease', opacity: fading ? 0 : 1 }}
+      />
+      {next !== null && (
+        <video
+          key={`next-${next}`}
+          src={VIDEOS[next]}
+          autoPlay muted playsInline preload="auto"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          style={{ transition: 'opacity 0.7s ease', opacity: fading ? 1 : 0 }}
+        />
+      )}
+
+      {/* ── Dark overlay — gradient top + full dim ── */}
+      <div className="absolute inset-0 bg-black/55" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/70" />
+
+      {/* ── Content ── */}
+      <div className="absolute inset-0 flex flex-col justify-between px-8 md:px-16 py-10">
+
+        {/* Top row */}
+        <div className="flex items-center justify-between">
+          <p className="font-mono text-[9px] uppercase tracking-widest text-white/40">
+            {confirmed.day} · {confirmed.date} · {confirmed.year}
+          </p>
+          <div className="flex items-center gap-4">
+            <span className="font-serif italic text-white/50 text-sm">{confirmed.note}</span>
+            <span className="font-mono text-[9px] uppercase tracking-widest border border-white/30 text-white/70 px-3 py-1">
+              confirmed
+            </span>
+          </div>
+        </div>
+
+        {/* City — giant, bleeds across full width */}
+        <div>
+          <div className="flex items-end gap-4 md:gap-6 overflow-hidden">
+            <h1 className="font-display lowercase tracking-[-0.05em] leading-[0.82] text-[22vw] md:text-[16vw] text-white">
+              {confirmed.city}
+            </h1>
+            <span className="font-mono text-base md:text-xl text-white/40 mb-2 md:mb-4 shrink-0">
+              {confirmed.state}
+            </span>
+          </div>
+
+          {/* Bottom info row */}
+          <div className="flex items-end justify-between mt-6">
+            <p className="font-mono text-[10px] uppercase tracking-widest text-white/40">
+              {confirmed.venue} · {confirmed.time}
+            </p>
+
+            {/* Dot indicators */}
+            <div className="flex gap-2 items-center">
+              {VIDEOS.map((_, i) => (
+                <span
+                  key={i}
+                  className="block rounded-full transition-all duration-500"
+                  style={{
+                    width:   i === current ? 18 : 6,
+                    height:  6,
+                    background: 'white',
+                    opacity: i === current ? 0.6 : 0.2,
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Events() {
   return (
     <main className="bg-white text-[#181916] pt-[72px]">
 
-      {/* ── Dual-video hero — horizontal crop ───────────────────── */}
-      <div className="border-b border-black/[0.07]">
+      <VideoEventHero />
 
-        {/* Asymmetric split — v1 dominant (3/5), v2 accent (2/5) */}
-        <div className="grid grid-cols-[3fr_2fr]" style={{ height: '60vh', minHeight: 320 }}>
-          {/* v1 — primary, crops portrait to wide landscape */}
-          <div className="relative overflow-hidden border-r border-black/[0.07]">
-            <video
-              src="/images/event-v1.mp4"
-              autoPlay muted loop playsInline
-              className="absolute inset-0 w-full h-full object-cover object-center"
-            />
-          </div>
-          {/* v2 — tighter crop, accent panel */}
-          <div className="relative overflow-hidden">
-            <video
-              src="/images/event-v2.mp4"
-              autoPlay muted loop playsInline
-              className="absolute inset-0 w-full h-full object-cover object-center"
-            />
-            {/* Subtle date stamp overlay on accent panel */}
-            <div className="absolute bottom-4 right-4 text-right pointer-events-none">
-              <p className="font-mono text-[9px] uppercase tracking-widest text-white/30">summer · 2026</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* ── Event rows — poster-sized ────────────────────────────── */}
-      {events.map((e, i) => (
+      {/* ── Upcoming event rows ──────────────────────────────────── */}
+      {upcoming.map((e, i) => (
         <div
           key={i}
-          className={`border-b border-black/[0.07] px-8 md:px-16 py-12 md:py-16 ${
-            e.status === 'confirmed' ? 'bg-[#181916] text-white' : 'bg-white'
-          }`}
+          className="border-b border-black/[0.07] px-8 md:px-16 py-12 md:py-16 bg-white"
         >
-          {/* Top row: weekday + status */}
           <div className="flex items-center justify-between mb-4">
-            <p className={`font-mono text-[9px] uppercase tracking-widest ${e.status === 'confirmed' ? 'text-white/35' : 'opacity-30'}`}>
+            <p className="font-mono text-[9px] uppercase tracking-widest opacity-30">
               {e.day} · {e.year}
             </p>
-            <div className="flex items-center gap-4">
-              {e.note && (
-                <span className="font-serif italic text-white/50 text-sm">{e.note}</span>
-              )}
-              <span className={`font-mono text-[9px] uppercase tracking-widest border px-3 py-1 ${
-                e.status === 'confirmed'
-                  ? 'border-white/30 text-white/70'
-                  : 'border-black/15 opacity-25'
-              }`}>
-                {e.status}
-              </span>
-            </div>
-          </div>
-
-          {/* City — giant poster type */}
-          <div className="flex items-end gap-4 md:gap-8">
-            <h2 className={`font-sans font-medium lowercase tracking-[-0.04em] leading-[0.85] ${
-              e.status === 'confirmed'
-                ? 'text-[18vw] md:text-[12vw] text-white'
-                : 'text-[18vw] md:text-[12vw] text-[#181916]/20'
-            }`}>
-              {e.city}
-            </h2>
-            <span className={`font-mono text-sm md:text-base mb-1 md:mb-2 ${
-              e.status === 'confirmed' ? 'text-white/40' : 'opacity-20'
-            }`}>
-              {e.state}
+            <span className="font-mono text-[9px] uppercase tracking-widest border border-black/15 px-3 py-1 opacity-25">
+              coming soon
             </span>
           </div>
 
-          {/* Venue + time */}
-          <p className={`font-mono text-[10px] uppercase tracking-widest mt-4 ${
-            e.status === 'confirmed' ? 'text-white/35' : 'opacity-20'
-          }`}>
-            {e.venue !== 'TBA' ? `${e.venue}${e.time !== 'TBA' ? ` · ${e.time}` : ''}` : 'venue & time TBA — follow along for updates'}
+          <div className="flex items-end gap-4 md:gap-8">
+            <h2 className="font-display lowercase tracking-[-0.04em] leading-[0.85] text-[18vw] md:text-[12vw] text-[#181916]/20">
+              {e.city}
+            </h2>
+            <span className="font-mono text-sm md:text-base mb-1 md:mb-2 opacity-20">{e.state}</span>
+          </div>
+
+          <p className="font-mono text-[10px] uppercase tracking-widest mt-4 opacity-20">
+            venue & time TBA — follow along for updates
           </p>
         </div>
       ))}
