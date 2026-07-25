@@ -2,106 +2,89 @@ export default function About() {
   return (
     <main className="bg-white text-[#181916] pt-[72px] overflow-x-hidden">
 
-      {/* ── HERO COLLAGE — flyer spread ─────────────────────────── */}
+      {/* ── HERO — poster layout, 3 photos ──────────────────────── */}
       <section className="relative overflow-hidden bg-white" style={{ minHeight: '100vh' }}>
 
-        {/* Big "kyru." top-left, bleeds off */}
+        {/* "kyru." — nempel top-left */}
         <div aria-hidden="true"
           className="absolute font-display lowercase leading-none select-none pointer-events-none"
-          style={{ fontSize: 'clamp(6rem,18vw,20rem)', top: '-0.08em', left: '-0.04em', opacity: 1, zIndex: 2, color: '#181916' }}>
+          style={{ fontSize: 'clamp(5rem,16vw,18rem)', top: '-0.1em', left: '-0.04em', zIndex: 2, color: '#181916' }}>
           kyru.
         </div>
 
-        {/* Big "about." bottom-right, bleeds off */}
+        {/* "about." — ghosted bottom-right */}
         <div aria-hidden="true"
           className="absolute font-display lowercase leading-none select-none pointer-events-none"
-          style={{ fontSize: 'clamp(5rem,14vw,17rem)', bottom: '-0.06em', right: '-0.03em', opacity: 0.08, zIndex: 2, color: '#181916' }}>
+          style={{ fontSize: 'clamp(4rem,12vw,14rem)', bottom: '-0.06em', right: '-0.03em', opacity: 0.07, zIndex: 2, color: '#181916' }}>
           about.
         </div>
 
-        {/* ── Photos — scattered, pinboard feel ── */}
-
-        {/* 1 — top-center, portrait, slight CCW tilt */}
-        <div className="absolute overflow-hidden shadow-sm"
-          style={{ top: '9%', left: '28%', width: 'clamp(140px,18vw,280px)', transform: 'rotate(-2.5deg)', zIndex: 3 }}>
-          <div style={{ aspectRatio: '3/4' }}>
-            <img src="/images/about-2.webp" alt="" fetchPriority="high" decoding="async"
-              className="w-full h-full object-cover" />
-          </div>
-        </div>
-
-        {/* 2 — upper-right, large portrait, slight CW */}
-        <div className="absolute overflow-hidden shadow-sm"
-          style={{ top: '5%', right: '7%', width: 'clamp(170px,22vw,340px)', transform: 'rotate(1.8deg)', zIndex: 3 }}>
+        {/* ── Photo 1 — dominant, center-left, tall portrait ── */}
+        <div className="absolute overflow-hidden"
+          style={{ top: '12%', left: '22%', width: 'clamp(200px,30vw,460px)', transform: 'rotate(-2deg)', zIndex: 5 }}>
           <div style={{ aspectRatio: '3/4' }}>
             <img src="/images/about-3.webp" alt="" fetchPriority="high" decoding="async"
               className="w-full h-full object-cover" />
           </div>
+          {/* caption tape */}
+          <p className="font-mono text-[8px] uppercase tracking-widest opacity-30 mt-1 pl-[2px]">
+            the team · pop-up vol. iv
+          </p>
         </div>
 
-        {/* 3 — mid-left, small square, strong tilt */}
-        <div className="absolute overflow-hidden shadow-sm"
-          style={{ top: '38%', left: '12%', width: 'clamp(110px,14vw,210px)', transform: 'rotate(-4deg)', zIndex: 3 }}>
+        {/* ── Photo 2 — upper-right, medium, opposite tilt ── */}
+        <div className="absolute overflow-hidden"
+          style={{ top: '8%', right: '6%', width: 'clamp(160px,22vw,320px)', transform: 'rotate(2.5deg)', zIndex: 4 }}>
+          <div style={{ aspectRatio: '4/5' }}>
+            <img src="/images/about-5.webp" alt="" fetchPriority="high" decoding="async"
+              className="w-full h-full object-cover" />
+          </div>
+          <p className="font-mono text-[8px] uppercase tracking-widest opacity-30 mt-1 text-right pr-[2px]">
+            richmond, va
+          </p>
+        </div>
+
+        {/* ── Photo 3 — lower-right, small, stacked below #2 ── */}
+        <div className="absolute overflow-hidden"
+          style={{ bottom: '10%', right: '9%', width: 'clamp(130px,16vw,240px)', transform: 'rotate(-1.8deg)', zIndex: 4 }}>
           <div style={{ aspectRatio: '1/1' }}>
-            <img src="/images/about-4.webp" alt="" loading="lazy" decoding="async"
-              className="w-full h-full object-cover" />
-          </div>
-        </div>
-
-        {/* 4 — center-right, landscape, slight tilt */}
-        <div className="absolute overflow-hidden shadow-sm"
-          style={{ top: '40%', left: '38%', width: 'clamp(180px,26vw,400px)', transform: 'rotate(2.2deg)', zIndex: 3 }}>
-          <div style={{ aspectRatio: '4/3' }}>
-            <img src="/images/about-5.webp" alt="" loading="lazy" decoding="async"
-              className="w-full h-full object-cover" />
-          </div>
-        </div>
-
-        {/* 5 — lower-left, large portrait */}
-        <div className="absolute overflow-hidden shadow-sm"
-          style={{ bottom: '8%', left: '16%', width: 'clamp(150px,20vw,300px)', transform: 'rotate(-1.5deg)', zIndex: 3 }}>
-          <div style={{ aspectRatio: '3/4' }}>
-            <img src="/images/about-6.webp" alt="" loading="lazy" decoding="async"
-              className="w-full h-full object-cover" />
-          </div>
-        </div>
-
-        {/* 6 — lower-right, portrait, CW tilt */}
-        <div className="absolute overflow-hidden shadow-sm"
-          style={{ bottom: '5%', right: '10%', width: 'clamp(140px,18vw,270px)', transform: 'rotate(3deg)', zIndex: 3 }}>
-          <div style={{ aspectRatio: '3/4' }}>
             <img src="/images/about-7.webp" alt="" loading="lazy" decoding="async"
               className="w-full h-full object-cover" />
           </div>
+          <p className="font-mono text-[8px] uppercase tracking-widest opacity-30 mt-1 pl-[2px]">
+            07.25.26
+          </p>
         </div>
 
-        {/* ── Scattered text labels ── */}
+        {/* ── Scattered text — flyer labels ── */}
 
-        <p className="absolute font-mono text-[9px] uppercase tracking-widest opacity-30 pointer-events-none"
-          style={{ top: '28%', left: '13%', zIndex: 4, transform: 'rotate(-90deg)', transformOrigin: 'left center', whiteSpace: 'nowrap' }}>
+        {/* vertical side label */}
+        <p className="absolute font-mono text-[9px] uppercase tracking-widest opacity-25 pointer-events-none select-none"
+          style={{ top: '40%', left: '9%', zIndex: 4, writingMode: 'vertical-rl', letterSpacing: '0.2em' }}>
           viet-owned · matcha-obsessed
         </p>
 
-        <p className="absolute font-mono text-[9px] uppercase tracking-widest opacity-25 pointer-events-none"
-          style={{ top: '22%', right: '8%', zIndex: 4, textAlign: 'right' }}>
-          since 2023
+        {/* bold pull quote — mid-left open space */}
+        <p className="absolute font-serif italic pointer-events-none select-none"
+          style={{ top: '58%', left: '8%', zIndex: 4, fontSize: 'clamp(1rem,1.6vw,1.4rem)', opacity: 0.5, maxWidth: 200, lineHeight: 1.35, transform: 'rotate(-1.5deg)' }}>
+          "serious matcha,<br/>unserious people."
         </p>
 
-        <p className="absolute font-serif italic text-xl md:text-2xl pointer-events-none"
-          style={{ top: '53%', left: '13%', zIndex: 4, opacity: 0.55, maxWidth: 220, lineHeight: 1.3, transform: 'rotate(-1deg)' }}>
-          "serious matcha, unserious people."
+        {/* year stamp — floats near photo gap */}
+        <p className="absolute font-mono text-[10px] uppercase tracking-[0.2em] opacity-20 pointer-events-none select-none"
+          style={{ top: '30%', left: '54%', zIndex: 4, transform: 'rotate(90deg)', transformOrigin: 'left top', whiteSpace: 'nowrap' }}>
+          est. 2023
         </p>
 
-        <p className="absolute font-mono text-[9px] uppercase tracking-widest opacity-20 pointer-events-none"
-          style={{ bottom: '22%', right: '8%', zIndex: 4 }}>
+        {/* cities — lower-left open space */}
+        <p className="absolute font-mono text-[9px] uppercase tracking-widest opacity-20 pointer-events-none select-none"
+          style={{ bottom: '18%', left: '8%', zIndex: 4 }}>
           richmond · dc · norfolk
         </p>
 
-        {/* Asterisk decorations — like the flyer refs */}
-        <span className="absolute font-sans font-bold text-3xl opacity-[0.06] pointer-events-none select-none"
-          style={{ top: '32%', left: '46%', zIndex: 2 }}>✳</span>
-        <span className="absolute font-sans font-bold text-4xl opacity-[0.05] pointer-events-none select-none"
-          style={{ bottom: '30%', left: '4%', zIndex: 2 }}>✳</span>
+        {/* ✳ accent mark */}
+        <span className="absolute font-sans font-bold text-2xl opacity-[0.07] pointer-events-none select-none"
+          style={{ top: '50%', left: '20%', zIndex: 2 }}>✳</span>
 
       </section>
 
