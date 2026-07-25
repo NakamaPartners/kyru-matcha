@@ -60,10 +60,8 @@ export default function Booking() {
             fetchPriority="high"
             decoding="async"
             className="absolute inset-0 w-full h-full object-cover"
-            style={{ objectPosition: '60% 80%' }}
+            style={{ objectPosition: '30% 80%' }}
           />
-          {/* Subtle left edge fade */}
-          <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent pointer-events-none" />
         </div>
       </section>
 
