@@ -24,7 +24,7 @@ const drinks = [
 
 export default function Menu() {
   return (
-    <main className="bg-white text-[#181916] pt-[72px]">
+    <main className="text-[#181916] pt-[72px]">
 
       {/* Full-bleed hero image */}
       <div className="w-full aspect-[21/9] overflow-hidden bg-[#F1EFE8]">
@@ -40,9 +40,7 @@ export default function Menu() {
         <h1 className="font-sans text-6xl md:text-8xl font-medium lowercase tracking-[-0.04em] leading-[0.85]">
           menu
         </h1>
-        <p className="font-mono text-[10px] uppercase tracking-widest opacity-35 max-w-[18rem]">
-          small menu. intentional. rotates with the season.
-        </p>
+        
       </div>
 
       {/* Drink entries — photo-led */}
@@ -60,32 +58,19 @@ export default function Menu() {
           {/* Minimal text below */}
           <div className="px-8 md:px-16 py-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
-              <span className="font-mono text-[9px] uppercase tracking-widest opacity-30 block mb-2">{d.tag}</span>
               <h2 className="font-sans text-3xl md:text-4xl font-medium lowercase tracking-[-0.02em]">
                 {d.name}
               </h2>
-              <p className="font-mono text-[11px] uppercase tracking-widest opacity-40 mt-3">
+              <p className="font-sans text-sm lowercase text-[#181916]/45 mt-3 leading-relaxed">
                 {d.desc}
               </p>
             </div>
-            <p className="font-mono text-[9px] uppercase tracking-widest opacity-25 flex-shrink-0">
-              all pop-ups
-            </p>
           </div>
         </div>
       ))}
 
       {/* Footer note */}
-      <div className="px-8 md:px-16 py-16 border-t border-[#181916]/5">
-        <p className="font-mono text-[10px] uppercase tracking-widest opacity-25">
-          menu rotates — follow{' '}
-          <a href="https://www.instagram.com/kyrumatcha/" target="_blank" rel="noreferrer"
-            className="underline underline-offset-4 hover:opacity-60 transition-opacity">
-            @kyrumatcha
-          </a>{' '}
-          for updates
-        </p>
-      </div>
+      
     </main>
   );
 }

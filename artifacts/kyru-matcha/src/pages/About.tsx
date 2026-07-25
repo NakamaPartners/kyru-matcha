@@ -1,14 +1,12 @@
 export default function About() {
   return (
-    <main className="bg-white text-[#181916] pt-[72px] min-h-screen">
+    <main className="text-[#181916] pt-[72px] min-h-screen">
 
       {/* ── Hero — one big photo + headline ── */}
       <section className="grid grid-cols-1 md:grid-cols-2" style={{ minHeight: '90vh' }}>
 
         {/* Left — text */}
         <div className="px-10 md:px-16 py-16 flex flex-col justify-between">
-          <p className="font-mono text-[10px] uppercase tracking-widest opacity-30">viet-owned · matcha-obsessed</p>
-
           <div>
             <h1
               className="font-display lowercase tracking-[-0.05em] leading-[0.85] mb-10"
@@ -41,7 +39,7 @@ export default function About() {
         {/* Right — photo */}
         <div className="relative overflow-hidden" style={{ minHeight: 480 }}>
           <img
-            src="/images/about-3.webp"
+            src="/images/about-japan.webp"
             alt=""
             fetchPriority="high"
             decoding="async"
@@ -70,10 +68,7 @@ export default function About() {
             style={{ fontSize: 'clamp(1.5rem, 2.8vw, 2.5rem)' }}>
             "serious matcha,<br />unserious people."
           </p>
-          <div>
-            <p className="font-mono text-[9px] uppercase tracking-widest opacity-25 mb-1">est. 2023</p>
-            <p className="font-mono text-[9px] uppercase tracking-widest opacity-25">richmond · dc · norfolk</p>
-          </div>
+          
         </div>
       </section>
 

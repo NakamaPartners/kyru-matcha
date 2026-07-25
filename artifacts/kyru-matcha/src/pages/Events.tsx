@@ -79,18 +79,7 @@ function VideoEventHero() {
       {/* ── Content ── */}
       <div className="absolute inset-0 flex flex-col justify-between px-8 md:px-16 py-10">
 
-        {/* Top row */}
-        <div className="flex items-center justify-between">
-          <p className="font-mono text-[9px] uppercase tracking-widest text-white/40">
-            {confirmed.day} · {confirmed.date} · {confirmed.year}
-          </p>
-          <div className="flex items-center gap-4">
-            <span className="font-serif italic text-white/50 text-sm">{confirmed.note}</span>
-            <span className="font-mono text-[9px] uppercase tracking-widest border border-white/30 text-white/70 px-3 py-1">
-              confirmed
-            </span>
-          </div>
-        </div>
+        
 
         {/* City — giant, bleeds across full width */}
         <div>
@@ -105,7 +94,7 @@ function VideoEventHero() {
 
           {/* Bottom info row */}
           <div className="flex items-end justify-between mt-6">
-            <p className="font-mono text-[10px] uppercase tracking-widest text-white/40">
+            <p className="font-sans text-base text-white/55 lowercase">
               {confirmed.venue} · {confirmed.time}
             </p>
 
@@ -133,7 +122,7 @@ function VideoEventHero() {
 
 export default function Events() {
   return (
-    <main className="bg-white text-[#181916] pt-[72px]">
+    <main className="text-[#181916] pt-[72px]">
 
       <VideoEventHero />
 
@@ -143,14 +132,7 @@ export default function Events() {
           key={i}
           className="border-b border-black/[0.07] px-8 md:px-16 py-12 md:py-16 bg-white"
         >
-          <div className="flex items-center justify-between mb-4">
-            <p className="font-mono text-[9px] uppercase tracking-widest opacity-30">
-              {e.day} · {e.year}
-            </p>
-            <span className="font-mono text-[9px] uppercase tracking-widest border border-black/15 px-3 py-1 opacity-25">
-              coming soon
-            </span>
-          </div>
+          
 
           <div className="flex items-end gap-4 md:gap-8">
             <h2 className="font-display lowercase tracking-[-0.04em] leading-[0.85] text-[18vw] md:text-[12vw] text-[#181916]/20">
@@ -159,8 +141,8 @@ export default function Events() {
             <span className="font-mono text-sm md:text-base mb-1 md:mb-2 opacity-20">{e.state}</span>
           </div>
 
-          <p className="font-mono text-[10px] uppercase tracking-widest mt-4 opacity-20">
-            venue & time TBA — follow along for updates
+          <p className="font-sans text-sm lowercase text-[#181916]/35 mt-4">
+            venue & time tba
           </p>
         </div>
       ))}
@@ -171,7 +153,7 @@ export default function Events() {
         <a
           href="https://www.instagram.com/kyrumatcha/"
           target="_blank" rel="noreferrer"
-          className="font-mono text-[10px] uppercase tracking-widest opacity-30 hover:opacity-70 transition-opacity"
+          className="font-sans text-sm lowercase opacity-40 hover:opacity-70 transition-opacity"
         >
           @kyrumatcha ↗
         </a>

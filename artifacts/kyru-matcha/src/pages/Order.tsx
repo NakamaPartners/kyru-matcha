@@ -1,6 +1,6 @@
 export default function Order() {
   return (
-    <main className="bg-white text-[#181916] pt-[72px] min-h-screen">
+    <main className="text-[#181916] pt-[72px] min-h-screen">
 
       {/* ── Hero header ─────────────────────────────────────────── */}
       <div className="border-b border-black/[0.07] grid grid-cols-1 md:grid-cols-2" style={{ minHeight: '72vh' }}>
@@ -10,23 +10,9 @@ export default function Order() {
 
           {/* Top: label + headline */}
           <div className="relative z-10">
-            <p className="font-mono text-[10px] uppercase tracking-widest opacity-35 mb-5">ceremonial grade · single origin</p>
             <h1 className="font-sans text-6xl md:text-7xl font-medium lowercase tracking-[-0.05em] leading-[0.85]">
               order<br />matcha
             </h1>
-          </div>
-
-          {/* Ghost "kai" — left-aligned, vertically centered in dead space */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 flex items-center select-none pointer-events-none px-8 md:px-14"
-          >
-            <span
-              className="font-sans font-medium lowercase tracking-[-0.05em] leading-none text-[#181916]/[0.055]"
-              style={{ fontSize: 'clamp(72px, 9.5vw, 148px)' }}
-            >
-              kai
-            </span>
           </div>
 
           {/* Bottom: quote + specs */}
@@ -34,14 +20,7 @@ export default function Order() {
             <p className="font-serif italic text-xl md:text-2xl text-[#181916]/55 leading-snug max-w-xs">
               "the matcha that got us into all this."
             </p>
-            <div className="flex gap-8 border-t border-black/[0.07] pt-5">
-              {[['grade','ceremonial'],['origin','okumidori'],['vendor','kai']].map(([k,v]) => (
-                <div key={k}>
-                  <p className="font-mono text-[8px] uppercase tracking-widest opacity-25">{k}</p>
-                  <p className="font-mono text-[9px] uppercase tracking-widest mt-0.5">{v}</p>
-                </div>
-              ))}
-            </div>
+            
           </div>
         </div>
 
@@ -54,11 +33,7 @@ export default function Order() {
             decoding="async"
             className="absolute inset-0 w-full h-full object-cover object-center"
           />
-          {/* Left fade into white */}
-          <div
-            className="absolute inset-y-0 left-0 w-2/5 pointer-events-none"
-            style={{ background: 'linear-gradient(to right, #ffffff 0%, transparent 100%)' }}
-          />
+          
         </div>
 
       </div>
@@ -66,16 +41,7 @@ export default function Order() {
       {/* ── Body — organized chaos ──────────────────────────────── */}
       <div className="relative px-8 md:px-14 py-16 overflow-hidden border-b border-black/[0.07]">
 
-        {/* Giant ghost word */}
-        <p
-          aria-hidden="true"
-          className="absolute -right-6 top-4 font-sans font-medium lowercase tracking-[-0.06em] leading-none text-[#181916]/[0.04] select-none pointer-events-none"
-          style={{ fontSize: 'clamp(100px, 18vw, 260px)' }}
-        >
-          order
-        </p>
-
-        {/* Story block — big indent, slight tilt */}
+        {/* Story block */}
         <div className="relative z-10 max-w-lg mb-16" style={{ marginLeft: '3%' }}>
           <p className="text-lg leading-relaxed lowercase text-[#181916]/55">
             we source <strong className="font-semibold text-[#181916]">kai ceremonial matcha</strong> — the one
@@ -84,23 +50,19 @@ export default function Order() {
           </p>
         </div>
 
-        {/* Spec cluster — scattered, not a grid */}
+        {/* Spec cluster */}
         <div className="relative z-10 mb-20 ml-[8%] flex flex-wrap gap-x-14 gap-y-6">
-          <div >
-            <p className="font-mono text-[8px] uppercase tracking-widest opacity-20">grade</p>
-            <p className="font-sans font-medium text-2xl lowercase tracking-tight">ceremonial</p>
+          <div>
+            <p className="font-sans font-medium text-2xl lowercase tracking-tight">ceremonial grade</p>
           </div>
           <div style={{ marginTop: '1.5rem' }}>
-            <p className="font-mono text-[8px] uppercase tracking-widest opacity-20">origin</p>
             <p className="font-sans font-medium text-2xl lowercase tracking-tight">single-origin</p>
           </div>
           <div style={{ marginTop: '0.5rem' }}>
-            <p className="font-mono text-[8px] uppercase tracking-widest opacity-20">ships</p>
-            <p className="font-sans font-medium text-xl lowercase tracking-tight opacity-60">1–3 days</p>
+            <p className="font-sans font-medium text-xl lowercase tracking-tight opacity-60">ships 1–3 days</p>
           </div>
           <div style={{ marginTop: '2rem' }}>
-            <p className="font-mono text-[8px] uppercase tracking-widest opacity-20">minimum</p>
-            <p className="font-sans font-medium text-xl lowercase tracking-tight opacity-60">1 tin</p>
+            <p className="font-sans font-medium text-xl lowercase tracking-tight opacity-60">min. 1 tin</p>
           </div>
         </div>
 
@@ -113,8 +75,6 @@ export default function Order() {
 
         {/* CTAs — misaligned intentionally */}
         <div className="relative z-10 flex flex-col gap-4 max-w-md" style={{ marginLeft: '4%' }}>
-          <p className="font-mono text-[8px] uppercase tracking-widest opacity-20 mb-1">opens in a new tab · we follow up within 24h</p>
-
           <a
             href="https://forms.gle/y4TgUshBGLF54e1T8"
             target="_blank" rel="noreferrer"
@@ -132,26 +92,13 @@ export default function Order() {
             
           >
             <span className="font-mono text-[11px] uppercase tracking-widest opacity-40">or dm @kyrumatcha</span>
-            <span className="font-mono opacity-30 group-hover:opacity-60 transition-opacity">↗</span>
+            <span className="font-mono opacity-50 group-hover:opacity-60 transition-opacity">↗</span>
           </a>
         </div>
 
-        {/* Nami footnote — bottom-right drift */}
-        <div className="relative z-10 mt-16 text-right" >
-          <p className="font-mono text-[8px] uppercase tracking-widest opacity-15 mb-1">also worth trying</p>
-          <a
-            href="https://namimatcha.com"
-            target="_blank" rel="noreferrer"
-            className="font-mono text-[9px] uppercase tracking-widest opacity-25 hover:opacity-60 transition-opacity"
-          >
-            nami matcha · 15% off with code KEVIN32625 ↗
-          </a>
-        </div>
+        
 
-        {/* Ambient italic — floats lower-left */}
-        <p className="font-serif italic text-[#181916]/20 text-2xl absolute bottom-8 left-10 pointer-events-none select-none" >
-          questions? just ask.
-        </p>
+        
 
       </div>
 

@@ -90,31 +90,13 @@ function Hero() {
             </p>
           </div>
 
-          {/* ③ mono info — upper-right quadrant */}
-          <div className="absolute hidden md:block"
-            style={{ top: '26%', right: '4%', textAlign: 'right' }}>
-            <p className="font-mono text-[13px] uppercase tracking-widest leading-loose" style={{ opacity: 0.35 }}>
-              matcha · drinks<br />
-              pop-ups · good people<br />
-              &amp; more
-            </p>
-          </div>
-
           {/* ④ italic flourish — lower-center, its own clear band */}
           <div className="hidden md:block absolute font-serif italic text-3xl whitespace-nowrap pointer-events-none"
             style={{ top: '62%', left: '50%', transform: 'translate(-50%, -50%)', opacity: 0.65 }}>
             thanks for being here <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="inline-block align-middle mb-1" style={{width:'0.9em',height:'0.9em'}}><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           </div>
 
-          {/* ⑤ pop-up info — lower-right quadrant */}
-          <div className="absolute hidden md:block"
-            style={{ bottom: '26%', right: '4%', textAlign: 'right' }}>
-            <p className="font-mono text-[13px] uppercase tracking-widest leading-loose" style={{ opacity: 0.35 }}>
-              next pop-up<br />
-              richmond, va · 07.25.26<br />
-              11am–5pm (or sold out)
-            </p>
-          </div>
+          
         </div>
 
         {/* matcha — nempel bottom-right, bleeds off both edges */}
@@ -145,7 +127,7 @@ function Ticker() {
         {[...Array(10)].map((_, i) => (
           <div key={i} className="flex items-center">
             <span className="mx-6">NEXT POP-UP: RICHMOND, VA · 07.25.26 · 11AM–5PM</span>
-            <span className="opacity-30">///</span>
+            <span className="opacity-50">///</span>
           </div>
         ))}
       </div>
@@ -198,11 +180,7 @@ function Intro() {
         ))}
       </div>
 
-      {/* Bottom label strip */}
-      <div className="flex items-center justify-between px-8 md:px-16 py-5 border-t border-black/[0.07]">
-        <p className="font-mono text-[10px] uppercase tracking-widest opacity-25">viet-owned · matcha-obsessed</p>
-        <p className="font-mono text-[10px] uppercase tracking-widest opacity-25">richmond · dc · norfolk</p>
-      </div>
+      
 
     </section>
   );
@@ -234,138 +212,56 @@ function PhotoWall() {
   );
 }
 
-/* ─── Visual spread — scattered canvas ──────────────────────── */
+/* ─── Visual spread — clean board layout ────────────────────── */
 function Visual() {
+  const items = [
+    { src: P.v_drink, name: 'white rabbit matcha', tag: 'matcha · ceremonial' },
+    { src: P.v_whisk, name: 'white rabbit hojicha', tag: 'hojicha · roasted' },
+    { src: P.v_life,  name: 'the make up', tag: 'special · seasonal' },
+  ];
+
   return (
-    <section className="border-t border-black/[0.07] overflow-hidden relative"
+    <section className="border-t border-black/[0.07]"
       style={{
-        backgroundImage: "url('/images/texture-blue.webp')",
+        backgroundImage: "url('/images/texture-paper.webp')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}>
-      {/* Warm white wash — keeps text crisp, lets grain breathe */}
-      <div className="absolute inset-0 bg-white/50 pointer-events-none" />
 
-      {/* ── Desktop: scattered poster layout ── */}
-      <div className="hidden md:block relative" style={{ minHeight: '88vh' }}>
+      
 
-        {/* Photo 1 — matcha, large, anchored left */}
-        <div className="absolute overflow-hidden" style={{ left: '2%', top: '7%', width: '35%' }}>
-          <div style={{ aspectRatio: '3/4' }} className="overflow-hidden">
-            <img src={P.v_drink} alt="" loading="lazy" decoding="async"
-              className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" />
-          </div>
-        </div>
-
-        {/* Photo 2 — hojicha, small, top-right, slightly tilted */}
-        <div className="absolute overflow-hidden" style={{ right: '15%', top: '3%', width: '22%', transform: 'rotate(1.8deg)' }}>
-          <div style={{ aspectRatio: '4/5' }} className="overflow-hidden">
-            <img src={P.v_whisk} alt="" loading="lazy" decoding="async"
-              className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" />
-          </div>
-          <span className="absolute top-3 left-3 font-mono text-[7px] uppercase tracking-widest bg-white/90 border border-black/15 px-2 py-1">
-            available
-          </span>
-        </div>
-
-        {/* Photo 3 — the make up, mid-right, grounded */}
-        <div className="absolute overflow-hidden" style={{ right: '2%', top: '44%', width: '30%' }}>
-          <div style={{ aspectRatio: '4/5' }} className="overflow-hidden">
-            <img src={P.v_life} alt="" loading="lazy" decoding="async"
-              className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" />
-          </div>
-          <span className="absolute bottom-3 right-3 font-mono text-[7px] uppercase tracking-widest bg-white/90 border border-black/15 px-2 py-1">
-            available
-          </span>
-        </div>
-
-        {/* Name 1 — white rabbit matcha — big, lower-left, rotated */}
-        <div className="absolute" style={{ left: '1%', bottom: '9%' }}>
-          <p className="font-sans font-medium lowercase tracking-[-0.05em] leading-[0.85] text-white"
-            style={{ fontSize: 'clamp(2rem, 4.5vw, 5.5rem)', textShadow: '0 2px 16px rgba(0,0,0,0.35), 0 1px 4px rgba(0,0,0,0.2)' }}>
-            white rabbit<br />matcha
-          </p>
-          <span className="font-mono text-[8px] uppercase tracking-widest opacity-60 mt-2 inline-block text-white"
-            style={{ textShadow: '0 1px 6px rgba(0,0,0,0.4)' }}>
-            pop-up menu · matcha
-          </span>
-        </div>
-
-        {/* Name 2 — hojicha — smaller, mid-canvas, slight tilt */}
-        <div className="absolute" style={{ left: '39%', top: '35%' }}>
-          <p className="font-sans font-medium lowercase tracking-[-0.04em] leading-[0.88] text-[#181916]"
-            style={{ fontSize: 'clamp(1.5rem, 3vw, 4rem)' }}>
-            white rabbit<br />hojicha
-          </p>
-          <span className="font-mono text-[8px] uppercase tracking-widest opacity-25 mt-1 inline-block">
-            available now
-          </span>
-        </div>
-
-        {/* Name 3 — the make up — right-anchored bottom, big */}
-        <div className="absolute" style={{ right: '2%', bottom: '3%', textAlign: 'right' }}>
-          <p className="font-sans font-medium lowercase tracking-[-0.05em] leading-[0.85] text-white"
-            style={{ fontSize: 'clamp(2rem, 5vw, 6rem)' }}>
-            the make up
-          </p>
-          <span className="font-mono text-[8px] uppercase tracking-widest text-white/50 mt-2 inline-block">
-            pop-up menu · special
-          </span>
-        </div>
-
-        {/* Vertical section label */}
-        <div className="absolute font-mono text-[8px] uppercase tracking-widest opacity-20 select-none"
-          style={{ left: '38%', top: '8%', writingMode: 'vertical-rl', letterSpacing: '0.3em' }}>
-          this month's menu
-        </div>
-
-        {/* Single shared CTA — floating in the negative space */}
-        <Link
-          to="/events"
-          className="absolute flex items-center gap-3 border border-black/20 text-[#181916] px-5 py-3 font-mono text-[9px] uppercase tracking-widest hover:bg-[#181916] hover:text-white hover:border-[#181916] transition-colors group"
-          style={{ left: '39%', bottom: '9%' }}
-        >
-          find a pop-up
-          <span className="group-hover:translate-x-1 transition-transform">→</span>
-        </Link>
-
-        {/* Ghost "available" stamp floating top-left area */}
-        <span className="absolute font-mono text-[7px] uppercase tracking-widest border border-black/12 px-2 py-1 opacity-40"
-          style={{ left: '37%', top: '5%' }}>
-          available
-        </span>
-      </div>
-
-      {/* ── Mobile: zigzag stagger ── */}
-      <div className="md:hidden flex flex-col">
-        {[
-          { src: P.v_drink, name: 'white rabbit matcha', tag: 'matcha', align: 'left' },
-          { src: P.v_whisk, name: 'white rabbit hojicha', tag: 'hojicha', align: 'right' },
-          { src: P.v_life,  name: 'the make up', tag: 'special', align: 'left' },
-        ].map((item, i) => (
-          <div key={i} className="border-t border-black/[0.07]">
-            {/* Photo — offset left or right */}
-            <div className={`overflow-hidden ${item.align === 'right' ? 'ml-[15%]' : 'mr-[15%]'}`}
-              style={{ aspectRatio: '4/5', position: 'relative' }}>
+      {/* Desktop: 3-col even grid */}
+      <div className="hidden md:grid grid-cols-3 divide-x divide-black/[0.07]">
+        {items.map((item, i) => (
+          <div key={i} className="p-10 flex flex-col gap-5">
+            <div className="overflow-hidden" style={{ aspectRatio: '3/4' }}>
               <img src={item.src} alt="" loading="lazy" decoding="async"
-                className="w-full h-full object-cover" />
-              <span className="absolute top-3 right-3 font-mono text-[7px] uppercase tracking-widest bg-white border border-black/20 px-2 py-1">
-                available
-              </span>
+                className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700" />
             </div>
-            {/* Name block — opposite alignment to photo */}
-            <div className={`px-6 py-5 ${item.align === 'right' ? 'text-left' : 'text-right'}`}
-              >
-              <p className="font-sans text-3xl font-medium lowercase tracking-[-0.04em] leading-tight">
+            <div>
+              <p className="font-sans font-medium lowercase tracking-[-0.04em] leading-tight"
+                style={{ fontSize: 'clamp(1.1rem, 1.8vw, 1.6rem)' }}>
                 {item.name}
-              </p>
-              <p className="font-mono text-[8px] uppercase tracking-widest opacity-25 mt-1">
-                pop-up menu · {item.tag}
               </p>
             </div>
           </div>
         ))}
-        <div className="border-t border-black/[0.07] px-6 py-5">
+      </div>
+
+      {/* Mobile: vertical stack */}
+      <div className="md:hidden flex flex-col divide-y divide-black/[0.07]">
+        {items.map((item, i) => (
+          <div key={i} className="p-8 flex flex-col gap-4">
+            <div className="overflow-hidden" style={{ aspectRatio: '4/3' }}>
+              <img src={item.src} alt="" loading="lazy" decoding="async"
+                className="w-full h-full object-cover" />
+            </div>
+            <div>
+              <p className="font-sans font-medium lowercase tracking-[-0.04em] text-2xl leading-tight">{item.name}</p>
+            </div>
+          </div>
+        ))}
+        <div className="px-8 py-6">
           <Link to="/events"
             className="flex items-center justify-between bg-[#181916] text-white px-5 py-4 font-mono text-[9px] uppercase tracking-widest group">
             find a pop-up
@@ -398,10 +294,7 @@ function Collab() {
         <h2 className="font-serif italic text-4xl md:text-6xl text-[#181916] leading-none">
           collab.
         </h2>
-        <div className="text-right">
-          <p className="font-mono text-[9px] uppercase tracking-widest opacity-20">5 partnerships</p>
-          <p className="font-sans text-sm lowercase opacity-40 mt-1">we make things with people we like</p>
-        </div>
+        
       </div>
 
       {/* Film strip */}
@@ -466,8 +359,7 @@ function NowPlaying() {
           ))}
         </span>
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-widest text-white/35">currently playing</p>
-          <p className="font-sans text-sm font-medium lowercase tracking-tight text-white/80 mt-0.5">
+          <p className="font-sans text-sm font-medium lowercase tracking-tight text-white/80">
             the kyru playlist — v.1
           </p>
         </div>
@@ -487,13 +379,13 @@ function Footer() {
       {/* Brand */}
       <div>
         <img src="/images/kyru-icon.webp" alt="kyru" className="w-12 h-12 object-contain mb-6" />
-        <p className="font-mono text-[10px] uppercase tracking-widest opacity-30">© 2026 kyru matcha</p>
+        <p className="font-sans text-xs opacity-35 lowercase">© 2026 kyru matcha</p>
         <p className="font-sans text-sm opacity-35 lowercase mt-1">serious matcha, unserious people.</p>
       </div>
 
       {/* Social */}
       <div className="flex flex-col gap-3">
-        <p className="font-mono text-[10px] uppercase tracking-widest opacity-30 mb-1">follow along</p>
+        
         <a href="https://www.instagram.com/kyrumatcha/" target="_blank" rel="noreferrer"
           className="font-mono text-xs lowercase tracking-wide opacity-50 hover:opacity-90 transition-opacity">
           @kyrumatcha · instagram ↗
@@ -506,7 +398,7 @@ function Footer() {
 
       {/* Email signup */}
       <div className="max-w-sm w-full">
-        <p className="font-mono text-[10px] uppercase tracking-widest opacity-40 mb-5">get first dibs on pop-ups</p>
+        
         {done ? (
           <p className="font-mono text-xs uppercase tracking-widest opacity-50">noted. we'll be in touch ♡</p>
         ) : (

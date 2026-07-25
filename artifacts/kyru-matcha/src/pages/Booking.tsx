@@ -7,17 +7,13 @@ const services = [
 
 export default function Booking() {
   return (
-    <main className="bg-white text-[#181916] pt-[72px] min-h-screen">
+    <main className="text-[#181916] pt-[72px] min-h-screen">
 
       {/* ── HERO ─────────────────────────────────────────────────── */}
       <section className="grid grid-cols-1 md:grid-cols-[1fr_44%] min-h-[88vh] border-b border-black/[0.07]">
 
         {/* Left — type pushing the column */}
         <div className="flex flex-col justify-between px-8 md:px-14 pt-12 pb-10 md:border-r border-black/[0.07] overflow-hidden">
-
-          <p className="font-mono text-[10px] uppercase tracking-[0.22em] opacity-25">
-            booking · collabs · events
-          </p>
 
           {/* H1 that slightly oversteps its grid lane */}
           <div style={{ marginLeft: '-0.04em' }}>
@@ -46,9 +42,7 @@ export default function Booking() {
               <span className="font-mono text-[10px] uppercase tracking-widest">dm @kyrumatcha</span>
               <span className="font-mono group-hover:translate-x-1 transition-transform ml-6">→</span>
             </a>
-            <p className="font-mono text-[8px] uppercase tracking-widest opacity-18">
-              virginia born · raised · always moving
-            </p>
+            
           </div>
         </div>
 
@@ -78,9 +72,7 @@ export default function Booking() {
             >
               what we do.
             </h2>
-            <p className="font-mono text-[8px] uppercase tracking-widest opacity-20 hidden md:block">
-              four services
-            </p>
+            
           </div>
 
           <div className="flex flex-col gap-8">
@@ -89,7 +81,6 @@ export default function Booking() {
                 key={s.num}
                 className={`flex items-baseline gap-6 ${i % 2 === 1 ? 'md:pl-16' : ''}`}
               >
-                <span className="font-mono text-[8px] opacity-15 shrink-0 w-5 hidden md:block">{s.num}</span>
                 <div>
                   <p
                     className="font-display lowercase tracking-[-0.04em] leading-none"
@@ -97,50 +88,29 @@ export default function Booking() {
                   >
                     {s.label}
                   </p>
-                  <p className="font-mono text-[8px] uppercase tracking-widest opacity-25 mt-2">{s.sub}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Right — scattered photo collage */}
-        <div className="relative hidden md:block" style={{ minHeight: 520 }}>
+        {/* Right — clean photo stack */}
+        <div className="hidden md:flex flex-col gap-6 p-10 justify-center">
 
-          {/* Photo 1 — KYRU sign, top-left, tall portrait */}
-          <div className="absolute overflow-hidden"
-            style={{ top: '5%', left: '5%', width: '46%', transform: 'rotate(-2deg)', zIndex: 3 }}>
-            <div style={{ aspectRatio: '3/4' }}>
-              <img src="/images/svc-kyru-sign.jpg" alt="" loading="lazy" decoding="async"
-                className="w-full h-full object-cover object-top" />
-            </div>
-            <p className="font-mono text-[7px] uppercase tracking-widest opacity-40 mt-1">kyru specialty matcha</p>
+          <div className="overflow-hidden" style={{ aspectRatio: '4/3' }}>
+            <img src="/images/svc-collab-cups.webp" alt="" loading="lazy" decoding="async"
+              className="w-full h-full object-cover object-center hover:scale-[1.02] transition-transform duration-700" />
           </div>
-
-          {/* Photo 2 — drinks tray, bottom-right, landscape */}
-          <div className="absolute overflow-hidden"
-            style={{ bottom: '6%', right: '4%', width: '52%', transform: 'rotate(1.6deg)', zIndex: 4 }}>
-            <div style={{ aspectRatio: '4/3' }}>
+          <div className="grid grid-cols-2 gap-4 mt-2">
+            <div className="overflow-hidden" style={{ aspectRatio: '3/4' }}>
+              <img src="/images/svc-need-matcha.webp" alt="" loading="lazy" decoding="async"
+                className="w-full h-full object-cover object-center hover:scale-[1.02] transition-transform duration-700" />
+            </div>
+            <div className="overflow-hidden" style={{ aspectRatio: '3/4' }}>
               <img src="/images/svc-drinks-tray.jpg" alt="" loading="lazy" decoding="async"
-                className="w-full h-full object-cover" />
-            </div>
-            <p className="font-mono text-[7px] uppercase tracking-widest opacity-40 mt-1 text-right">custom drinks</p>
-          </div>
-
-          {/* Photo 3 — need matcha sign, tucked between, small */}
-          <div className="absolute overflow-hidden"
-            style={{ top: '38%', right: '8%', width: '32%', transform: 'rotate(-1.5deg)', zIndex: 5 }}>
-            <div style={{ aspectRatio: '3/4' }}>
-              <img src="/images/svc-need-matcha.jpg" alt="" loading="lazy" decoding="async"
-                className="w-full h-full object-cover object-center" />
+                className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700" />
             </div>
           </div>
-
-          {/* Ambient label */}
-          <p className="absolute font-mono text-[8px] uppercase tracking-widest opacity-20 pointer-events-none"
-            style={{ display: 'none' }}>
-            markets · events · collabs
-          </p>
 
         </div>
       </section>
@@ -148,18 +118,8 @@ export default function Booking() {
       {/* ── PRICING — organized chaos ─────────────────────────────── */}
       <section className="border-b border-black/[0.07] relative overflow-hidden px-8 md:px-14 py-16">
 
-        {/* Ghost $200 bleeds off right */}
-        <div
-          aria-hidden="true"
-          className="absolute select-none pointer-events-none font-sans font-medium leading-none hidden md:block"
-          style={{ fontSize: 'clamp(10rem,28vw,28rem)', bottom: '-0.08em', right: '-0.04em', opacity: 0.035, lineHeight: 1 }}
-        >
-          $200
-        </div>
-
-        {/* Label + headline — tilted, indented */}
+        {/* Headline */}
         <div className="relative z-10 mb-12" style={{ marginLeft: '2%' }}>
-          <p className="font-mono text-[8px] uppercase tracking-widest opacity-20 mb-4">read before you dm</p>
           <h2
             className="font-display lowercase tracking-[-0.05em] leading-[0.84]"
             style={{ fontSize: 'clamp(2.8rem, 6.5vw, 8rem)' }}
@@ -171,9 +131,8 @@ export default function Booking() {
         {/* Price — huge, off-axis, floats right */}
         <div className="relative z-10 flex justify-end mb-10 pr-[5%]">
           <div>
-            <p className="font-mono text-[8px] uppercase tracking-widest opacity-20 mb-1 text-right">booking fee</p>
             <p className="font-sans font-medium tracking-tight leading-none" style={{ fontSize: 'clamp(3.5rem, 8vw, 9rem)' }}>
-              $200<span className="text-[0.3em] opacity-30 ml-2 align-middle">flat</span>
+              $200<span className="text-[0.3em] opacity-50 ml-2 align-middle">flat</span>
             </p>
           </div>
         </div>
@@ -188,25 +147,17 @@ export default function Booking() {
             ['travel expenses'],
           ].map(([item], i) => (
             <div key={i} className={i % 2 === 1 ? 'mt-3' : ''}>
-              <span className="font-mono text-[8px] opacity-15 mr-2">—</span>
-              <span className="font-sans text-sm lowercase text-[#181916]/50">{item}</span>
+              <span className="font-mono text-[10px] opacity-70 mr-2">—</span>
+              <span className="font-sans text-base lowercase text-[#181916]/80">{item}</span>
             </div>
           ))}
         </div>
 
-        {/* Footnotes — bottom right, drifted */}
-        <div className="relative z-10 text-right">
-          <p className="font-mono text-[8px] uppercase tracking-wide opacity-22 leading-loose">
-            +$50 if over 30 miles from Richmond, VA
-          </p>
-          <p className="font-mono text-[8px] uppercase tracking-wide opacity-15 leading-loose">
-            on-site beverages billed separately unless pre-paid
-          </p>
-        </div>
+        
 
         {/* Italic quote — lower left, ambient */}
         <p
-          className="relative z-10 font-serif italic text-lg text-[#181916]/25 leading-relaxed max-w-xs mt-10"
+          className="relative z-10 font-serif italic text-lg text-[#181916]/55 leading-relaxed max-w-xs mt-10"
           
         >
           "no decks, no proposals — just a dm and we'll figure it out."
@@ -225,22 +176,19 @@ export default function Booking() {
             reach<br />out.
           </h2>
           <div className="flex flex-col gap-4 max-w-sm">
-            <p className="font-sans text-base leading-relaxed lowercase text-[#181916]/50">
+            <p className="font-sans text-base leading-relaxed lowercase text-[#181916]/75">
               we're a small team and we move fast. dm us on instagram and we'll figure out the rest together.
             </p>
-            <p className="font-sans text-sm leading-relaxed lowercase text-[#181916]/30">
+            <p className="font-sans text-sm leading-relaxed lowercase text-[#181916]/55">
               for formal inquiries — agency, wholesale, large-scale — email works too.
             </p>
           </div>
-          <p className="font-serif italic text-[#181916]/18 text-lg">
+          <p className="font-serif italic text-[#181916]/45 text-lg">
             we're open to interesting things.
           </p>
         </div>
 
         <div className="px-8 md:px-14 py-16 flex flex-col justify-center gap-4">
-          <p className="font-mono text-[9px] uppercase tracking-widest opacity-18 mb-2">
-            fastest response via dm
-          </p>
           <a
             href="https://www.instagram.com/kyrumatcha/"
             target="_blank" rel="noreferrer"
@@ -254,7 +202,7 @@ export default function Booking() {
             className="group flex items-center justify-between border border-black/12 px-8 py-5 hover:border-black/35 transition-colors"
           >
             <span className="font-mono text-[11px] uppercase tracking-widest opacity-35">kyrumatcha@gmail.com</span>
-            <span className="font-mono opacity-18 group-hover:opacity-45 transition-opacity">↗</span>
+            <span className="font-mono opacity-40 group-hover:opacity-45 transition-opacity">↗</span>
           </a>
         </div>
       </section>
