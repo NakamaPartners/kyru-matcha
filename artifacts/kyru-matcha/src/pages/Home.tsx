@@ -285,7 +285,7 @@ function Visual() {
             style={{ fontSize: 'clamp(2rem, 4.5vw, 5.5rem)' }}>
             white rabbit<br />matcha
           </p>
-          <span className="font-mono text-[8px] uppercase tracking-widest opacity-20 mt-2 inline-block">
+          <span className="font-mono text-[8px] uppercase tracking-widest opacity-30 mt-2 inline-block">
             pop-up menu · matcha
           </span>
         </div>
@@ -296,24 +296,24 @@ function Visual() {
             style={{ fontSize: 'clamp(1.5rem, 3vw, 4rem)' }}>
             white rabbit<br />hojicha
           </p>
-          <span className="font-mono text-[8px] uppercase tracking-widest opacity-20 mt-1 inline-block -rotate-[2deg]">
+          <span className="font-mono text-[8px] uppercase tracking-widest opacity-25 mt-1 inline-block -rotate-[2deg]">
             available now
           </span>
         </div>
 
         {/* Name 3 — the make up — right-anchored bottom, big */}
         <div className="absolute" style={{ right: '2%', bottom: '3%', textAlign: 'right', transform: 'rotate(-1deg)' }}>
-          <p className="font-sans font-medium lowercase tracking-[-0.05em] leading-[0.85]"
+          <p className="font-sans font-medium lowercase tracking-[-0.05em] leading-[0.85] text-white"
             style={{ fontSize: 'clamp(2rem, 5vw, 6rem)' }}>
             the make up
           </p>
-          <span className="font-mono text-[8px] uppercase tracking-widest opacity-20 mt-2 inline-block">
+          <span className="font-mono text-[8px] uppercase tracking-widest text-white/50 mt-2 inline-block">
             pop-up menu · special
           </span>
         </div>
 
         {/* Vertical section label */}
-        <div className="absolute font-mono text-[8px] uppercase tracking-widest opacity-15 select-none"
+        <div className="absolute font-mono text-[8px] uppercase tracking-widest opacity-20 select-none"
           style={{ left: '38%', top: '8%', writingMode: 'vertical-rl', letterSpacing: '0.3em' }}>
           this month's menu
         </div>
@@ -321,7 +321,7 @@ function Visual() {
         {/* Single shared CTA — floating in the negative space */}
         <Link
           to="/events"
-          className="absolute flex items-center gap-3 border border-black/20 px-5 py-3 font-mono text-[9px] uppercase tracking-widest hover:bg-[#181916] hover:text-white hover:border-[#181916] transition-colors group"
+          className="absolute flex items-center gap-3 border border-black/20 text-[#181916] px-5 py-3 font-mono text-[9px] uppercase tracking-widest hover:bg-[#181916] hover:text-white hover:border-[#181916] transition-colors group"
           style={{ left: '39%', bottom: '9%' }}
         >
           find a pop-up
