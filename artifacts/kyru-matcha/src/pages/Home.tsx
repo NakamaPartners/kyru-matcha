@@ -239,7 +239,7 @@ function Visual() {
   return (
     <section className="border-t border-black/[0.07] overflow-hidden relative"
       style={{
-        backgroundImage: "url('/images/texture-blue.png')",
+        backgroundImage: "url('/images/texture-blue.webp')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}>
@@ -292,7 +292,7 @@ function Visual() {
 
         {/* Name 2 — hojicha — smaller, mid-canvas, slight tilt */}
         <div className="absolute" style={{ left: '39%', top: '35%', transform: 'rotate(2.5deg)' }}>
-          <p className="font-sans font-medium lowercase tracking-[-0.04em] leading-[0.88] text-[#181916]/55"
+          <p className="font-sans font-medium lowercase tracking-[-0.04em] leading-[0.88] text-[#181916]"
             style={{ fontSize: 'clamp(1.5rem, 3vw, 4rem)' }}>
             white rabbit<br />hojicha
           </p>

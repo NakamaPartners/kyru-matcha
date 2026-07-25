@@ -68,10 +68,10 @@ export default function Booking() {
       </section>
 
       {/* ── SERVICES — typographic scale variation ────────────────── */}
-      <section className="border-b border-black/[0.07]">
+      <section className="border-b border-black/[0.07] px-8 md:px-14 py-14">
 
-        {/* Header row */}
-        <div className="px-8 md:px-14 pt-10 pb-8 border-b border-black/[0.07] flex items-baseline justify-between">
+        {/* Header */}
+        <div className="flex items-baseline justify-between mb-12">
           <h2
             className="font-display lowercase tracking-[-0.04em] leading-none"
             style={{ fontSize: 'clamp(2rem, 5vw, 5.5rem)' }}
@@ -83,25 +83,26 @@ export default function Booking() {
           </p>
         </div>
 
-        {/* Service rows — each name at a different scale */}
-        {services.map((s, i) => (
-          <div
-            key={s.num}
-            className={`border-b border-black/[0.07] px-8 md:px-14 py-7 flex items-center gap-6 group hover:bg-[#F9F8F5] transition-colors ${i % 2 === 1 ? 'md:pl-24' : ''}`}
-          >
-            <span className="font-mono text-[8px] opacity-15 shrink-0 w-5 hidden md:block">{s.num}</span>
-            <div className="flex-1 flex flex-col md:flex-row md:items-baseline md:gap-6">
-              <p
-                className="font-display lowercase tracking-[-0.04em] leading-none"
-                style={{ fontSize: s.size }}
-              >
-                {s.label}
-              </p>
-              <p className="font-mono text-[8px] uppercase tracking-widest opacity-25 mt-1 md:mt-0">{s.sub}</p>
+        {/* Service list — no borders, stacked with space */}
+        <div className="flex flex-col gap-8">
+          {services.map((s, i) => (
+            <div
+              key={s.num}
+              className={`flex items-baseline gap-6 ${i % 2 === 1 ? 'md:pl-16' : ''}`}
+            >
+              <span className="font-mono text-[8px] opacity-15 shrink-0 w-5 hidden md:block">{s.num}</span>
+              <div>
+                <p
+                  className="font-display lowercase tracking-[-0.04em] leading-none"
+                  style={{ fontSize: s.size }}
+                >
+                  {s.label}
+                </p>
+                <p className="font-mono text-[8px] uppercase tracking-widest opacity-25 mt-2">{s.sub}</p>
+              </div>
             </div>
-            <span className="font-mono text-sm opacity-0 group-hover:opacity-35 transition-opacity shrink-0">→</span>
-          </div>
-        ))}
+          ))}
+        </div>
       </section>
 
       {/* ── PRICING ──────────────────────────────────────────────── */}
