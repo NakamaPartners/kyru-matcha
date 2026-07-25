@@ -1,6 +1,6 @@
 {
   "buildCommand": "pnpm --filter @workspace/kyru-matcha run build",
-  "outputDirectory": "artifacts/kyru-matcha/dist",
+  "outputDirectory": "artifacts/kyru-matcha/dist/public",
   "installCommand": "pnpm install",
   "framework": null
 }
