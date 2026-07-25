@@ -31,7 +31,7 @@ export default function Booking() {
             {/* Pull quote — offset slightly, small rotation */}
             <p
               className="font-serif italic text-lg md:text-xl text-[#181916]/40 leading-snug max-w-sm mt-10"
-              style={{ transform: 'rotate(-0.8deg)', transformOrigin: 'left center' }}
+              
             >
               "if you think we'd be a good fit —<br />we probably are."
             </p>
@@ -138,7 +138,7 @@ export default function Booking() {
 
           {/* Ambient label */}
           <p className="absolute font-mono text-[8px] uppercase tracking-widest opacity-20 pointer-events-none"
-            style={{ top: '48%', left: '5%', transform: 'rotate(-90deg)', transformOrigin: 'left top', whiteSpace: 'nowrap' }}>
+            style={{ display: 'none' }}>
             markets · events · collabs
           </p>
 
@@ -158,7 +158,7 @@ export default function Booking() {
         </div>
 
         {/* Label + headline — tilted, indented */}
-        <div className="relative z-10 mb-12" style={{ transform: 'rotate(-0.5deg)', marginLeft: '2%' }}>
+        <div className="relative z-10 mb-12" style={{ marginLeft: '2%' }}>
           <p className="font-mono text-[8px] uppercase tracking-widest opacity-20 mb-4">read before you dm</p>
           <h2
             className="font-display lowercase tracking-[-0.05em] leading-[0.84]"
@@ -169,7 +169,7 @@ export default function Booking() {
         </div>
 
         {/* Price — huge, off-axis, floats right */}
-        <div className="relative z-10 flex justify-end mb-10 pr-[5%]" style={{ transform: 'rotate(0.8deg)' }}>
+        <div className="relative z-10 flex justify-end mb-10 pr-[5%]">
           <div>
             <p className="font-mono text-[8px] uppercase tracking-widest opacity-20 mb-1 text-right">booking fee</p>
             <p className="font-sans font-medium tracking-tight leading-none" style={{ fontSize: 'clamp(3.5rem, 8vw, 9rem)' }}>
@@ -181,13 +181,13 @@ export default function Booking() {
         {/* Includes list — scattered, not a table */}
         <div className="relative z-10 flex flex-wrap gap-x-10 gap-y-4 mb-14 max-w-2xl" style={{ marginLeft: '6%' }}>
           {[
-            ['up to 2 hrs beverage service', '1.1deg'],
-            ['custom drink preparation', '-1.4deg'],
-            ['cart setup & breakdown', '0.6deg'],
-            ['marketing materials', '-0.8deg'],
-            ['travel expenses', '1.3deg'],
-          ].map(([item, rot], i) => (
-            <div key={i} style={{ transform: `rotate(${rot})` }} className={i % 2 === 1 ? 'mt-3' : ''}>
+            ['up to 2 hrs beverage service'],
+            ['custom drink preparation'],
+            ['cart setup & breakdown'],
+            ['marketing materials'],
+            ['travel expenses'],
+          ].map(([item], i) => (
+            <div key={i} className={i % 2 === 1 ? 'mt-3' : ''}>
               <span className="font-mono text-[8px] opacity-15 mr-2">—</span>
               <span className="font-sans text-sm lowercase text-[#181916]/50">{item}</span>
             </div>
@@ -195,7 +195,7 @@ export default function Booking() {
         </div>
 
         {/* Footnotes — bottom right, drifted */}
-        <div className="relative z-10 text-right" style={{ transform: 'rotate(-0.4deg)' }}>
+        <div className="relative z-10 text-right">
           <p className="font-mono text-[8px] uppercase tracking-wide opacity-22 leading-loose">
             +$50 if over 30 miles from Richmond, VA
           </p>
@@ -207,7 +207,7 @@ export default function Booking() {
         {/* Italic quote — lower left, ambient */}
         <p
           className="relative z-10 font-serif italic text-lg text-[#181916]/25 leading-relaxed max-w-xs mt-10"
-          style={{ transform: 'rotate(-1.2deg)', transformOrigin: 'left bottom' }}
+          
         >
           "no decks, no proposals — just a dm and we'll figure it out."
         </p>

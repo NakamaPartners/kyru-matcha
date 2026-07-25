@@ -76,7 +76,7 @@ export default function Order() {
         </p>
 
         {/* Story block — big indent, slight tilt */}
-        <div className="relative z-10 max-w-lg mb-16" style={{ transform: 'rotate(-0.6deg)', marginLeft: '3%' }}>
+        <div className="relative z-10 max-w-lg mb-16" style={{ marginLeft: '3%' }}>
           <p className="text-lg leading-relaxed lowercase text-[#181916]/55">
             we source <strong className="font-semibold text-[#181916]">kai ceremonial matcha</strong> — the one
             we've been using since day one and still haven't found a reason to switch.
@@ -86,19 +86,19 @@ export default function Order() {
 
         {/* Spec cluster — scattered, not a grid */}
         <div className="relative z-10 mb-20 ml-[8%] flex flex-wrap gap-x-14 gap-y-6">
-          <div style={{ transform: 'rotate(1.2deg)' }}>
+          <div >
             <p className="font-mono text-[8px] uppercase tracking-widest opacity-20">grade</p>
             <p className="font-sans font-medium text-2xl lowercase tracking-tight">ceremonial</p>
           </div>
-          <div style={{ transform: 'rotate(-1.8deg)', marginTop: '1.5rem' }}>
+          <div style={{ marginTop: '1.5rem' }}>
             <p className="font-mono text-[8px] uppercase tracking-widest opacity-20">origin</p>
             <p className="font-sans font-medium text-2xl lowercase tracking-tight">single-origin</p>
           </div>
-          <div style={{ transform: 'rotate(0.7deg)', marginTop: '0.5rem' }}>
+          <div style={{ marginTop: '0.5rem' }}>
             <p className="font-mono text-[8px] uppercase tracking-widest opacity-20">ships</p>
             <p className="font-sans font-medium text-xl lowercase tracking-tight opacity-60">1–3 days</p>
           </div>
-          <div style={{ transform: 'rotate(-0.5deg)', marginTop: '2rem' }}>
+          <div style={{ marginTop: '2rem' }}>
             <p className="font-mono text-[8px] uppercase tracking-widest opacity-20">minimum</p>
             <p className="font-sans font-medium text-xl lowercase tracking-tight opacity-60">1 tin</p>
           </div>
@@ -106,7 +106,7 @@ export default function Order() {
 
         {/* Process note — pulled right, small */}
         <p className="relative z-10 text-sm leading-relaxed lowercase text-[#181916]/40 max-w-xs mb-14"
-           style={{ marginLeft: 'auto', transform: 'rotate(0.4deg)', marginRight: '5%' }}>
+           style={{ marginLeft: 'auto', marginRight: '5%' }}>
           fill out the form — we confirm quantity, talk shipping, sort payment.
           no storefront drama.
         </p>
@@ -119,7 +119,7 @@ export default function Order() {
             href="https://forms.gle/y4TgUshBGLF54e1T8"
             target="_blank" rel="noreferrer"
             className="group flex items-center justify-between bg-[#181916] text-white px-8 py-6 hover:bg-black transition-colors"
-            style={{ transform: 'rotate(-0.4deg)' }}
+            
           >
             <span className="font-mono text-[11px] uppercase tracking-widest">fill out the order form</span>
             <span className="font-mono text-lg group-hover:translate-x-1 transition-transform">→</span>
@@ -129,7 +129,7 @@ export default function Order() {
             href="https://www.instagram.com/kyrumatcha/"
             target="_blank" rel="noreferrer"
             className="group flex items-center justify-between border border-black/15 px-8 py-5 hover:border-black/40 transition-colors self-end w-[88%]"
-            style={{ transform: 'rotate(0.6deg)' }}
+            
           >
             <span className="font-mono text-[11px] uppercase tracking-widest opacity-40">or dm @kyrumatcha</span>
             <span className="font-mono opacity-30 group-hover:opacity-60 transition-opacity">↗</span>
@@ -137,7 +137,7 @@ export default function Order() {
         </div>
 
         {/* Nami footnote — bottom-right drift */}
-        <div className="relative z-10 mt-16 text-right" style={{ transform: 'rotate(-0.5deg)' }}>
+        <div className="relative z-10 mt-16 text-right" >
           <p className="font-mono text-[8px] uppercase tracking-widest opacity-15 mb-1">also worth trying</p>
           <a
             href="https://namimatcha.com"
@@ -149,7 +149,7 @@ export default function Order() {
         </div>
 
         {/* Ambient italic — floats lower-left */}
-        <p className="font-serif italic text-[#181916]/20 text-2xl absolute bottom-8 left-10 pointer-events-none select-none" style={{ transform: 'rotate(-1.2deg)' }}>
+        <p className="font-serif italic text-[#181916]/20 text-2xl absolute bottom-8 left-10 pointer-events-none select-none" >
           questions? just ask.
         </p>
 

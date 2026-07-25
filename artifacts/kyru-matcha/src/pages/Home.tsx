@@ -82,7 +82,7 @@ function Hero() {
 
           {/* ② "ceremonial grade" — upper-center, just below kyru descenders */}
           <div className="absolute hidden md:block pointer-events-none"
-            style={{ top: '36%', left: '37%', maxWidth: '12rem', transform: 'rotate(1deg)' }}>
+            style={{ top: '36%', left: '37%', maxWidth: '12rem' }}>
             <p className="font-sans text-sm leading-relaxed lowercase" style={{ opacity: 0.38 }}>
               ceremonial grade.<br />
               whisked to order.<br />
@@ -102,7 +102,7 @@ function Hero() {
 
           {/* ④ italic flourish — lower-center, its own clear band */}
           <div className="hidden md:block absolute font-serif italic text-3xl whitespace-nowrap pointer-events-none"
-            style={{ top: '62%', left: '50%', transform: 'translate(-50%, -50%) rotate(-4deg)', opacity: 0.65 }}>
+            style={{ top: '62%', left: '50%', transform: 'translate(-50%, -50%)', opacity: 0.65 }}>
             thanks for being here <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="inline-block align-middle mb-1" style={{width:'0.9em',height:'0.9em'}}><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           </div>
 
@@ -263,7 +263,7 @@ function Visual() {
             <img src={P.v_whisk} alt="" loading="lazy" decoding="async"
               className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" />
           </div>
-          <span className="absolute top-3 left-3 font-mono text-[7px] uppercase tracking-widest bg-white/90 border border-black/15 px-2 py-1 -rotate-[4deg]">
+          <span className="absolute top-3 left-3 font-mono text-[7px] uppercase tracking-widest bg-white/90 border border-black/15 px-2 py-1">
             available
           </span>
         </div>
@@ -274,13 +274,13 @@ function Visual() {
             <img src={P.v_life} alt="" loading="lazy" decoding="async"
               className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" />
           </div>
-          <span className="absolute bottom-3 right-3 font-mono text-[7px] uppercase tracking-widest bg-white/90 border border-black/15 px-2 py-1 rotate-[5deg]">
+          <span className="absolute bottom-3 right-3 font-mono text-[7px] uppercase tracking-widest bg-white/90 border border-black/15 px-2 py-1">
             available
           </span>
         </div>
 
         {/* Name 1 — white rabbit matcha — big, lower-left, rotated */}
-        <div className="absolute" style={{ left: '1%', bottom: '9%', transform: 'rotate(-1.5deg)' }}>
+        <div className="absolute" style={{ left: '1%', bottom: '9%' }}>
           <p className="font-sans font-medium lowercase tracking-[-0.05em] leading-[0.85] text-white"
             style={{ fontSize: 'clamp(2rem, 4.5vw, 5.5rem)', textShadow: '0 2px 16px rgba(0,0,0,0.35), 0 1px 4px rgba(0,0,0,0.2)' }}>
             white rabbit<br />matcha
@@ -292,18 +292,18 @@ function Visual() {
         </div>
 
         {/* Name 2 — hojicha — smaller, mid-canvas, slight tilt */}
-        <div className="absolute" style={{ left: '39%', top: '35%', transform: 'rotate(2.5deg)' }}>
+        <div className="absolute" style={{ left: '39%', top: '35%' }}>
           <p className="font-sans font-medium lowercase tracking-[-0.04em] leading-[0.88] text-[#181916]"
             style={{ fontSize: 'clamp(1.5rem, 3vw, 4rem)' }}>
             white rabbit<br />hojicha
           </p>
-          <span className="font-mono text-[8px] uppercase tracking-widest opacity-25 mt-1 inline-block -rotate-[2deg]">
+          <span className="font-mono text-[8px] uppercase tracking-widest opacity-25 mt-1 inline-block">
             available now
           </span>
         </div>
 
         {/* Name 3 — the make up — right-anchored bottom, big */}
-        <div className="absolute" style={{ right: '2%', bottom: '3%', textAlign: 'right', transform: 'rotate(-1deg)' }}>
+        <div className="absolute" style={{ right: '2%', bottom: '3%', textAlign: 'right' }}>
           <p className="font-sans font-medium lowercase tracking-[-0.05em] leading-[0.85] text-white"
             style={{ fontSize: 'clamp(2rem, 5vw, 6rem)' }}>
             the make up
@@ -331,7 +331,7 @@ function Visual() {
 
         {/* Ghost "available" stamp floating top-left area */}
         <span className="absolute font-mono text-[7px] uppercase tracking-widest border border-black/12 px-2 py-1 opacity-40"
-          style={{ left: '37%', top: '5%', transform: 'rotate(-6deg)' }}>
+          style={{ left: '37%', top: '5%' }}>
           available
         </span>
       </div>
@@ -349,13 +349,13 @@ function Visual() {
               style={{ aspectRatio: '4/5', position: 'relative' }}>
               <img src={item.src} alt="" loading="lazy" decoding="async"
                 className="w-full h-full object-cover" />
-              <span className="absolute top-3 right-3 font-mono text-[7px] uppercase tracking-widest bg-white border border-black/20 px-2 py-1 rotate-[6deg]">
+              <span className="absolute top-3 right-3 font-mono text-[7px] uppercase tracking-widest bg-white border border-black/20 px-2 py-1">
                 available
               </span>
             </div>
             {/* Name block — opposite alignment to photo */}
             <div className={`px-6 py-5 ${item.align === 'right' ? 'text-left' : 'text-right'}`}
-              style={{ transform: i === 1 ? 'rotate(1deg)' : i === 2 ? 'rotate(-1deg)' : undefined }}>
+              >
               <p className="font-sans text-3xl font-medium lowercase tracking-[-0.04em] leading-tight">
                 {item.name}
               </p>
