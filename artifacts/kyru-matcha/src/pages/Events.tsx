@@ -93,26 +93,10 @@ function VideoEventHero() {
           </div>
 
           {/* Bottom info row */}
-          <div className="flex items-end justify-between mt-6">
+          <div className="mt-6">
             <p className="font-sans text-base text-white/55 lowercase">
               {confirmed.venue} · {confirmed.time}
             </p>
-
-            {/* Dot indicators */}
-            <div className="flex gap-2 items-center">
-              {VIDEOS.map((_, i) => (
-                <span
-                  key={i}
-                  className="block rounded-full transition-all duration-500"
-                  style={{
-                    width:   i === current ? 18 : 6,
-                    height:  6,
-                    background: 'white',
-                    opacity: i === current ? 0.6 : 0.2,
-                  }}
-                />
-              ))}
-            </div>
           </div>
         </div>
       </div>
