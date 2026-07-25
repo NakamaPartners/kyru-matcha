@@ -68,9 +68,9 @@ function Hero() {
         {/* middle content — scattered across the clear zones */}
         <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 20 }}>
 
-          {/* body copy — bottom-left */}
+          {/* ① body copy — bottom-left quadrant */}
           <div className="absolute pointer-events-auto"
-            style={{ bottom: '30%', left: '5%', maxWidth: '17rem' }}>
+            style={{ bottom: '28%', left: '5%', maxWidth: '17rem' }}>
             <p className="font-sans text-base leading-relaxed lowercase" style={{ opacity: 0.6 }}>
               viet-owned. matcha-obsessed.<br />
               serious matcha, unserious people.
@@ -80,9 +80,9 @@ function Hero() {
             </a>
           </div>
 
-          {/* new paragraph — mid-left, slightly rotated */}
+          {/* ② "ceremonial grade" — upper-center, just below kyru descenders */}
           <div className="absolute hidden md:block pointer-events-none"
-            style={{ top: '46%', left: '34%', maxWidth: '13rem', transform: 'rotate(-1.5deg)' }}>
+            style={{ top: '36%', left: '37%', maxWidth: '12rem', transform: 'rotate(1deg)' }}>
             <p className="font-sans text-sm leading-relaxed lowercase" style={{ opacity: 0.38 }}>
               ceremonial grade.<br />
               whisked to order.<br />
@@ -90,9 +90,9 @@ function Hero() {
             </p>
           </div>
 
-          {/* mono info — upper-right */}
+          {/* ③ mono info — upper-right quadrant */}
           <div className="absolute hidden md:block"
-            style={{ top: '28%', right: '4%', textAlign: 'right' }}>
+            style={{ top: '26%', right: '4%', textAlign: 'right' }}>
             <p className="font-mono text-[13px] uppercase tracking-widest leading-loose" style={{ opacity: 0.35 }}>
               matcha · drinks<br />
               pop-ups · good people<br />
@@ -100,20 +100,20 @@ function Hero() {
             </p>
           </div>
 
-          {/* pop-up info — lower-right */}
+          {/* ④ italic flourish — lower-center, its own clear band */}
+          <div className="hidden md:block absolute font-serif italic text-3xl whitespace-nowrap pointer-events-none"
+            style={{ top: '62%', left: '50%', transform: 'translate(-50%, -50%) rotate(-4deg)', opacity: 0.65 }}>
+            thanks for being here ♡
+          </div>
+
+          {/* ⑤ pop-up info — lower-right quadrant */}
           <div className="absolute hidden md:block"
-            style={{ bottom: '30%', right: '4%', textAlign: 'right' }}>
+            style={{ bottom: '26%', right: '4%', textAlign: 'right' }}>
             <p className="font-mono text-[13px] uppercase tracking-widest leading-loose" style={{ opacity: 0.35 }}>
               next pop-up<br />
               richmond, va · 07.25.26<br />
               11am–5pm (or sold out)
             </p>
-          </div>
-
-          {/* italic flourish — center, tilted */}
-          <div className="hidden md:block absolute font-serif italic text-3xl whitespace-nowrap pointer-events-none"
-            style={{ top: '53%', left: '50%', transform: 'translate(-50%, -50%) rotate(-4deg)', opacity: 0.65 }}>
-            thanks for being here ♡
           </div>
         </div>
 
@@ -237,7 +237,14 @@ function PhotoWall() {
 /* ─── Visual spread — scattered canvas ──────────────────────── */
 function Visual() {
   return (
-    <section className="border-t border-black/[0.07] bg-white overflow-hidden">
+    <section className="border-t border-black/[0.07] overflow-hidden relative"
+      style={{
+        backgroundImage: "url('/images/texture-linen.png')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}>
+      {/* Warm white wash — keeps text crisp, lets grain breathe */}
+      <div className="absolute inset-0 bg-white/70 pointer-events-none" />
 
       {/* ── Desktop: scattered poster layout ── */}
       <div className="hidden md:block relative" style={{ minHeight: '88vh' }}>
