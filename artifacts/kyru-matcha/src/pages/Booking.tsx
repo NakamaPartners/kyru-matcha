@@ -37,7 +37,7 @@ export default function Booking() {
           {/* Right — photo bleeding to edge */}
           <div className="relative hidden md:block min-h-[60vh]">
             <img
-              src="/images/booking-hero.jpg"
+              src="/images/booking-hero.webp"
               alt="kyru matcha cups at a pop-up"
               fetchPriority="high"
               decoding="async"
@@ -66,16 +66,8 @@ export default function Booking() {
       </div>
 
       {/* ── Booking terms ────────────────────────────────────────── */}
-      <div
-        className="relative border-b border-black/[0.07] overflow-hidden"
-        style={{
-          backgroundImage: "url('/images/texture-paper.jpg')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        {/* Slight warm wash so text stays crisp on the paper grain */}
-        <div className="absolute inset-0 bg-[#faf8f4]/80 pointer-events-none" />
+      <div className="border-b border-black/[0.07]">
+
 
         {/* Ghost $200 behind everything */}
         <span

@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 // Every photo used exactly ONCE across the entire site
 const P = {
   // visual section — 3 photos only
-  v_drink:   "/images/sc_658925107.jpg",    // 4-cup flat lay, sunlit — hero matcha shot
-  v_whisk:   "/images/689893832.jpg",      // whisking hands — craft/process
-  v_life:    "/images/692380241.jpg",      // flowers + matcha — lifestyle, different vibe
+  v_drink:   "/images/sc_658925107.webp",   // 4-cup flat lay, sunlit — hero matcha shot
+  v_whisk:   "/images/689893832.webp",     // whisking hands — craft/process
+  v_life:    "/images/692380241.webp",     // flowers + matcha — lifestyle, different vibe
   // logo
   logo: "/images/image_1_1784859145526.png",
 };
@@ -20,9 +20,10 @@ function Hero() {
 
         {/* Mascot — bleeds in from the left, vertically centred */}
         <img
-          src="/images/kyru-icon.png"
+          src="/images/kyru-icon.webp"
           alt=""
           aria-hidden="true"
+          fetchPriority="high"
           className="absolute top-1/2 pointer-events-none select-none"
           style={{
             width: 'clamp(280px, 38vw, 560px)',
@@ -48,42 +49,87 @@ function Hero() {
           }}
         />
 
+        {/* kyru — nempel top-left, bleeds off both edges */}
         <div aria-hidden="true"
-          className="hero-letter select-none pointer-events-none font-display lowercase tracking-[-0.05em] leading-[0.72] text-[48vw] -mt-[11vw] md:-mt-[4vw] -ml-[1.5vw] relative z-10">
+          className="absolute select-none pointer-events-none font-display lowercase"
+          style={{
+            fontSize: 'clamp(8rem, 36vw, 680px)',
+            lineHeight: 0.82,
+            letterSpacing: '-0.05em',
+            top: 0,
+            left: 0,
+            transform: 'translate(-3%, -22%)',
+            color: '#181916',
+            zIndex: 10,
+          }}>
           kyru
         </div>
 
-        <div className="relative flex-1 px-6 md:px-12 lg:px-16 py-6">
-          <div className="absolute top-[44%] left-[8%] md:left-[12%] max-w-[16rem] md:max-w-xs">
-            <p className="font-sans text-sm md:text-base leading-relaxed lowercase" style={{ opacity: 0.55 }}>
-              viet-owned. matcha-obsessed. slightly too online.
+        {/* middle content — scattered across the clear zones */}
+        <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 20 }}>
+
+          {/* body copy — bottom-left */}
+          <div className="absolute pointer-events-auto"
+            style={{ bottom: '30%', left: '5%', maxWidth: '17rem' }}>
+            <p className="font-sans text-base leading-relaxed lowercase" style={{ opacity: 0.6 }}>
+              viet-owned. matcha-obsessed.<br />
               serious matcha, unserious people.
             </p>
-            <a href="#catalogue" className="font-mono text-xs lowercase tracking-widest hover:opacity-60 inline-block mt-6 transition-opacity">
-              explore menu <span className="text-lg leading-none">→</span>
+            <a href="/order" className="font-mono text-[11px] lowercase tracking-widest hover:opacity-60 inline-block mt-5 transition-opacity">
+              explore menu <span className="text-base leading-none">→</span>
             </a>
           </div>
-          <div className="absolute top-[4%] right-[6%] md:right-[14%] text-left">
-            <p className="font-mono text-xs md:text-sm uppercase tracking-widest leading-loose" style={{ opacity: 0.4 }}>
-              matcha,&nbsp;&nbsp;&nbsp;&nbsp;drinks,<br />
-              pop-ups,&nbsp;&nbsp;good&nbsp;people<br />
-              &amp;&nbsp;&nbsp;more
+
+          {/* new paragraph — mid-left, slightly rotated */}
+          <div className="absolute hidden md:block pointer-events-none"
+            style={{ top: '46%', left: '34%', maxWidth: '13rem', transform: 'rotate(-1.5deg)' }}>
+            <p className="font-sans text-sm leading-relaxed lowercase" style={{ opacity: 0.38 }}>
+              ceremonial grade.<br />
+              whisked to order.<br />
+              every single cup.
             </p>
           </div>
-          <div className="absolute bottom-[6%] right-[4%] md:right-[8%] text-left">
-            <p className="font-mono text-xs md:text-sm uppercase tracking-widest leading-loose" style={{ opacity: 0.4 }}>
-              next&nbsp;pop-up<br />
-              &nbsp;&nbsp;richmond,&nbsp;va&nbsp;·&nbsp;07.25.26<br />
-              &nbsp;&nbsp;&nbsp;&nbsp;11am–5pm&nbsp;(or&nbsp;sold&nbsp;out)
+
+          {/* mono info — upper-right */}
+          <div className="absolute hidden md:block"
+            style={{ top: '28%', right: '4%', textAlign: 'right' }}>
+            <p className="font-mono text-[13px] uppercase tracking-widest leading-loose" style={{ opacity: 0.35 }}>
+              matcha · drinks<br />
+              pop-ups · good people<br />
+              &amp; more
             </p>
           </div>
-          <div className="hidden md:block absolute bottom-[14%] left-[38%] font-serif italic text-2xl lg:text-3xl whitespace-nowrap pointer-events-none rotate-[-4deg]" style={{ opacity: 0.75 }}>
+
+          {/* pop-up info — lower-right */}
+          <div className="absolute hidden md:block"
+            style={{ bottom: '30%', right: '4%', textAlign: 'right' }}>
+            <p className="font-mono text-[13px] uppercase tracking-widest leading-loose" style={{ opacity: 0.35 }}>
+              next pop-up<br />
+              richmond, va · 07.25.26<br />
+              11am–5pm (or sold out)
+            </p>
+          </div>
+
+          {/* italic flourish — center, tilted */}
+          <div className="hidden md:block absolute font-serif italic text-3xl whitespace-nowrap pointer-events-none"
+            style={{ top: '53%', left: '50%', transform: 'translate(-50%, -50%) rotate(-4deg)', opacity: 0.65 }}>
             thanks for being here ♡
           </div>
         </div>
 
+        {/* matcha — nempel bottom-right, bleeds off both edges */}
         <div aria-hidden="true"
-          className="hero-letter select-none pointer-events-none font-display lowercase tracking-[-0.05em] leading-[0.85] text-[32vw] -mb-[2vw] text-right whitespace-nowrap">
+          className="absolute select-none pointer-events-none font-display lowercase whitespace-nowrap"
+          style={{
+            fontSize: 'clamp(6rem, 28vw, 560px)',
+            lineHeight: 0.88,
+            letterSpacing: '-0.05em',
+            bottom: 0,
+            right: 0,
+            transform: 'translate(2%, 20%)',
+            color: '#181916',
+            zIndex: 10,
+          }}>
           matcha
         </div>
       </div>
@@ -116,20 +162,20 @@ function Intro() {
       <div
         className="border-b border-black/[0.07] px-6 md:px-12 pt-12 pb-10 relative overflow-hidden"
         style={{
-          backgroundImage: "url('/images/texture-gradient.jpg')",
+          backgroundImage: "url('/images/texture-3.jpg')",
           backgroundSize: 'cover',
-          backgroundPosition: 'center top',
+          backgroundPosition: 'center',
         }}
       >
-        {/* Soft white wash so dark text stays fully legible */}
-        <div className="absolute inset-0 bg-white/65 pointer-events-none" />
+        {/* Overlay — tinted so texture shows through */}
+        <div className="absolute inset-0 bg-white/55 pointer-events-none" />
         <h2
-          className="font-display lowercase tracking-[-0.05em] leading-[0.82] select-none"
+          className="relative font-display lowercase tracking-[-0.05em] leading-[0.82] select-none text-[#181916]"
           style={{ fontSize: 'clamp(52px, 8.2vw, 140px)' }}
         >
           specialty matcha.<br />made to order.<br />pop-up only.
         </h2>
-        <p className="font-serif italic text-lg md:text-xl text-[#181916]/40 leading-relaxed max-w-lg mt-8">
+        <p className="relative font-serif italic text-lg md:text-xl text-[#181916]/70 leading-relaxed max-w-lg mt-8">
           "we show up, we set up, we pour — and when it's gone, it's gone."
         </p>
       </div>
@@ -326,11 +372,11 @@ function Visual() {
 
 /* ─── Collab ────────────────────────────────────────────────── */
 const COLLAB_IMGS = [
-  "/images/collab-1.jpg",
-  "/images/collab-2.jpg",
-  "/images/collab-3.jpg",
-  "/images/collab-4.jpg",
-  "/images/collab-5.jpg",
+  "/images/collab-1.webp",
+  "/images/collab-2.webp",
+  "/images/collab-3.webp",
+  "/images/collab-4.webp",
+  "/images/collab-5.webp",
 ];
 
 function Collab() {
@@ -339,16 +385,8 @@ function Collab() {
   return (
     <section className="border-t border-black/[0.07] overflow-hidden">
 
-      {/* Bold editorial header — sky texture */}
-      <div
-        className="flex items-end justify-between px-8 md:px-16 pt-10 pb-8 border-b border-black/[0.07] relative overflow-hidden"
-        style={{
-          backgroundImage: "url('/images/texture-gradient.jpg')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <div className="absolute inset-0 bg-white/60 pointer-events-none" />
+      {/* Bold editorial header */}
+      <div className="flex items-end justify-between px-8 md:px-16 pt-10 pb-8 border-b border-black/[0.07]">
         <h2 className="font-serif italic text-4xl md:text-6xl text-[#181916] leading-none">
           collab.
         </h2>
@@ -440,7 +478,7 @@ function Footer() {
     <footer className="border-t border-black/[0.07] px-8 md:px-16 py-16 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0 items-start">
       {/* Brand */}
       <div>
-        <img src="/images/kyru-icon.png" alt="kyru" className="w-12 h-12 object-contain mb-6" />
+        <img src="/images/kyru-icon.webp" alt="kyru" className="w-12 h-12 object-contain mb-6" />
         <p className="font-mono text-[10px] uppercase tracking-widest opacity-30">© 2026 kyru matcha</p>
         <p className="font-sans text-sm opacity-35 lowercase mt-1">serious matcha, unserious people.</p>
       </div>

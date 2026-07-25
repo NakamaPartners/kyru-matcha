@@ -25,7 +25,7 @@ export default function About() {
         <div className="absolute overflow-hidden shadow-sm"
           style={{ top: '9%', left: '28%', width: 'clamp(140px,18vw,280px)', transform: 'rotate(-2.5deg)', zIndex: 3 }}>
           <div style={{ aspectRatio: '3/4' }}>
-            <img src="/images/about-2.jpg" alt="" loading="lazy" decoding="async"
+            <img src="/images/about-2.webp" alt="" fetchPriority="high" decoding="async"
               className="w-full h-full object-cover" />
           </div>
         </div>
@@ -34,7 +34,7 @@ export default function About() {
         <div className="absolute overflow-hidden shadow-sm"
           style={{ top: '5%', right: '7%', width: 'clamp(170px,22vw,340px)', transform: 'rotate(1.8deg)', zIndex: 3 }}>
           <div style={{ aspectRatio: '3/4' }}>
-            <img src="/images/about-3.jpg" alt="" loading="lazy" decoding="async"
+            <img src="/images/about-3.webp" alt="" fetchPriority="high" decoding="async"
               className="w-full h-full object-cover" />
           </div>
         </div>
@@ -43,7 +43,7 @@ export default function About() {
         <div className="absolute overflow-hidden shadow-sm"
           style={{ top: '38%', left: '12%', width: 'clamp(110px,14vw,210px)', transform: 'rotate(-4deg)', zIndex: 3 }}>
           <div style={{ aspectRatio: '1/1' }}>
-            <img src="/images/about-4.jpg" alt="" loading="lazy" decoding="async"
+            <img src="/images/about-4.webp" alt="" loading="lazy" decoding="async"
               className="w-full h-full object-cover" />
           </div>
         </div>
@@ -52,7 +52,7 @@ export default function About() {
         <div className="absolute overflow-hidden shadow-sm"
           style={{ top: '40%', left: '38%', width: 'clamp(180px,26vw,400px)', transform: 'rotate(2.2deg)', zIndex: 3 }}>
           <div style={{ aspectRatio: '4/3' }}>
-            <img src="/images/about-5.jpg" alt="" loading="lazy" decoding="async"
+            <img src="/images/about-5.webp" alt="" loading="lazy" decoding="async"
               className="w-full h-full object-cover" />
           </div>
         </div>
@@ -61,7 +61,7 @@ export default function About() {
         <div className="absolute overflow-hidden shadow-sm"
           style={{ bottom: '8%', left: '16%', width: 'clamp(150px,20vw,300px)', transform: 'rotate(-1.5deg)', zIndex: 3 }}>
           <div style={{ aspectRatio: '3/4' }}>
-            <img src="/images/about-6.jpg" alt="" loading="lazy" decoding="async"
+            <img src="/images/about-6.webp" alt="" loading="lazy" decoding="async"
               className="w-full h-full object-cover" />
           </div>
         </div>
@@ -70,7 +70,7 @@ export default function About() {
         <div className="absolute overflow-hidden shadow-sm"
           style={{ bottom: '5%', right: '10%', width: 'clamp(140px,18vw,270px)', transform: 'rotate(3deg)', zIndex: 3 }}>
           <div style={{ aspectRatio: '3/4' }}>
-            <img src="/images/about-7.jpg" alt="" loading="lazy" decoding="async"
+            <img src="/images/about-7.webp" alt="" loading="lazy" decoding="async"
               className="w-full h-full object-cover" />
           </div>
         </div>
@@ -142,7 +142,7 @@ export default function About() {
           {/* Left — big photo + label */}
           <div className="md:border-r border-black/[0.07] border-b md:border-b-0 relative overflow-hidden"
             style={{ minHeight: 360 }}>
-            <img src="/images/about-1.jpg" alt="" loading="lazy" decoding="async"
+            <img src="/images/about-1.webp" alt="" loading="lazy" decoding="async"
               className="w-full h-full object-cover" style={{ minHeight: 360 }} />
             {/* overlay label */}
             <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/50 to-transparent">

@@ -48,8 +48,10 @@ export default function Order() {
         {/* Right — tin photo, full-bleed, dramatic */}
         <div className="relative overflow-hidden" style={{ minHeight: 360 }}>
           <img
-            src="/images/kai-tin.jpg"
+            src="/images/kai-tin.webp"
             alt="KAI ceremonial matcha tin"
+            fetchPriority="high"
+            decoding="async"
             className="absolute inset-0 w-full h-full object-cover object-center"
           />
           {/* Left fade into white */}
@@ -65,7 +67,7 @@ export default function Order() {
       <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] border-b border-black/[0.07]">
 
         {/* Left — story + specs */}
-        <div className="px-8 md:px-16 py-14 md:border-r border-black/[0.07] flex flex-col gap-10 border-b md:border-b-0">
+        <div className="px-8 md:px-16 py-14 flex flex-col gap-10 border-b md:border-b-0">
           <p className="text-lg leading-relaxed lowercase text-[#181916]/55 max-w-md">
             we source <strong className="font-semibold text-[#181916]/80">KAI ceremonial matcha</strong> — the one
             we've been using since the beginning and still haven't found a reason to switch.
