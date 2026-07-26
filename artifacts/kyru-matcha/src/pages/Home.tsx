@@ -53,12 +53,12 @@ function Hero() {
         <div aria-hidden="true"
           className="absolute select-none pointer-events-none font-display lowercase"
           style={{
-            fontSize: 'clamp(8rem, 36vw, 680px)',
+            fontSize: 'clamp(7rem, 27vw, 520px)',
             lineHeight: 0.82,
             letterSpacing: '-0.05em',
             top: 0,
             left: 0,
-            transform: 'translate(-3%, -4%)',
+            transform: 'translate(-3%, -32%)',
             color: '#181916',
             zIndex: 10,
           }}>
@@ -82,11 +82,21 @@ function Hero() {
 
           {/* ② "ceremonial grade" — right side, below kyru, above matcha */}
           <div className="absolute hidden md:block pointer-events-none text-right"
-            style={{ top: '52%', right: '6%', maxWidth: '12rem' }}>
-            <p className="font-sans text-sm leading-relaxed lowercase" style={{ opacity: 0.38 }}>
+            style={{ top: '50%', right: '6%', maxWidth: '13rem' }}>
+            <p className="font-sans text-sm font-semibold leading-relaxed lowercase" style={{ opacity: 0.7 }}>
               ceremonial grade.<br />
               whisked to order.<br />
               every single cup.
+            </p>
+          </div>
+
+          {/* ③ brand note — center, between the two words */}
+          <div className="absolute hidden md:block pointer-events-none"
+            style={{ top: '50%', left: '38%', maxWidth: '14rem' }}>
+            <p className="font-sans text-sm font-semibold leading-relaxed lowercase" style={{ opacity: 0.65 }}>
+              no storefronts. no shortcuts.<br />
+              just really good matcha<br />
+              at places we love.
             </p>
           </div>
 
@@ -103,7 +113,7 @@ function Hero() {
         <div aria-hidden="true"
           className="absolute select-none pointer-events-none font-display lowercase whitespace-nowrap"
           style={{
-            fontSize: 'clamp(6rem, 28vw, 560px)',
+            fontSize: 'clamp(5rem, 22vw, 440px)',
             lineHeight: 0.88,
             letterSpacing: '-0.05em',
             bottom: 0,
