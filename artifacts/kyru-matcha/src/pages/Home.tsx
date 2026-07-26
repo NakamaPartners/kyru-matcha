@@ -58,7 +58,7 @@ function Hero() {
             letterSpacing: '-0.05em',
             top: 0,
             left: 0,
-            transform: 'translate(-3%, -22%)',
+            transform: 'translate(-3%, -4%)',
             color: '#181916',
             zIndex: 10,
           }}>
