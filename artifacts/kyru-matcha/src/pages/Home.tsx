@@ -80,9 +80,9 @@ function Hero() {
             </Link>
           </div>
 
-          {/* ② "ceremonial grade" — center gap between kyru and matcha */}
-          <div className="absolute hidden md:block pointer-events-none"
-            style={{ top: '50%', left: '40%', maxWidth: '12rem' }}>
+          {/* ② "ceremonial grade" — right side, below kyru, above matcha */}
+          <div className="absolute hidden md:block pointer-events-none text-right"
+            style={{ top: '52%', right: '6%', maxWidth: '12rem' }}>
             <p className="font-sans text-sm leading-relaxed lowercase" style={{ opacity: 0.38 }}>
               ceremonial grade.<br />
               whisked to order.<br />
